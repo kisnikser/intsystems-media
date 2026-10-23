@@ -14,6 +14,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 OUT = REPO / "data" / "site"
 AVATARS = REPO / "assets" / "site-people"
+LIFE = REPO / "assets" / "site-life"
 SUPERVISORS = REPO / "data" / "supervisors.tex"
 COURSE_TYPES = ("bachelor", "master")
 
@@ -161,7 +162,74 @@ def main() -> None:
         [f"\\sitestat{{{k}}}{{{tex(v)}}}" for k, v in stats.items()],
     )
 
+    theses = thesis_counts(site / "_i18n" / "en" / "thesis.md")
+    write(
+        "theses.tex",
+        header,
+        [
+            f"\\sitetheses{{{year}}}{{{c.get('bachelor', 0)}}}{{{c.get('master', 0)}}}"
+            for year, c in sorted(theses.items())
+        ],
+    )
+
+    write(
+        "admission.tex",
+        header,
+        [
+            f"\\siteadmission{{{day}}}{{{tex(text)}}}"
+            for day, text in admission_dates(site / "_data" / "schedule.yml")
+        ],
+    )
+
     copy_avatars(site, people, sorted(set(instructors) | set(read_supervisors())))
+    copy_life(site)
+
+
+def admission_dates(path: Path) -> list[tuple[str, str]]:
+    """`tag: admission` key dates as (YYYY-MM-DD, Russian text without links)."""
+    dates = []
+    for item in re.split(r"\n\s*- date: ", path.read_text(encoding="utf-8"))[1:]:
+        day = item.split()[0]
+        ru = re.search(r'^\s*ru: "(.*)"', item, re.MULTILINE)
+        if re.search(r"^\s*tag: admission\b", item, re.MULTILINE) and ru:
+            text = re.sub(r",?\s*\[подробнее\]\([^)]*\)", "", ru[1])
+            dates.append((day, re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", text)))
+    return sorted(dates)
+
+
+def copy_life(site: Path) -> None:
+    """Graduation photos of the latest year: `images/life/{bachelors,masters}-YYYY.jpeg`."""
+    photos = sorted((site / "images" / "life").glob("*-[0-9][0-9][0-9][0-9].*"))
+    latest = max(p.stem[-4:] for p in photos)
+    shutil.rmtree(LIFE, ignore_errors=True)
+    LIFE.mkdir(parents=True)
+    for photo in photos:
+        if photo.stem.endswith(latest):
+            shutil.copy2(photo, LIFE / photo.name)
+    print(f"copied {latest} photos to {LIFE.relative_to(REPO)}")
+
+
+def thesis_counts(path: Path) -> dict[str, dict[str, int]]:
+    """Rows of the theses tables per year (`### 2026`) and kind (`#### Master's Theses`)."""
+    counts: dict[str, dict[str, int]] = {}
+    year = kind = None
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if heading := re.match(r"### (\d{4})", line):
+            year = heading[1]
+        elif heading := re.match(r"#### (Bachelor|Master)", line):
+            kind = heading[1].lower()
+        elif heading := re.match(r"#### ", line):
+            kind = None
+        elif (
+            year
+            and kind
+            and line.startswith("|")
+            and "Student" not in line
+            and not re.match(r"\|\s*:?-", line)
+        ):
+            per_year = counts.setdefault(year, {})
+            per_year[kind] = per_year.get(kind, 0) + 1
+    return counts
 
 
 def copy_avatars(site: Path, people: dict[str, dict[str, str]], ids: list[str]) -> None:
