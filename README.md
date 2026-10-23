@@ -66,6 +66,19 @@ Lecturer and seminarist on one cover:
 \covers[kiselev_ns]{1,...,14}{grabovoy_av}
 ```
 
+## Site data
+
+The department presentation takes courses, people, and stats from a local clone of [intsystems.github.io](https://github.com/intsystems/intsystems.github.io).
+Before an event, pull that repo, then run:
+
+```sh
+uv run --python 3.11 scripts/sync_site.py   # --site ../intsystems.github.io by default
+```
+
+It rewrites `data/site/{people,courses,stats}.tex` and `assets/site-people/` (avatars of course instructors and of the ids in `data/supervisors.tex`).
+Commit the result: Overleaf builds offline.
+`data/supervisors.tex` is edited by hand.
+
 ## Keys
 
 | Key | Meaning |
@@ -116,10 +129,14 @@ main.tex                 Overleaf entry
 latexmkrc                XeLaTeX, sty/ on TEXINPUTS, PNG zip
 sty/intsystems-base.sty  Font, palette, people registry
 sty/intsystems-cover.sty Cover layout and commands
+scripts/sync_site.py     Site data for the presentation
+data/site/               Generated from the site, do not edit
+data/supervisors.tex     Supervisors for team slides
 data/people.tex          People registry
 covers/                  One file per playlist
 assets/backgrounds/      16:9 backgrounds
 assets/people/           Portraits
+assets/site-people/      Site avatars, generated
 assets/logo/             Department logos
 legacy/                  Previous standalone covers
 ```
