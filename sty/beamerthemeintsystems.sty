@@ -1,0 +1,226 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeintsystems}[2026/10/23 Slides in the Intelligent Systems cover style]
+
+\RequirePackage{intsystems-base}
+\RequirePackage{pgffor}
+\RequirePackage{multicol}
+\RequirePackage{qrcode}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\graphicspath{{assets/backgrounds/}{assets/people/}{assets/logo/}%
+  {assets/site-people/}{assets/slides/}}
+
+\newfontfamily\intsys@semibold{OpenSans}[UprightFont=*-SemiBold]
+\newcommand{\semibold}[1]{{\intsys@semibold #1}}
+
+% --- colors -----------------------------------------------------------------
+
+\definecolor{intsysink}{HTML}{1A1A1A}
+\definecolor{intsysmuted}{HTML}{7A7A7A}
+\definecolor{intsyspaper}{HTML}{F6F6F6}% matches the design-* backgrounds
+\definecolor{intsysaccent}{HTML}{\pgfkeysvalueof{/intsys/bg/white-royal-blue/alert}}
+
+\setbeamercolor{normal text}{fg=intsysink}
+\setbeamercolor{structure}{fg=intsysaccent}
+\setbeamercolor{frametitle}{fg=intsysink}
+\setbeamercolor{alerted text}{fg=intsysaccent}
+\setbeamercolor{footline}{fg=intsysmuted}
+
+% --- page -------------------------------------------------------------------
+
+\setbeamersize{text margin left=0.8cm, text margin right=0.8cm}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+
+% Empty: content slide with the square logo. Otherwise a background name.
+\def\intsys@slidebg{}
+
+\setbeamertemplate{background}{%
+  \begin{tikzpicture}
+    \useasboundingbox (0,0) rectangle (\paperwidth,\paperheight);
+    \ifx\intsys@slidebg\empty
+      \fill[intsyspaper] (0,0) rectangle (\paperwidth,\paperheight);
+      \node[anchor=north east, inner sep=0pt] at (\paperwidth-0.8cm,\paperheight-0.45cm)
+        {\includegraphics[height=0.75cm]{square.png}};
+    \else
+      \node[anchor=south west, inner sep=0pt] at (0,0)
+        {\includegraphics[width=\paperwidth,height=\paperheight]{\intsys@slidebg.png}};
+    \fi
+  \end{tikzpicture}%
+}
+
+\setbeamerfont{frametitle}{size=\fontsize{20}{24}\selectfont}
+\setbeamertemplate{frametitle}{%
+  \vskip0.35cm
+  {\usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle\par}%
+  \vskip0.1cm
+}
+
+\setbeamerfont{footline}{size=\tiny}
+\setbeamertemplate{footline}{%
+  \usebeamerfont{footline}\usebeamercolor[fg]{footline}%
+  \hbox to\paperwidth{%
+    \hskip0.8cm\insertshorttitle, \insertdate\hfill\insertframenumber\hskip0.8cm}%
+  \vskip0.3cm
+}
+
+% --- lists ------------------------------------------------------------------
+
+\setbeamertemplate{itemize item}{%
+  \raise0.3ex\hbox{\color{intsysaccent}\rule{0.5ex}{0.5ex}}}
+\setbeamertemplate{itemize subitem}{\color{intsysaccent}--}
+\setbeamertemplate{enumerate item}{\color{intsysaccent}\insertenumlabel.}
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\itemsep}{0.2em}}
+
+% Small bold heading inside a frame.
+\newcommand{\subhead}[1]{\par\vspace{0.5em}{\semibold{#1}}\par\vspace{0.15em}}
+
+% --- cover-style frames -----------------------------------------------------
+
+% \coverframe[background]{tikz overlay content}: plain frame, brand top left.
+\newcommand{\coverframe}[2][design-2]{%
+  {\def\intsys@slidebg{#1}%
+   \begin{frame}[plain]
+     \begin{tikzpicture}[remember picture, overlay]
+       \node[anchor=west] at ($(current page.north west)+(0.8cm,-0.9cm)$)
+         {\small\textcolor{intsysaccent}{INTELLIGENT SYSTEMS}};
+       \node[anchor=west] at ($(current page.north west)+(0.8cm,-1.35cm)$)
+         {\footnotesize\insertdate};
+       #2
+     \end{tikzpicture}
+   \end{frame}}%
+}
+
+% Title and subtitle at the event-cover positions and sizes (11pt \Huge, \large),
+% independent of the slide base size; see intsystems-cover.sty.
+\newcommand{\covertitle}[2]{%
+  \node[anchor=south west, text width=0.8\paperwidth, align=left] at
+    ($(current page.west)+(0.8cm,0.34cm)$)
+    {\fontsize{24.88}{30}\selectfont\intsys@nohyphen\strut#1\strut\par};
+  \node[anchor=north west, text width=0.5\paperwidth, align=left] at
+    ($(current page.west)+(0.8cm,-0.1cm)$)
+    {\fontsize{12}{14.5}\selectfont\intsys@nohyphen\strut#2\strut\par};
+}
+
+% \sharebar{label}{percent}: one row of a horizontal bar chart, 0.12 cm per percent.
+\newcommand{\sharebar}[2]{%
+  \par\noindent\parbox[c]{3.9cm}{\raggedright\scriptsize#1}\hspace{0.15cm}%
+  {\color{intsysaccent}\rule[-0.1cm]{\fpeval{#2*0.12}cm}{0.32cm}}\hspace{0.1cm}{\scriptsize#2}\par\vspace{0.12cm}%
+}
+
+% \qrlink{url}{caption}: QR code with a caption under it.
+\newcommand{\qrlink}[3][1.9cm]{%
+  \begin{tabular}{@{}c@{}}
+    \qrcode[height=#1]{#2}\\[0.15cm]
+    \scriptsize\textcolor{intsysmuted}{#3}
+  \end{tabular}%
+}
+
+% --- site data (data/site/*.tex, data/supervisors.tex) ----------------------
+
+\newcommand{\intsys@sset}[3]{\expandafter\gdef\csname intsys@s@#1@#2\endcsname{#3}}
+\newcommand{\intsys@sget}[2]{\csname intsys@s@#1@#2\endcsname}
+
+\newcommand{\siteperson}[6]{%
+  \intsys@sset{#1}{position}{#2}%
+  \intsys@sset{#1}{surname}{#3}%
+  \intsys@sset{#1}{given}{#4}%
+  \intsys@sset{#1}{patronymic}{#5}%
+  \intsys@sset{#1}{avatar}{#6}%
+}
+
+\def\intsys@courses@bachelor{}
+\def\intsys@courses@master{}
+\newcommand{\sitecourse}[5]{%
+  \intsys@sset{#1}{name}{#3}%
+  \intsys@sset{#1}{lecturers}{#4}%
+  \intsys@sset{#1}{url}{#5}%
+  \ifcsname intsys@courses@#2\endcsname
+    \expandafter\ifx\csname intsys@courses@#2\endcsname\empty
+      \expandafter\xdef\csname intsys@courses@#2\endcsname{#1}%
+    \else
+      \expandafter\xdef\csname intsys@courses@#2\endcsname
+        {\csname intsys@courses@#2\endcsname,#1}%
+    \fi
+  \fi
+}
+
+\def\intsys@instructors{}
+\def\intsys@supervisors{}
+\newcommand{\siteinstructors}[1]{\gdef\intsys@instructors{#1}}
+% Drop spaces and line breaks so the hand-edited list can be one id per line.
+\newcommand{\supervisors}[1]{\xdef\intsys@supervisors{\zap@space#1 \@empty}}
+\newcommand{\sitestat}[2]{\intsys@sset{stat}{#1}{#2}}
+\newcommand{\stat}[1]{\intsys@sget{stat}{#1}}
+
+\def\intsys@firstchar#1#2\@nil{#1}
+\newcommand{\intsys@initial}[1]{%
+  \edef\intsys@tmp{#1}%
+  \ifx\intsys@tmp\empty\else\expandafter\intsys@firstchar\intsys@tmp\@nil.\fi
+}
+
+% Surname with initials: Стрижов~В.\,В.
+\newcommand{\shortname}[1]{%
+  \intsys@sget{#1}{surname}~\intsys@initial{\intsys@sget{#1}{given}}%
+  \,\intsys@initial{\intsys@sget{#1}{patronymic}}%
+}
+
+% \courselist{bachelor|master}: numbered course names with lecturers.
+\newcommand{\courselist}[1]{%
+  \edef\intsys@list{\csname intsys@courses@#1\endcsname}%
+  \begin{enumerate}
+    \foreach \cid in \intsys@list {%
+      \item \intsys@sget{\cid}{name}
+        {\footnotesize\textcolor{intsysmuted}{(%
+          \gdef\intsys@sep{}%
+          \edef\intsys@ids{\intsys@sget{\cid}{lecturers}}%
+          \foreach \p in \intsys@ids {\intsys@sep\shortname{\p}\gdef\intsys@sep{, }}%
+        )}}%
+    }
+  \end{enumerate}%
+}
+
+% Avatar file: site avatar, else the cover portrait <id>.png.
+\newcommand{\intsys@avatar}[1]{%
+  \edef\intsys@file{\intsys@sget{#1}{avatar}}%
+  \ifx\intsys@file\empty\def\intsys@file{#1.png}\fi
+}
+
+\newsavebox{\intsys@photobox}
+% \teamgrid[columns][photo size]{ids}: round photos with names under them.
+\NewDocumentCommand{\teamgrid}{O{9} O{1.15cm} m}{%
+  \begin{tikzpicture}
+    \pgfmathsetmacro{\intsys@cellw}{(\textwidth)/#1}%
+    \edef\intsys@ids{#3}%
+    \foreach \p [count=\i from 0] in \intsys@ids {%
+      \pgfmathsetmacro{\intsys@x}{mod(\i,#1)*\intsys@cellw}%
+      \pgfmathsetmacro{\intsys@y}{-floor(\i/#1)*(#2+0.95cm)}%
+      \intsys@avatar{\p}%
+      \sbox\intsys@photobox{\includegraphics{\intsys@file}}%
+      \begin{scope}[shift={(\intsys@x pt+0.5*\intsys@cellw pt,\intsys@y pt)}]
+        \begin{scope}
+          \clip (0,0) circle (0.5*#2);
+          % Fill the circle: scale the shorter side to the photo size.
+          \ifdim\wd\intsys@photobox>\ht\intsys@photobox
+            \node[inner sep=0pt] at (0,0) {\includegraphics[height=#2]{\intsys@file}};
+          \else
+            \node[inner sep=0pt, anchor=north] at (0,0.5*#2)
+              {\includegraphics[width=#2]{\intsys@file}};
+          \fi
+        \end{scope}
+        \node[anchor=north, align=center, font=\tiny, inner sep=0pt] at (0,-0.5*#2-0.12cm)
+          {\intsys@sget{\p}{given}\\\intsys@sget{\p}{surname}};
+      \end{scope}
+    }
+  \end{tikzpicture}%
+}
+\newcommand{\instructors}{\intsys@instructors}
+\newcommand{\supervisorids}{\intsys@supervisors}
+
+\IfFileExists{data/site/people.tex}{\input{data/site/people.tex}}{}
+\IfFileExists{data/site/courses.tex}{\input{data/site/courses.tex}}{}
+\IfFileExists{data/site/stats.tex}{\input{data/site/stats.tex}}{}
+\IfFileExists{data/supervisors.tex}{\input{data/supervisors.tex}}{}
+
+\endinput

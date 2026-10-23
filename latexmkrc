@@ -6,6 +6,8 @@ $xelatex = 'xelatex -interaction=nonstopmode -synctex=1 %O %S';
 push @generated_exts, 'zip';
 
 END {
+  # Only the covers build exports PNGs.
+  return if $root_filename eq 'presentation';
   my $pdf = -e 'output.pdf' ? 'output.pdf' : 'main.pdf';
   return unless -e $pdf;
   system(

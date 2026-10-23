@@ -66,6 +66,13 @@ Lecturer and seminarist on one cover:
 \covers[kiselev_ns]{1,...,14}{grabovoy_av}
 ```
 
+## Presentation
+
+`presentation.tex` is the department presentation for junior students, in the cover style (`sty/beamerthemeintsystems.sty`).
+On Overleaf set Main document to **`presentation.tex`**; switch back to `main.tex` for covers.
+Courses, instructors, and the GitHub repo count come from `data/site/`; scholarship holders, alumni, and charts are typed in `presentation.tex`.
+Logos and portraits live in `assets/slides/`.
+
 ## Site data
 
 The department presentation takes courses, people, and stats from a local clone of [intsystems.github.io](https://github.com/intsystems/intsystems.github.io).
@@ -120,15 +127,18 @@ Optional `photo-height`, `photo-x`, `photo-y` adjust lecture framing.
 - **Titles grow upward from a fixed line; subtitles and the session line stay put.** Break long titles with a plain `\\`; adding `\vspace` or `session-y` to compensate shifts the layout.
 - **Text inside a TikZ node needs `\par` before the node ends.** Without it the paragraph ends outside the font group: lines use the normal-size baselineskip and `\hyphenpenalty` is lost.
 - **Packages in `sty/` are found only through `latexmkrc`, which adds `./sty//` to `TEXINPUTS`.** Plain `xelatex main.tex` fails with `intsystems-cover.sty not found`; build with `latexmk`.
+- **The PNG export in `latexmkrc` skips the root file `presentation`.** Rename `presentation.tex` and Overleaf will zip the slides as covers.
 - **Open Sans is loaded by file name (`OpenSans-Regular.ttf`), not by family name.** Family lookup works on Overleaf but fails on a local TeX Live whose fonts fontconfig cannot see.
 
 ## Layout
 
 ```
-main.tex                 Overleaf entry
+main.tex                 Overleaf entry: covers
+presentation.tex         Overleaf entry: department slides
 latexmkrc                XeLaTeX, sty/ on TEXINPUTS, PNG zip
 sty/intsystems-base.sty  Font, palette, people registry
 sty/intsystems-cover.sty Cover layout and commands
+sty/beamerthemeintsystems.sty  Slide theme
 scripts/sync_site.py     Site data for the presentation
 data/site/               Generated from the site, do not edit
 data/supervisors.tex     Supervisors for team slides
@@ -138,5 +148,6 @@ assets/backgrounds/      16:9 backgrounds
 assets/people/           Portraits
 assets/site-people/      Site avatars, generated
 assets/logo/             Department logos
+assets/slides/           Logos and portraits for slides
 legacy/                  Previous standalone covers
 ```

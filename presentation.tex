@@ -1,0 +1,266 @@
+% Department presentation for junior students. Overleaf: Main document = presentation.tex.
+% Course lists, people and stats come from data/site/ (scripts/sync_site.py).
+
+\documentclass[aspectratio=169, 9pt]{beamer}
+\usetheme{intsystems}
+
+\title[Презентация кафедры интеллектуальных систем]{Кафедра интеллектуальных систем}
+\date{\today}
+
+\begin{document}
+
+\coverframe{%
+  \covertitle{Кафедра\\интеллектуальных систем}{Физтех-школа прикладной математики и~информатики МФТИ}%
+}
+
+\begin{frame}{О кафедре}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \subhead{Направления}
+      \begin{itemize}
+        \item Бакалавриат --- 03.03.01 «Прикладные математика и физика»
+        \item Магистратура --- 09.04.01 «Информатика и вычислительная техника»
+        \item Аспирантура --- 1.2.1 «Искусственный интеллект и машинное обучение»
+      \end{itemize}
+      \subhead{Базовая организация}
+      Вычислительный центр им.~А.\,А.~Дородницына ФИЦ «Информатика и~управление» РАН
+      \vspace{0.3cm}
+
+      \includegraphics[height=0.55cm]{fpmi.png}\hspace{0.8cm}%
+      \includegraphics[height=1.1cm]{vc-ras.png}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \subhead{Теория}
+      Машинное обучение, глубокое обучение, генеративные нейросети, байесовские модели и мультимодели, функциональный анализ данных
+      \subhead{Практика}
+      Геометрические глубокие нейросети, анализ текстов и тематическое моделирование, анализ изображений, видео и аудио, анализ биомедицинских сигналов, интерфейсы человек--компьютер
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{История}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \subhead{Интеллектуальный анализ данных}
+      Создана в 2003 году академиком РАН К.\,В.~Рудаковым на базе одной из старейших кафедр ФУПМ МФТИ «Управление и вычислительные системы».
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \subhead{Проектирование и организация систем}
+      Создана в 1970-е годы академиком Г.\,С.~Поспеловым, основоположником отечественной школы искусственного интеллекта, как базовая кафедра при ВЦ РАН.
+    \end{column}
+  \end{columns}
+  \vfill
+  \centering
+  \foreach \file/\name in {zhuravlyov_yv/Ю.\,И.~Журавлёв, rudakov_kv/К.\,В.~Рудаков, vorontsov_kv/К.\,В.~Воронцов, pospelov_gs/Г.\,С.~Поспелов} {%
+    \begin{tabular}{@{}c@{}}
+      \includegraphics[height=2.3cm]{\file.jpg}\\[0.1cm]
+      \scriptsize\name
+    \end{tabular}\hspace{0.6cm}%
+  }
+  \vfill
+\end{frame}
+
+\begin{frame}{Преподаватели}
+  \vspace{0.2cm}
+  \teamgrid{\instructors}
+\end{frame}
+
+\begin{frame}{Научные руководители}
+  \vspace{0.2cm}
+  \teamgrid[5][1.5cm]{\supervisorids}
+\end{frame}
+
+\begin{frame}{Студенты кафедры}
+  \begin{columns}[T]
+    \begin{column}{0.68\textwidth}
+      \begin{itemize}
+        \item Ежегодно кафедра принимает и выпускает \semibold{10--15 студентов} в~бакалавриат и магистратуру
+        \item Одновременно на кафедре учатся \semibold{до 50 студентов}
+        \item Часть студентов параллельно учится на международных программах: \semibold{Университет Гренобль-Альпы}, \semibold{Политехническая школа} (Париж), \semibold{KAUST}
+        \item \semibold{Половина выпускников} защитили диссертации кандидата физико-математических или технических наук
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.28\textwidth}
+      \centering
+      \vspace{0.3cm}
+      \includegraphics[width=0.8\linewidth]{uga.jpg}\\[0.35cm]
+      \includegraphics[width=0.45\linewidth]{polytechnique.png}\\[0.35cm]
+      \includegraphics[width=0.8\linewidth]{kaust.png}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Принципы работы}
+  \begin{columns}[T]
+    \begin{column}{0.74\textwidth}
+      \begin{enumerate}
+        \item Открытость идей, проектов и результатов на всех стадиях учёбы и исследований
+        \item Постоянная оценка качества идей и результатов студенческих исследований
+        \item Связь с научным сообществом и последними достижениями
+      \end{enumerate}
+      \subhead{Исследования --- центральная деятельность студентов}
+      \begin{itemize}
+        \item Каждый семестр студенты сдают отчёт о НИР: статья, доклад, код эксперимента
+        \item На защиту дипломной работы приходят со статьёй, поданной к публикации
+        \item Код исследований открыт: репозиториев на GitHub \semibold{intsystems}: \semibold{\stat{github_repos}}
+        \item Доклады и лекции --- на YouTube-канале «Machine Learning -- Intelligent Systems»
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.22\textwidth}
+      \centering
+      \qrlink[1.6cm]{https://github.com/intsystems}{github.com/intsystems}\\[0.3cm]
+      \qrlink[1.6cm]{https://www.youtube.com/c/MachineLearningPhystech}{YouTube}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Бакалавриат}
+  \courselist{bachelor}
+  \vfill
+  Студенты ведут исследования вместе с научным руководителем, лабораторией или компанией.
+  Итог --- опубликованная статья и код проекта; их учитывают при поступлении на программы «магистратура плюс аспирантура» в МФТИ и других университетах.
+  \vfill
+\end{frame}
+
+\begin{frame}{Магистратура}
+  \begin{multicols}{2}
+    \courselist{master}
+  \end{multicols}
+  \vfill
+  Результаты исследований докладываются на российских и международных конференциях.
+  Выпускники, как правило, авторы нескольких статей: этого достаточно для поступления в аспирантуру МФТИ и ведущих университетов.
+  \vfill
+\end{frame}
+
+\begin{frame}{Стажировки и трудоустройство}
+  \begin{columns}[T]
+    \begin{column}{0.4\textwidth}
+      Совместные проекты и стажировки с компаниями и Лабораторией машинного интеллекта МФТИ
+      \vspace{0.4cm}
+
+      \centering
+      \foreach \logo in {antiplagiat.jpg, forecsys.png, goods-forecast.png, yandex.png, sber.jpg, avito.png, huawei.png, ozon.png, mipt-mil.png} {%
+        \makebox[0.32\linewidth]{\includegraphics[height=0.7cm, width=0.26\linewidth, keepaspectratio]{\logo}}\hspace{0pt}%
+      }
+    \end{column}
+    \begin{column}{0.56\textwidth}
+      \subhead{Где работают выпускники, \%}
+      \small
+      \sharebar{Международные компании}{26.8}
+      \sharebar{Российские университеты и НИИ}{19.6}
+      \sharebar{Зарубежные университеты и НИИ}{19.6}
+      \sharebar{Российские компании}{14.4}
+      \sharebar{Mail, Яндекс, Сбер, Озон}{14.4}
+      \sharebar{Facebook, Amazon, Apple, Netflix, Google}{5.2}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Научная стипендия им.~К.\,В.~Рудакова}
+  \begin{columns}[T]
+    \begin{column}{0.7\textwidth}
+      \begin{itemize}
+        \item Для бакалавров и магистров кафедры
+        \item Назначается каждый семестр на один семестр
+        \item \semibold{20\,000 рублей} в месяц
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.26\textwidth}
+      \raggedleft\includegraphics[height=2.2cm]{rudakov_kv.jpg}
+    \end{column}
+  \end{columns}
+  \subhead{Стипендиаты весны 2026 года}
+  \footnotesize
+  \begin{enumerate}
+    \item \semibold{Кравацкий Алексей (4 курс)} --- «The Ky Fan Norms and Beyond: Dual Norms and Combinations for Matrix Optimization»
+    \item \semibold{Соболевский Фёдор (5 курс)} --- «Автоматическая иерархическая суммаризация научных текстов»
+    \item \semibold{Дорин Даниил (6 курс)} --- «Анализ причинно-следственных связей между биомедицинскими сигналами через скрытые представления автоэнкодеров»
+    \item \semibold{Киселев Никита (6 курс)} --- «Scaling Laws and Loss Landscapes: A Geometric Perspective on Data, Model, and Compute»
+    \item \semibold{Веприков Андрей (6 курс)} --- «Оптимальное управление в системах машинного обучения с петлёй обратной связи»
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Научная работа выпускников}
+  \begin{columns}[T]
+    \begin{column}{0.56\textwidth}
+      Более 20\,\% выпускников --- признанные в научном сообществе исследователи.
+      \subhead{Цитирования работ выпускников}
+      \footnotesize
+      \begin{itemize}
+        \item \semibold{Алексей Куракин, 2009}: Adversarial examples in the physical world --- 4700
+        \item \semibold{Олександр Фрей, 2010}: A global overview of pleiotropy and genetic architecture in complex traits --- 615
+        \item \semibold{Максим Панов, 2012}: Automatic bitcoin address clustering --- 129
+        \item \semibold{Михаил Карасиков, 2017}: A global metagenomic map of urban microbiomes and antimicrobial resistance --- 112
+        \item \semibold{Григорий Малиновский, 2021}: From local SGD to local fixed-point methods for federated learning --- 97
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \centering
+      % Values read off the April 2026 chart; replace with source numbers.
+      \begin{tikzpicture}
+        \begin{axis}[
+          ybar, width=\linewidth, height=5.4cm, bar width=0.8cm,
+          ymin=0, ymax=380, axis y line=none, axis x line*=bottom,
+          symbolic x coords={0--4, 5--10, >10}, xtick=data,
+          xticklabel style={font=\scriptsize}, xlabel={\scriptsize лет после выпуска},
+          nodes near coords, nodes near coords style={font=\scriptsize},
+          enlarge x limits=0.25,
+          every axis plot/.append style={fill=intsysaccent, draw=none},
+          title={\scriptsize цитирований},
+        ]
+          \addplot coordinates {(0--4,35) (5--10,114) (>10,325)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Конференции}
+  Сотрудники и студенты кафедры публикуются в высокорейтинговых журналах и выступают на ведущих конференциях: \semibold{NeurIPS, ICML, ICLR, AISTATS, KDD, CLEF, LREC, WISE}.
+  \subhead{Наши мероприятия}
+  \begin{columns}[T]
+    \begin{column}{0.7\textwidth}
+      \begin{enumerate}
+        \item Всероссийская научная конференция МФТИ --- секция проблем интеллектуального анализа данных, распознавания и прогнозирования
+        \item Всероссийская конференция с международным участием «Математические методы распознавания образов»
+        \item Международная конференция «Интеллектуализация обработки информации»
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.26\textwidth}
+      \centering
+      \includegraphics[width=0.6\linewidth]{mipt.png}\\[0.3cm]
+      \includegraphics[width=0.7\linewidth]{mmro.png}\\[0.3cm]
+      \includegraphics[width=0.5\linewidth]{idp.png}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Приём на кафедру}
+  \begin{columns}[c]
+    \begin{column}{0.62\textwidth}
+      \begin{enumerate}
+        \item Заполните анкету на странице \semibold{intsystems.github.io/admission}
+        \item Выберите задачу из списка и решите её
+        \item Расскажите о решении на собеседовании в формате презентации
+        \item Расскажите, какая работа студента кафедры вам понравилась
+        \item Дождитесь решения деканата
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.34\textwidth}
+      \centering
+      \qrlink[3.6cm]{https://intsystems.github.io/admission/}{intsystems.github.io/admission}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\coverframe[design-3]{%
+  \covertitle{Ждём вас\\на кафедре!}{}%
+  \node[anchor=south west] at ($(current page.south west)+(0.8cm,1.9cm)$) {%
+    \qrlink{https://intsystems.github.io}{intsystems.github.io}\hspace{0.5cm}%
+    \qrlink{https://t.me/IS_MIPT}{t.me/IS\_MIPT}\hspace{0.5cm}%
+    \qrlink{https://www.youtube.com/c/MachineLearningPhystech}{YouTube}\hspace{0.5cm}%
+    \qrlink{http://www.machinelearning.ru}{machinelearning.ru}%
+  };
+}
+
+\end{document}

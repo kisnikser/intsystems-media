@@ -57,6 +57,9 @@
 \intsys@declarebg{black-design-2}{FFFFFF}{white}
 \intsys@declarebg{black-design-3}{FFFFFF}{white}
 
+% No hyphenation in titles; ragged lines are expected, so no Underfull noise.
+\newcommand{\intsys@nohyphen}{\hyphenpenalty=10000 \exhyphenpenalty=10000 \hbadness=10000 }
+
 % --- people -----------------------------------------------------------------
 
 \newcommand{\intsys@pset}[2]{%

@@ -55,6 +55,12 @@ def tex_url(url: str) -> str:
     return re.sub(r"([%#])", r"\\\1", url)
 
 
+def name_parts(name: str) -> tuple[str, str, str]:
+    """Surname, given name, patronymic of a Russian full name."""
+    surname, given, patronymic = (name.split(maxsplit=2) + ["", ""])[:3]
+    return surname, given, patronymic
+
+
 def site_version(site: Path) -> str:
     def git(*args: str) -> str:
         return subprocess.run(
@@ -114,7 +120,8 @@ def main() -> None:
         header,
         [
             f"\\siteperson{{{pid}}}{{{fm.get('position', '')}}}"
-            f"{{{tex(names_ru.get(pid, pid))}}}{{{fm.get('avatar', '')}}}"
+            + "".join(f"{{{tex(part)}}}" for part in name_parts(names_ru.get(pid, pid)))
+            + f"{{{fm.get('avatar', '')}}}"
             for pid, fm in people.items()
         ],
     )
@@ -127,6 +134,15 @@ def main() -> None:
                 (fm["type"], courses_ru.get(path.stem, path.stem), path.stem, fm)
             )
     courses.sort(key=lambda c: (COURSE_TYPES.index(c[0]), c[1]))
+    instructors = sorted(
+        {
+            pid
+            for *_, fm in courses
+            for pid in fm.get("lecturers", "").split(",")
+            if pid
+        },
+        key=lambda pid: names_ru.get(pid, pid),
+    )
     write(
         "courses.tex",
         header,
@@ -134,7 +150,8 @@ def main() -> None:
             f"\\sitecourse{{{cid}}}{{{ctype}}}{{{tex(name)}}}"
             f"{{{fm.get('lecturers', '')}}}{{{tex_url(fm.get('site', ''))}}}"
             for ctype, name, cid, fm in courses
-        ],
+        ]
+        + [f"\\siteinstructors{{{','.join(instructors)}}}"],
     )
 
     stats = yaml_scalars(site / "_data" / "stats.yml")
@@ -144,10 +161,7 @@ def main() -> None:
         [f"\\sitestat{{{k}}}{{{tex(v)}}}" for k, v in stats.items()],
     )
 
-    instructors = {
-        pid for *_, fm in courses for pid in fm.get("lecturers", "").split(",") if pid
-    }
-    copy_avatars(site, people, sorted(instructors | set(read_supervisors())))
+    copy_avatars(site, people, sorted(set(instructors) | set(read_supervisors())))
 
 
 def copy_avatars(site: Path, people: dict[str, dict[str, str]], ids: list[str]) -> None:
