@@ -18,13 +18,16 @@ data/research/openalex.json, so reruns cost nothing. data/research/overrides.csv
 
 import argparse
 import csv
+import http.client
 import json
 import os
 import re
 import statistics
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
+from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -37,6 +40,15 @@ GITHUB_ORGS = ("Intelligent-Systems-Phystech", "intsystems")
 # MIPT, Skoltech, FRC CSC RAS: where alumni published as students.
 HOME_INSTITUTIONS = ("I153845743", "I125989756", "I4405258151")
 NOW = 2026
+# A student's first paper comes at most this many years before graduation.
+FIRST_PAPER_LEAD = 7
+CORE_FIELDS = ("Computer Science", "Mathematics", "Decision Sciences")
+FAR_FIELDS = (
+    "Physics and Astronomy",
+    "Materials Science",
+    "Chemistry",
+    "Chemical Engineering",
+)
 AUTHOR_FIELDS = "id,display_name,works_count,cited_by_count,summary_stats,last_known_institutions,affiliations"
 COHORTS = (("0–4", 0, 4), ("5–10", 5, 10), ("больше 10", 11, 99))
 BIG_TECH = (
@@ -63,13 +75,7 @@ RU_TECH = (
     "MTS",
     "Huawei",
 )
-SECTORS = (
-    "Российские университеты и НИИ",
-    "Российские компании",
-    "Зарубежные университеты и НИИ",
-    "Зарубежные компании",
-    "Google, Meta, Apple, Amazon, Microsoft",
-)
+SECTORS = ("Российская наука", "Зарубежная наука", "Индустрия")
 
 LATIN = "a b v g d e e zh z i y k l m n o p r s t u f kh ts ch sh shch _ y _ e yu ya"
 TRANSLIT = dict(zip("абвгдеёжзийклмнопрстуфхцчшщъыьэюя", LATIN.split(), strict=True))
@@ -155,11 +161,19 @@ class Alumnus:
 
 
 def http_json(url: str, headers: dict[str, str] | None = None) -> dict | list:
+    """GET JSON; retries twice, since long GitHub pages sometimes arrive cut."""
     request = urllib.request.Request(
         url, headers={"User-Agent": "intsystems-cover", **(headers or {})}
     )
-    with urllib.request.urlopen(request, timeout=60) as response:
-        return json.load(response)
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(request, timeout=60) as response:
+                return json.load(response)
+        except (http.client.IncompleteRead, urllib.error.URLError):
+            if attempt == 2:
+                raise
+            time.sleep(2)
+    raise AssertionError("unreachable")
 
 
 # --- alumni registry ----------------------------------------------------------
@@ -311,6 +325,29 @@ class OpenAlex:
                 break
         return best
 
+    def relevant(self, author: dict, graduated: int) -> bool:
+        """Reject namesakes: MIPT physicists (no CS or math topic) and senior
+        researchers whose first paper predates the student's studies."""
+        author_id = author["id"].split("/")[-1]
+        found = self.get(f"authors/{author_id}", {"select": "id,topics"})
+        fields = [t["field"]["display_name"] for t in found.get("topics") or []][:5]
+        if (
+            sum(f in CORE_FIELDS for f in fields) < 1
+            or sum(f in FAR_FIELDS for f in fields) >= 3
+        ):
+            return False
+        first = self.get(
+            "works",
+            {
+                "filter": f"author.id:{author_id}",
+                "sort": "publication_year:asc",
+                "per-page": "1",
+                "select": "publication_year",
+            },
+        )["results"]
+        year = (first[0]["publication_year"] if first else None) or graduated
+        return year >= graduated - FIRST_PAPER_LEAD
+
     def author(self, author_id: str) -> dict:
         return self.get(f"authors/{author_id}", {"select": AUTHOR_FIELDS})
 
@@ -338,23 +375,20 @@ def current_institution(author: dict) -> dict | None:
     return max(dated, key=lambda d: d[0])[1] if dated else None
 
 
+def is_company(inst: dict) -> bool:
+    name = inst.get("display_name", "").lower()
+    return inst.get("type") == "company" or any(
+        b.lower() in name for b in BIG_TECH + RU_TECH
+    )
+
+
 def sector(author: dict) -> str | None:
     inst = current_institution(author)
     if not inst:
         return None
-    name, kind, country = (
-        inst.get("display_name", ""),
-        inst.get("type"),
-        inst.get("country_code"),
-    )
-    if any(brand.lower() in name.lower() for brand in BIG_TECH):
-        return SECTORS[4]
-    company = kind == "company" or any(
-        brand.lower() in name.lower() for brand in RU_TECH
-    )
-    if country == "RU":
-        return SECTORS[1] if company else SECTORS[0]
-    return SECTORS[3] if company else SECTORS[2]
+    if is_company(inst):
+        return SECTORS[2]
+    return SECTORS[0] if inst.get("country_code") == "RU" else SECTORS[1]
 
 
 # --- GitHub -------------------------------------------------------------------
@@ -425,6 +459,8 @@ def main() -> None:
                 author = openalex.author(override)
             else:
                 author = openalex.match(person)
+                if author and not openalex.relevant(author, person.year):
+                    author = None
         rows.append((person, author))
         if author:
             matched.append((person, author))
@@ -505,7 +541,14 @@ def main() -> None:
         )
         for name in SECTORS:
             lines.append(f"\\alumnisector{{{tex(name)}}}{{{sectors.count(name)}}}")
-        top = sorted(matched, key=lambda pa: -pa[1]["cited_by_count"])[:6]
+        abroad = Counter(
+            inst["display_name"]
+            for _, a in matched
+            if (inst := current_institution(a)) and inst.get("country_code") != "RU"
+        )
+        names = [re.sub(r"\s*\(.*\)$", "", n) for n, _ in abroad.most_common()]
+        lines.append(f"\\researchstat{{abroad}}{{{tex(', '.join(names))}}}")
+        top = sorted(matched, key=lambda pa: -pa[1]["cited_by_count"])[:5]
         for person, author in top:
             work = openalex.top_work(author["id"].split("/")[-1]) or {}
             lines.append(

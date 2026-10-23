@@ -2,7 +2,7 @@ key,surname,given,year,degrees,advisor,query,openalex,openalex_name,works,citati
 zhitlukhin-dmi,Житлухин,Дмитрий,2007,,,Dmitry Zhitlukhin,,,,,,,
 ivakhnenko-and,Ивахненко,Андрей,2007,,,Andrey Ivakhnenko,,,,,,,
 iofina-gal,Иофина,Галина,2007,,,Galina Iofina,,,,,,,
-leksin-vas,Лексин,Василий,2007,,,Vasily Leksin,,,,,,,
+leksin-vas,Лексин,Василий,2007,,,Vasily Leksin,A5044029606,Vasily Leksin,5,21,2,Moscow Institute of Physics and Technology,Российская наука
 romanov-lev,Романов,Лев,2007,master,[http://www.machinelёrning.ru/wiki/index.php?title=Рудаков%2C_Константин_Владимирович/ Рудаков К.В.,Lev Romanov,,,,,,,
 ulyanov-fed,Ульянов,Федор,2007,,,Fedor Ulyanov,,,,,,,
 umentaev-ser,Ументаев,Сергей,2007,,,Sergey Umentaev,,,,,,,
@@ -15,11 +15,11 @@ nechuyviter-ser,Нечуйвитер,Сергей,2008,,,Sergey Nechuyviter,,,,,
 noskov-ale,Носков,Алексей,2008,,,Alexey Noskov,,,,,,,
 pak-ale,Пак,Алексей,2008,,,Alexey Pak,,,,,,,
 ruban-ser,Рубан,Сергей,2008,,,Sergey Ruban,,,,,,,
-fedonin-gen,Федонин,Геннадий,2008,,,Gennady Fedonin,,,,,,,
+fedonin-gen,Федонин,Геннадий,2008,,,Gennady Fedonin,A5090112081,Gennady G. Fedonin,23,205,9,Russian Academy of Sciences,Российская наука
 tsependa-ser,Цепенда,Сергей,2008,,,Sergey Tsependa,,,,,,,
 koval-art,Коваль,Артур,2009,,,Artur Koval,,,,,,,
 korenkevich-dmi,Коренкевич,Дмитрий,2009,,,Dmitry Korenkevich,,,,,,,
-kurakin-ale,Куракин,Алексей,2009,,,Alexey Kurakin,,,,,,,
+kurakin-ale,Куракин,Алексей,2009,,,Alexey Kurakin,A5052664531,Alexey Kurakin,45,17480,22,Google (United States),Индустрия
 maksimov-yur,Максимов,Юрий,2009,,,Yury Maksimov,,,,,,,
 orlov-ale,Орлов,Александр,2009,,,Alexander Orlov,,,,,,,
 pustovoytov-nik,Пустовойтов,Никита,2009,,,Nikita Pustovoytov,,,,,,,
@@ -28,17 +28,17 @@ shavlovskiy-mik,Шавловский,Михаил,2009,,,Mikhail Shavlovskiy,,,,
 badzyan-and,Бадзян,Андрей,2010,,,Andrey Badzyan,,,,,,,
 gushchin-and,Гущин,Андрей,2010,,,Andrey Gushchin,,,,,,,
 ezhova-ele,Ежова,Елена,2010,,,Elena Ezhova,,,,,,,
-isaev-mik,Исаев,Михаил,2010,,,Mikhail Isaev,,,,,,,
-krymova-eka,Крымова,Екатерина,2010,,,Ekaterina Krymova,,,,,,,
+isaev-mik,Исаев,Михаил,2010,,,Mikhail Isaev,A5035608597,Mikhail Isaev,77,309,10,UNSW Sydney,Зарубежная наука
+krymova-eka,Крымова,Екатерина,2010,,,Ekaterina Krymova,A5029889274,Ekaterina Krymova,79,680,11,ETH Zurich,Зарубежная наука
 lebedeva-iri,Лебедева,Ирина,2010,,,Irina Lebedeva,,,,,,,
 loshakov-val,Лошаков,Валентин,2010,,,Valentin Loshakov,,,,,,,
 priymak-ale,Приймак,Александр,2010,,,Alexander Priymak,,,,,,,
 provornikov-ste,Проворников,Степан,2010,,,Stepan Provornikov,,,,,,,
-razin-nik,Разин,Николай,2010,,,Nikolay Razin,,,,,,,
+razin-nik,Разин,Николай,2010,,,Nikolay Razin,A5003426837,Разин Николай Алексеевич,6,10,2,Moscow Institute of Physics and Technology,Российская наука
 sologub-rom,Сологуб,Роман,2010,,,Roman Sologub,,,,,,,
 frey-ale,Фрей,Александр,2010,"bachelor,master",[[Участник:Vokov|Воронцов К. В.,Alexander Frey,,,,,,,
 tsyurmasto-pet,Цюрмасто,Пётр,2010,,,Petr Tsyurmasto,,,,,,,
-chuvilin-kir,Чувилин,Кирилл,2010,,,Kirill Chuvilin,,,,,,,
+chuvilin-kir,Чувилин,Кирилл,2010,,,Kirill Chuvilin,A5086110564,Kirill Vladimirovich Chuvilin,15,49,3,Moscow Institute of Physics and Technology,Российская наука
 vlasov-pav,Власов,Павел,2011,,,Pavel Vlasov,,,,,,,
 gimadeev-ren,Гимадеев,Ренат,2011,,,Renat Gimadeev,,,,,,,
 dimitrov-mak,Димитров,Максим,2011,,,Maxim Dimitrov,,,,,,,
@@ -50,29 +50,29 @@ minaev-pav,Минаев,Павел,2011,,,Pavel Minaev,,,,,,,
 sintsova-val,Синцова,Валентина,2011,,,Valentina Sintsova,,,,,,,
 urlov-evg,Урлов,Евгений,2011,,,Evgeny Urlov,,,,,,,
 dorofeev-dan,Дорофеев,Данила,2012,,,Danila Dorofeev,,,,,,,
-zaytsev-ale,Зайцев,Алексей,2012,,,Alexey Zaytsev,,,,,,,
+zaytsev-ale,Зайцев,Алексей,2012,,,Alexey Zaytsev,A5011905327,Alexey Zaytsev,142,1005,16,Skolkovo Institute of Science and Technology,Российская наука
 litvinov-igo,Литвинов,Игорь,2012,,,Igor Litvinov,,,,,,,
 ostrovskiy-ale,Островский,Алексей,2012,,,Alexey Ostrovskiy,,,,,,,
 pavlov-kir,Павлов,Кирилл,2012,,,Kirill Pavlov,,,,,,,
-panov-mak,Панов,Максим,2012,,,Maxim Panov,,,,,,,
+panov-mak,Панов,Максим,2012,,,Maxim Panov,A5047074710,Maxim Panov,95,674,14,The University of Melbourne,Зарубежная наука
 skipor-kon,Скипор,Константин,2012,,,Konstantin Skipor,,,,,,,
 spirin-nik,Спирин,Никита,2012,,,Nikita Spirin,,,,,,,
 yudaev-mik,Юдаев,Михаил,2012,,,Mikhail Yudaev,,,,,,,
-yanovich-yur,Янович,Юрий,2012,,,Yury Yanovich,,,,,,,
+yanovich-yur,Янович,Юрий,2012,,,Yury Yanovich,A5020656981,Yury Yanovich,136,1204,14,National Research University Higher School of Economics,Российская наука
 bystryy-rom,Быстрый,Роман,2013,,,Roman Bystryy,,,,,,,
 glushachenkov-vit,Глушаченков,Виталий,2013,,,Vitaly Glushachenkov,,,,,,,
 dzhamtyrova-rai,Джамтырова,Раиса,2013,,,Raisa Dzhamtyrova,,,,,,,
-zhivotovskiy-nik,Животовский,Никита,2013,master,[[Участник:vokov|Воронцов К. В.,Nikita Zhivotovskiy,,,,,,,
+zhivotovskiy-nik,Животовский,Никита,2013,master,[[Участник:vokov|Воронцов К. В.,Nikita Zhivotovskiy,A5071419221,Nikita Zhivotovskiy,61,359,11,Cornell University,Зарубежная наука
 zaytsev-evg,Зайцев,Евгений,2013,,,Evgeny Zaytsev,,,,,,,
-ivkin-nik,Ивкин,Никита,2013,,,Nikita Ivkin,,,,,,,
-kononenko-dan,Кононенко,Даниил,2013,"bachelor,master",[[Участник:Vmottl|Моттль В. В.,Daniil Kononenko,,,,,,,
+ivkin-nik,Ивкин,Никита,2013,,,Nikita Ivkin,A5013689256,Nikita P. Ivkin,28,576,10,Amazon (United States),Индустрия
+kononenko-dan,Кононенко,Даниил,2013,"bachelor,master",[[Участник:Vmottl|Моттль В. В.,Daniil Kononenko,A5024191745,Daniil Kononenko,7,181,4,Skolkovo Institute of Science and Technology,Российская наука
 kornienko-ale,Корниенко,Алексей,2013,,,Alexey Kornienko,,,,,,,
 kuznetsov-mik,Кузнецов,Михаил,2013,"bachelor,master,phd",[[Участник:strijov|Стрижов В. В.,Mikhail Kuznetsov,,,,,,,
 mafusalov-ale,Мафусалов,Александр,2013,,,Alexander Mafusalov,,,,,,,
 romanov-and,Романов,Андрей,2013,,,Andrey Romanov,,,,,,,
 savinov-nik,Савинов,Николай,2013,"bachelor,master",[[Участник:Vmottl|Моттль В. В.,Nikolay Savinov,,,,,,,
 sechin-pav,Сечин,Павел,2013,,,Pavel Sechin,,,,,,,
-sungurov-dmi,Сунгуров,Дмитрий,2013,master,[[Участник:Vmottl|Моттль В. В.,Dmitry Sungurov,,,,,,,
+sungurov-dmi,Сунгуров,Дмитрий,2013,master,[[Участник:Vmottl|Моттль В. В.,Dmitry Sungurov,A5017442272,Dmitry Sungurov,1,2,1,Moscow Institute of Physics and Technology,Российская наука
 fadeev-ily,Фадеев,Илья,2013,master,[[Участник:strijov|Стрижов В. В.,Ilya Fadeev,,,,,,,
 firstenko-ale,Фирстенко,Александр,2013,,,Alexander Firstenko,,,,,,,
 baldin-nik,Балдин,Николай,2014,,,Nikolay Baldin,,,,,,,
@@ -84,7 +84,7 @@ grebennikov-evg,Гребенников,Евгений,2014,master,[[Участн
 koksharov-mik,Кокшаров,Михаил,2014,,,Mikhail Koksharov,,,,,,,
 leonteva-lyu,Леонтьева,Любовь,2014,,,Lyubov Leonteva,,,,,,,
 mishchenko-pav,Мищенко,Павел,2014,,,Pavel Mishchenko,,,,,,,
-motrenko-ana,Мотренко,Анастасия,2014,master,[[Участник:strijov|Стрижов В. В.,Anastasia Motrenko,,,,,,,
+motrenko-ana,Мотренко,Анастасия,2014,master,[[Участник:strijov|Стрижов В. В.,Anastasia Motrenko,A5055892229,Anastasia Motrenko,11,86,5,Moscow Institute of Physics and Technology,Российская наука
 romanenko-ale,Романенко,Александр,2014,master,[[Участник:vokov|Воронцов К. В.,Alexander Romanenko,,,,,,,
 rudoy-geo,Рудой,Георгий,2014,master,[[Участник:strijov|Стрижов В. В.,Georgiy Rudoy,,,,,,,
 sitnik-ale,Ситник,Александр,2014,,,Alexander Sitnik,,,,,,,
@@ -103,10 +103,10 @@ ivanova-ali,Иванова,Алина,2015,bachelor,Вялый М. Н.,Alina Iva
 klochkov-ego,Клочков,Егор,2015,,,Egor Klochkov,,,,,,,
 kuznetsova-mar,Кузнецова,Маргарита,2015,master,[[Участник:strijov|Стрижов В. В.,Margarita Kuznetsova,,,,,,,
 kuzmin-ars,Кузьмин,Арсентий,2015,"bachelor,master",[[Участник:strijov|Стрижов В. В.,Arsentiy Kuzmin,,,,,,,
-levdik-pav,Левдик,Павел,2015,master,[[Участник:Vmottl|Моттль В. В.,Pavel Levdik,,,,,,,
+levdik-pav,Левдик,Павел,2015,master,[[Участник:Vmottl|Моттль В. В.,Pavel Levdik,A5023189141,Pavel Levdik,3,1,1,Moscow Institute of Physics and Technology,Российская наука
 lobastov-ste,Лобастов,Степан,2015,bachelor,[[Участник:vokov|Воронцов К. В.,Stepan Lobastov,,,,,,,
 makarov-vik,Макаров,Виктор,2015,,,Viktor Makarov,,,,,,,
-matrosov-mik,Матросов,Михаил,2015,master,[[Участник:strijov|Стрижов В. В.,Mikhail Matrosov,,,,,,,
+matrosov-mik,Матросов,Михаил,2015,master,[[Участник:strijov|Стрижов В. В.,Mikhail Matrosov,A5034561672,Mikhail Matrosov,5,28,2,Skolkovo Institute of Science and Technology,Российская наука
 prilepskiy-rom,Прилепский,Роман,2015,master,,Roman Prilepskiy,,,,,,,
 stenin-ser,Стенин,Сергей,2015,master,[[Участник:vokov|Воронцов К.В.,Sergey Stenin,,,,,,,
 stenina-med,Стенина,(Медведникова),2015,"bachelor,master",[[Участник:strijov|Стрижов В. В.,(medvednikova) Stenina,,,,,,,
@@ -116,24 +116,24 @@ tsyganova-sve,Цыганова,Светлана,2015,,,Svetlana Tsyganova,,,,,,,
 shpakova-tat,Шпакова,Татьяна,2015,,,Tatyana Shpakova,,,,,,,
 shulga-ale,Шульга,Александр,2015,bachelor,,Alexander Shulga,,,,,,,
 antipova-nat,Антипова,Наталья,2016,,,Natalia Antipova,,,,,,,
-bakhteev-ole,Бахтеев,Олег,2016,,,Oleg Bakhteev,,,,,,,
+bakhteev-ole,Бахтеев,Олег,2016,,,Oleg Bakhteev,A5010405643,Oleg Bakhteev,28,78,6,Skolkovo Institute of Science and Technology,Российская наука
 byrdin-ale,Бырдин,Александр,2016,,,Alexander Byrdin,,,,,,,
 vdovina-evg,Вдовина,Евгения,2016,,,Evgeniya Vdovina,,,,,,,
 voronov-ser,Воронов,Сергей,2016,,,Sergey Voronov,,,,,,,
-grinchuk-ole,Гринчук,Олег,2016,,,Oleg Grinchuk,,,,,,,
+grinchuk-ole,Гринчук,Олег,2016,,,Oleg Grinchuk,A5003702883,Oleg Grinchuk,11,127,5,Moscow Institute of Physics and Technology,Российская наука
 ibraimova-ayz,Ибраимова,Айжан,2016,,,Ayzhan Ibraimova,,,,,,,
-katrutsa-ale,Катруца,Александр,2016,,,Alexander Katrutsa,,,,,,,
+katrutsa-ale,Катруца,Александр,2016,,,Alexander Katrutsa,A5044833790,Alexander Katrutsa,2,11,1,Skolkovo Institute of Science and Technology,Российская наука
 kashcheeva-mar,Кащеева,Мария,2016,,,Maria Kashcheeva,,,,,,,
 kostin-ale,Костин,Александр,2016,,,Alexander Kostin,,,,,,,
 mityashov-and,Митяшов,Андрей,2016,,,Andrey Mityashov,,,,,,,
-neklyudov-kir,Неклюдов,Кирилл,2016,,,Kirill Neklyudov,,,,,,,
+neklyudov-kir,Неклюдов,Кирилл,2016,,,Kirill Neklyudov,A5051657374,Kirill Neklyudov,34,329,6,Mila - Quebec Artificial Intelligence Institute,Зарубежная наука
 perekrestenko-dmi,Перекрестенко,Дмитрий,2016,,,Dmitry Perekrestenko,,,,,,,
-pushnyakov-ale,Пушняков,Алексей,2016,,,Alexey Pushnyakov,,,,,,,
+pushnyakov-ale,Пушняков,Алексей,2016,,,Alexey Pushnyakov,A5036153443,Alexey Pushnyakov,4,0,0,Moscow Institute of Physics and Technology,Российская наука
 ryskina-mar,Рыскина,Мария,2016,,,Maria Ryskina,,,,,,,
 sukhareva-anz,Сухарева,Анжелика,2016,,,Anzhelika Sukhareva,,,,,,,
-chinaev-nik,Чинаев,Николай,2016,,,Nikolay Chinaev,,,,,,,
-shubin-and,Шубин,Андрей,2016,,,Andrey Shubin,,,,,,,
-yashkov-dan,Яшков,Даниил,2016,,,Daniil Yashkov,,,,,,,
+chinaev-nik,Чинаев,Николай,2016,,,Nikolay Chinaev,A5088544478,Nikolay Chinaev,4,6,2,Moscow Institute of Physics and Technology,Российская наука
+shubin-and,Шубин,Андрей,2016,,,Andrey Shubin,A5068835460,Andrei V. Shubin,15,17,3,TU Wien,Зарубежная наука
+yashkov-dan,Яшков,Даниил,2016,,,Daniil Yashkov,A5045730153,Daniil Yashkov,6,102,4,Federal Research Center “Computer Science and Control” of the Russian Academy of Sciences,Российская наука
 avdyukhov-dmi,Авдюхов,Дмитрий,2017,,,Dmitry Avdyukhov,,,,,,,
 gazizullina-rim,Газизуллина,Римма,2017,bachelor,[[Участник:strijov|Стрижов В. В.,Rimma Gazizullina,,,,,,,
 gizzatullin-anv,Гиззатуллин,Анвар,2017,,,Anvar Gizzatullin,,,,,,,
@@ -141,8 +141,8 @@ grinchuk-ale,Гринчук,Алексей,2017,"bachelor,master",[[Участн
 gushchin-ale,Гущин,Александр,2017,"bachelor,master",[[Участник:Dj|Дьяконов А. Г.,Alexander Gushchin,,,,,,,
 efimova-iri,Ефимова,Ирина,2017,"bachelor,master",[[Участник:Vokov|Воронцов К.В.,Irina Efimova,,,,,,,
 zhukov-and,Жуков,Андрей,2017,bachelor,[[Участник:Vokov|Воронцов К.В.,Andrey Zhukov,,,,,,,
-ignatov-and,Игнатов,Андрей,2017,"bachelor,master",[[Участник:Vokov|Воронцов К.В.,Andrey Ignatov,,,,,,,
-karasikov-mik,Карасиков,Михаил,2017,"bachelor,master",[[Участник:strijov|Стрижов В. В.,Mikhail Karasikov,,,,,,,
+ignatov-and,Игнатов,Андрей,2017,"bachelor,master",[[Участник:Vokov|Воронцов К.В.,Andrey Ignatov,A5022836568,Andrey Ignatov,58,3751,25,ETH Zurich,Зарубежная наука
+karasikov-mik,Карасиков,Михаил,2017,"bachelor,master",[[Участник:strijov|Стрижов В. В.,Mikhail Karasikov,A5085609478,Mikhail Karasikov,26,1557,13,SIB Swiss Institute of Bioinformatics,Зарубежная наука
 kostyuk-ann,Костюк,Анна,2017,bachelor,[[Участник:Vokov|Воронцов К.В.,Anna Kostyuk,,,,,,,
 kulunchakov-and,Кулунчаков,Андрей,2017,"bachelor,master",[[Участник:strijov|Стрижов В. В.,Andrey Kulunchakov,,,,,,,
 lipatova-ann,Липатова,Анна,2017,bachelor,[[Участник:Vokov|Воронцов К.В.,Anna Lipatova,,,,,,,
@@ -154,36 +154,36 @@ shinkevich-mik,Шинкевич,Михаил,2017,bachelor,[[Участник:Vo
 bernshteyn-yul,Бернштейн,Юлия,2018,,,Yuliya Bernshteyn,,,,,,,
 bochkarev-art,Бочкарев,Артем,2018,"bachelor,master",[[Участник:strijov|Стрижов В. В.,Artem Bochkarev,,,,,,,
 goncharov-ale,Гончаров,Алексей,2018,"bachelor,master",[[Участник:strijov|Стрижов В. В.,Alexey Goncharov,,,,,,,
-dvinskikh-dar,Двинских,Дарина,2018,bachelor,[[Участник:strijov|Стрижов В. В.,Darina Dvinskikh,,,,,,,
+dvinskikh-dar,Двинских,Дарина,2018,bachelor,[[Участник:strijov|Стрижов В. В.,Darina Dvinskikh,A5000974070,Darina Dvinskikh,85,672,15,National Research University Higher School of Economics,Российская наука
 efimov-yur,Ефимов,Юрий,2018,,,Yury Efimov,,,,,,,
-zharikov-ily,Жариков,Илья,2018,"bachelor,master",[[Участник:Vokov|Воронцов К.В.,Ilya Zharikov,,,,,,,
+zharikov-ily,Жариков,Илья,2018,"bachelor,master",[[Участник:Vokov|Воронцов К.В.,Ilya Zharikov,A5044592516,Ilia Zharikov,7,7,2,Moscow Institute of Physics and Technology,Российская наука
 zadayanchuk-and,Задаянчук,Андрей,2018,bachelor,[[Участник:strijov|Стрижов В. В.,Andrey Zadayanchuk,,,,,,,
 zlatov-ale,Златов,Александр,2018,bachelor,[[Участник:strijov|Стрижов В. В.,Alexander Zlatov,,,,,,,
-isachenko-rom,Исаченко,Роман,2018,"bachelor,master",[[Участник:strijov|Стрижов В. В.,Roman Isachenko,,,,,,,
+isachenko-rom,Исаченко,Роман,2018,"bachelor,master",[[Участник:strijov|Стрижов В. В.,Roman Isachenko,A5067573413,R.V. Isachenko,5,11,2,Moscow Institute of Physics and Technology,Российская наука
 kulaga-rom,Кулага,Роман,2018,master,[[Участник:Vokov|Воронцов К.В.,Roman Kulaga,,,,,,,
 morozov-ale,Морозов,Алексей,2018,master,[[Участник:vmottl|Моттль В. В.,Alexey Morozov,,,,,,,
-neychev-rad,Нейчев,Радослав,2018,"bachelor,master",[[Участник:strijov|Стрижов В. В.,Radoslav Neychev,,,,,,,
+neychev-rad,Нейчев,Радослав,2018,"bachelor,master",[[Участник:strijov|Стрижов В. В.,Radoslav Neychev,A5008735834,Radoslav Neychev,5,4,1,Moscow Institute of Physics and Technology,Российская наука
 podkopaev-ale,Подкопаев,Александр,2018,bachelor,Максимов Ю. В.,Alexander Podkopaev,,,,,,,
-pugach-ily,Пугач,Илья,2018,master,[[Участник:vmottl|Моттль В. В.,Ilya Pugach,,,,,,,
-reshetova-dar,Решетова,Дарья,2018,,,Darya Reshetova,,,,,,,
+pugach-ily,Пугач,Илья,2018,master,[[Участник:vmottl|Моттль В. В.,Ilya Pugach,A5070935798,Ilya Pugach,3,2,1,Moscow Institute of Physics and Technology,Российская наука
+reshetova-dar,Решетова,Дарья,2018,,,Darya Reshetova,A5002797487,Daria Reshetova,9,28,4,Stanford University,Зарубежная наука
 smirnov-evg,Смирнов,Евгений,2018,"bachelor,master",[[Участник:Vokov|Воронцов К.В.,Evgeny Smirnov,,,,,,,
-solomatin-iva,Соломатин,Иван,2018,,,Ivan Solomatin,,,,,,,
+solomatin-iva,Соломатин,Иван,2018,,,Ivan Solomatin,A5003750821,ИВАН АНДРЕЕВИЧ СОЛОМАТИН,15,30,4,Samsung (Russia),Индустрия
 khayrullin-rin,Хайруллин,Ринат,2018,master,Серебряков В.А.,Rinat Khayrullin,,,,,,,
 chernykh-vla,Черных,Владимир,2018,bachelor,[[Участник:Riabenko|Рябенко Е.А.,Vladimir Chernykh,,,,,,,
 shishkovets-sve,Шишковец,Светлана,2018,bachelor,[[Участник:Vokov|Воронцов К.В.,Svetlana Shishkovets,,,,,,,
 belozerova-ana,Белозерова,Анастасия,2019,bachelor,Рябенко Е. А.,Anastasia Belozerova,,,,,,,
-bukhonov-ser,Бухонов,Сергей,2019,master,Моттль В.В.,Sergey Bukhonov,,,,,,,
+bukhonov-ser,Бухонов,Сергей,2019,master,Моттль В.В.,Sergey Bukhonov,A5087397188,Sergey Bukhonov,3,3,1,Moscow Institute of Physics and Technology,Российская наука
 vladimirova-mar,Владимирова,Мария,2019,master,[[Участник:strijov|Стрижов В. В.,Maria Vladimirova,,,,,,,
 volodin-ser,Володин,Сергей,2019,bachelor,Максимов Ю. В.,Sergey Volodin,,,,,,,
 dementeva-dar,Дементьева,Дарина,2019,master,[[Участник:vokov|Воронцов К. В.,Darina Dementeva,,,,,,,
 kovaleva-val,Ковалева,Валерия,2019,bachelor,Нечаев С. К.,Valeriya Kovaleva,,,,,,,
-lyalin-vla,Лялин,Владислав,2019,master,Бурцев М. С.,Vladislav Lyalin,,,,,,,
+lyalin-vla,Лялин,Владислав,2019,master,Бурцев М. С.,Vladislav Lyalin,A5008222863,Vladislav Lyalin,1,10,1,Moscow Institute of Physics and Technology,Российская наука
 molibog-igo,Молибог,Игорь,2019,bachelor,[[Участник:Yury Chekhovich|Чехович Ю. В.,Igor Molibog,,,,,,,
-ostroukhov-pet,Остроухов,Петр,2019,master,[[Участник:vokov|Воронцов К. В.,Petr Ostroukhov,,,,,,,
-pogodin-rom,Погодин,Роман,2019,bachelor,Максимов Ю.,Roman Pogodin,,,,,,,
+ostroukhov-pet,Остроухов,Петр,2019,master,[[Участник:vokov|Воронцов К. В.,Petr Ostroukhov,A5056630432,Petr A Ostroukhov,15,27,3,Moscow Institute of Physics and Technology,Российская наука
+pogodin-rom,Погодин,Роман,2019,bachelor,Максимов Ю.,Roman Pogodin,A5027156456,Roman Pogodin,19,87,5,Montreal Neurological Institute and Hospital,Зарубежная наука
 ryazanov-and,Рязанов,Андрей,2019,,Грудинин С.,Andrey Ryazanov,,,,,,,
 samsonov-nik,Самсонов,Никита,2019,"bachelor,master",Матвеев И.А.,Nikita Samsonov,,,,,,,
-safin-kam,Сафин,Камиль,2019,"bachelor,master",Чехович Ю. В.,Kamil Safin,,,,,,,
+safin-kam,Сафин,Камиль,2019,"bachelor,master",Чехович Ю. В.,Kamil Safin,A5047059662,Kamil Safin,11,40,4,Moscow Institute of Physics and Technology,Российская наука
 fedoryaka-dmi,Федоряка,Дмитрий,2019,bachelor,[[Участник:Vokov|Воронцов К. В.,Dmitry Fedoryaka,,,,,,,
 chigrinskiy-vik,Чигринский,Виктор,2019,bachelor,Матвеев И. А.,Viktor Chigrinskiy,,,,,,,
 chuykova-eka,Чуйкова,Екатерина,2019,master,Бойко П.Ю.,Ekaterina Chuykova,,,,,,,
@@ -196,120 +196,120 @@ galimova-reg,Галимова,Регина,2020,master,Матвеев И.А.,Reg
 gasanov-eln,Гасанов,Эльнур,2020,bachelor,Стрижов В.В.,Elnur Gasanov,,,,,,,
 zakharenkov-ant,Захаренков,Антон,2020,bachelor,Воронцов К.В.,Anton Zakharenkov,,,,,,,
 ivanychev-ser,Иванычев,Сергей,2020,bachelor,Стрижов В.В.,Sergey Ivanychev,,,,,,,
-kovalev-dmi,Ковалев,Дмитрий,2020,"bachelor,master",Гасников А.В.,Dmitry Kovalev,,,,,,,
+kovalev-dmi,Ковалев,Дмитрий,2020,"bachelor,master",Гасников А.В.,Dmitry Kovalev,A5101516613,Dmitry A. Kovalev,68,801,16,Yandex (Russia),Индустрия
 kononenko-evg,Кононенко,Евгений,2020,master,Матвеев И.А.,Evgeny Kononenko,,,,,,,
-kubentaeva-sam,Кубентаева,Самал,2020,"bachelor,master",Максимов Ю.В.,Samal Kubentaeva,,,,,,,
-lukoshkin-vla,Лукошкин,Владислав,2020,master,И.В. Оселедец,Vladislav Lukoshkin,,,,,,,
-makarov-iva,Макаров,Иван,2020,master,Хорошевский В.Ф.,Ivan Makarov,,,,,,,
-makarchuk-gle,Макарчук,Глеб,2020,bachelor,Беляев М.Г.,Gleb Makarchuk,,,,,,,
+kubentaeva-sam,Кубентаева,Самал,2020,"bachelor,master",Максимов Ю.В.,Samal Kubentaeva,A5047235445,Samal B. Kubentaeva,2,1,1,Moscow Institute of Physics and Technology,Российская наука
+lukoshkin-vla,Лукошкин,Владислав,2020,master,И.В. Оселедец,Vladislav Lukoshkin,A5054983087,Vladislav Lukoshkin,3,49,2,Skolkovo Institute of Science and Technology,Российская наука
+makarov-iva,Макаров,Иван,2020,master,Хорошевский В.Ф.,Ivan Makarov,A5026628765,Ivan Makarov,12,8,1,Moscow Institute of Physics and Technology,Российская наука
+makarchuk-gle,Макарчук,Глеб,2020,bachelor,Беляев М.Г.,Gleb Makarchuk,A5018443489,Gleb Makarchuk,8,147,5,ETH Zurich,Зарубежная наука
 malygin-vit,Малыгин,Виталий,2020,"bachelor,master",Цурков В.И.,Vitaly Malygin,,,,,,,
 matlin-dan,Матлин,Даниил,2020,master,Серебряков В.А.,Daniil Matlin,,,,,,,
-nikitin-fil,Никитин,Филипп,2020,master,Стрижов В. В.,Filipp Nikitin,,,,,,,
+nikitin-fil,Никитин,Филипп,2020,master,Стрижов В. В.,Filipp Nikitin,A5067059000,Filipp Nikitin,20,54,4,Carnegie Mellon University,Зарубежная наука
 potapova-pol,Потапова,Полина,2020,master,Воронцов К.В.,Polina Potapova,,,,,,,
 rybka-eli,Рыбка,Елизавета,2020,bachelor,Моттль В.В.,Elizaveta Rybka,,,,,,,
 sayranov-dan,Сайранов,Данил,2020,"bachelor,master",Серебряков В.А.,Danil Sayranov,,,,,,,
 selezneva-mar,Селезнева,Мария,2020,bachelor,Воронцов К. В.,Maria Selezneva,,,,,,,
-smerdov-ant,Смердов,Антон,2020,bachelor,Стрижов В. В.,Anton Smerdov,,,,,,,
+smerdov-ant,Смердов,Антон,2020,bachelor,Стрижов В. В.,Anton Smerdov,A5043707706,Anton Smerdov,6,61,4,Skolkovo Institute of Science and Technology,Российская наука
 sulima-mar,Сулима,Мария,2020,master,Цурков В.И.,Maria Sulima,,,,,,,
 uvarov-nik,Уваров,Никита,2020,"bachelor,master",Стрижов В. В.,Nikita Uvarov,,,,,,,
 usmanova-kar,Усманова,Карина,2020,"bachelor,master",Стрижов В. В.,Karina Usmanova,,,,,,,
 falyakhov-isk,Фаляхов,Искандер,2020,master,д.т.н. Матвеев И.А.,Iskander Falyakhov,,,,,,,
 feldman-dan,Фельдман,Даниил,2020,"bachelor,master",Серебряков В.А.,Daniil Feldman,,,,,,,
-shibaev-inn,Шибаев,Иннокентий,2020,bachelor,Стрижов В. В.,Innokentiy Shibaev,,,,,,,
-sholokhov-ale,Шолохов,Алексей,2020,bachelor,,Alexey Sholokhov,,,,,,,
+shibaev-inn,Шибаев,Иннокентий,2020,bachelor,Стрижов В. В.,Innokentiy Shibaev,A5071230983,Innokentiy Shibaev,8,99,3,National Research University Higher School of Economics,Российская наука
+sholokhov-ale,Шолохов,Алексей,2020,bachelor,,Alexey Sholokhov,A5084640883,Alexey Sholokhov,12,108,5,Federal Research Center “Computer Science and Control” of the Russian Academy of Sciences,Российская наука
 astakhov-ant,Астахов,Антон,2021,bachelor,Стрижов В.В.,Anton Astakhov,,,,,,,
 akhiyarov-val,Ахияров,Валентин,2021,master,Цурков В.И.,Valentin Akhiyarov,,,,,,,
 borzilov-ale,Борзилов,Александр,2021,master,Матвеев И.А.,Alexander Borzilov,,,,,,,
-gadaev-tam,Гадаев,Тамаз,2021,"bachelor,master",Стрижов В. В.,Tamaz Gadaev,,,,,,,
-gladin-ego,Гладин,Егор,2021,"bachelor,master",Гасников А.В.,Egor Gladin,,,,,,,
-gleb-mor,Глеб,Моргачев,2021,master,Стрижов В. В.,Morgachev Gleb,,,,,,,
-zaynulina-elv,Зайнулина,Эльвира,2021,master,Матвеев И.А.,Elvira Zaynulina,,,,,,,
+gadaev-tam,Гадаев,Тамаз,2021,"bachelor,master",Стрижов В. В.,Tamaz Gadaev,A5081713888,Tamaz Gadaev,4,0,0,Moscow Institute of Physics and Technology,Российская наука
+gladin-ego,Гладин,Егор,2021,"bachelor,master",Гасников А.В.,Egor Gladin,A5026215052,Egor Leonidovich Gladin,23,27,3,National Research University Higher School of Economics,Российская наука
+gleb-mor,Глеб,Моргачев,2021,master,Стрижов В. В.,Morgachev Gleb,A5083629413,Gleb Morgachev,3,13,3,Moscow Institute of Physics and Technology,Российская наука
+zaynulina-elv,Зайнулина,Эльвира,2021,master,Матвеев И.А.,Elvira Zaynulina,A5046074750,Elvira Zainulina,5,24,2,Skolkovo Institute of Science and Technology,Российская наука
 kirillov-ego,Кириллов,Егор,2021,master,Стрижов В. В.,Egor Kirillov,,,,,,,
 kiseleva-eli,Киселёва,Елизавета,2021,master,Цурков В.И.,Elizaveta Kiseleva,,,,,,,
-kislinskiy-vad,Кислинский,Вадим,2021,"bachelor,master",Воронцов К.В.,Vadim Kislinskiy,,,,,,,
+kislinskiy-vad,Кислинский,Вадим,2021,"bachelor,master",Воронцов К.В.,Vadim Kislinskiy,A5004551892,V.G. Kislinsky,2,1,1,Moscow Institute of Physics and Technology,Российская наука
 kozlinskiy-evg,Козлинский,Евгений,2021,"bachelor,master",Воронцов К.В.,Evgeny Kozlinskiy,,,,,,,
-kozub-vla,Козуб,Владимир,2021,master,Цурков В.И.,Vladimir Kozub,,,,,,,
-malinovskiy-gri,Малиновский,Григорий,2021,"bachelor,master",Поляк Б.Т.,Grigory Malinovskiy,,,,,,,
-novitskiy-vas,Новицкий,Василий,2021,"bachelor,master",Максимов Ю.В.,Vasily Novitskiy,,,,,,,
+kozub-vla,Козуб,Владимир,2021,master,Цурков В.И.,Vladimir Kozub,A5109705282,V. A. Kozub,13,22,3,Aerocosmos,Российская наука
+malinovskiy-gri,Малиновский,Григорий,2021,"bachelor,master",Поляк Б.Т.,Grigory Malinovskiy,A5026967025,Grigory Malinovsky,34,179,6,King Abdullah University of Science and Technology,Зарубежная наука
+novitskiy-vas,Новицкий,Василий,2021,"bachelor,master",Максимов Ю.В.,Vasily Novitskiy,A5069996047,Vasilii Novitskii,4,28,3,Moscow Institute of Physics and Technology,Российская наука
 novruzov-sam,Новрузов,Самир,2021,master,Цурков В.И.,Samir Novruzov,,,,,,,
 nurlanov-zha,Нурланов,Жакшылык,2021,bachelor,Лемпицкий В.С.,Zhakshylyk Nurlanov,,,,,,,
-pletnev-nik,Плетнев,Никита,2021,"bachelor,master",Гасников А. В.,Nikita Pletnev,,,,,,,
+pletnev-nik,Плетнев,Никита,2021,"bachelor,master",Гасников А. В.,Nikita Pletnev,A5003914049,Nikita Viacheslavovich Pletnev,6,4,1,Moscow Institute of Physics and Technology,Российская наука
 radamovich-vla,Радамович,Владислав,2021,master,Цурков В.И.,Vladislav Radamovich,,,,,,,
 rogozina-ann,Рогозина,Анна,2021,"bachelor,master",Воронцов К.В.,Anna Rogozina,,,,,,,
 samokhina-ali,Самохина,Алина,2021,master,Стрижов В. В.,Alina Samokhina,,,,,,,
 strelkova-evg,Стрелкова,Евгения,2021,master,Цурков В.И.,Evgeniya Strelkova,,,,,,,
 taranov-ser,Таранов,Сергей,2021,"bachelor,master",Гнеушев А.Н.,Sergey Taranov,,,,,,,
 terekhov-ole,Терехов,Олег,2021,bachelor,Стрижов В.В.,Oleg Terekhov,,,,,,,
-shulgin-ego,Шульгин,Егор,2021,"bachelor,master",П. Рихтарик,Egor Shulgin,,,,,,,
-alexander-kol,Alexander,Kolesov,2022,master,Bahteev O.Y.,Kolesov Alexander,,,,,,,
+shulgin-ego,Шульгин,Егор,2021,"bachelor,master",П. Рихтарик,Egor Shulgin,A5025477585,Egor Shulgin,24,245,8,King Abdullah University of Science and Technology,Зарубежная наука
+alexander-kol,Alexander,Kolesov,2022,master,Bahteev O.Y.,Kolesov Alexander,A5127854430,Alexander Kolesov,6,8,2,Skolkovo Institute of Science and Technology,Российская наука
 denis-tik,Denis,Tikhonov,2022,master,Strijov V.V.,Tikhonov Denis,,,,,,,
 maxim-khr,Maxim,Khristolybov,2022,bachelor,Strijov V.V.,Khristolybov Maxim,,,,,,,
 sviatoslav-pan,Sviatoslav,Panchenko,2022,master,Strijov V.V.,Panchenko Sviatoslav,,,,,,,
 vyacheslav-gor,Vyacheslav,Gorсhakov,2022,bachelor,Maximov Y.V.,Gorсhakov Vyacheslav,,,,,,,
 aleksandr-kul,Александр,Кульков,2022,bachelor,Рудаков К. В.,Kulkov Aleksandr,,,,,,,
 aminov-tim,Аминов,Тимур,2022,bachelor,Зайцев А. А.,Timur Aminov,,,,,,,
-beznosikov-ale,Безносиков,Александр,2022,bachelor,Гасников А.В.,Alexander Beznosikov,,,,,,,
-burnyshev-pav,Бурнышев,Павел,2022,bachelor,Хорошевский В.Ф.,Pavel Burnyshev,,,,,,,
+beznosikov-ale,Безносиков,Александр,2022,bachelor,Гасников А.В.,Alexander Beznosikov,A5088060268,Aleksandr Nikolaevich Beznosikov,104,461,13,Moscow Institute of Physics and Technology,Российская наука
+burnyshev-pav,Бурнышев,Павел,2022,bachelor,Хорошевский В.Ф.,Pavel Burnyshev,A5011784224,Pavel Burnyshev,5,33,3,Skolkovo Institute of Science and Technology,Российская наука
 varenik-nat,Вареник,Наталия,2022,"bachelor,master",Стрижов В.В.,Natalia Varenik,,,,,,,
-grabovoy-and,Грабовой,Андрей,2022,"bachelor,master,phd",Стрижов В. В.,Andrey Grabovoy,,,,,,,
-grigorev-ale,Григорьев,Алексей,2022,"bachelor,master",Гнеушев А.Н.,Alexey Grigorev,,,,,,,
-grishanov-ale,Гришанов,Алексей,2022,"bachelor,master",Воронцов К.В.,Alexey Grishanov,,,,,,,
+grabovoy-and,Грабовой,Андрей,2022,"bachelor,master,phd",Стрижов В. В.,Andrey Grabovoy,A5057859442,Andrey Grabovoy,51,110,6,Russian Academy of Sciences,Российская наука
+grigorev-ale,Григорьев,Алексей,2022,"bachelor,master",Гнеушев А.Н.,Alexey Grigorev,A5037059940,Alexey D. Grigorev,2,1,1,Moscow Institute of Physics and Technology,Российская наука
+grishanov-ale,Гришанов,Алексей,2022,"bachelor,master",Воронцов К.В.,Alexey Grishanov,A5054144363,Alexey Grishanov,5,7,2,Moscow Institute of Physics and Technology,Российская наука
 efremov-ser,Ефремов,Сергей,2022,bachelor,Матвеев И.А.,Sergey Efremov,,,,,,,
-ivchenkov-yar,Ивченков,Ярослав,2022,bachelor,Гнеушев А.Н.,Yaroslav Ivchenkov,,,,,,,
+ivchenkov-yar,Ивченков,Ярослав,2022,bachelor,Гнеушев А.Н.,Yaroslav Ivchenkov,A5033043121,Yaroslav Ivchenkov,2,3,1,Moscow Institute of Physics and Technology,Российская наука
 kobzeva-ana,Кобзева,Анастасия,2022,bachelor,Гнеушев А.Н.,Anastasia Kobzeva,,,,,,,
 markin-val,Маркин,Валерий,2022,bachelor,Стрижов В.В.,Valery Markin,,,,,,,
-mokrov-pet,Мокров,Петр,2022,master,Бурнаев Е.В.,Petr Mokrov,,,,,,,
-nartsev-den,Нарцев,Денис,2022,bachelor,Гнеушев А.Н.,Denis Nartsev,,,,,,,
+mokrov-pet,Мокров,Петр,2022,master,Бурнаев Е.В.,Petr Mokrov,A5087017114,Petr Mokrov,17,39,3,Skolkovo Institute of Science and Technology,Российская наука
+nartsev-den,Нарцев,Денис,2022,bachelor,Гнеушев А.Н.,Denis Nartsev,A5071680274,D. Yu. Nartsev,2,1,1,Moscow Institute of Physics and Technology,Российская наука
 panchenko-svy,Панченко,Святослав,2022,"bachelor,master",Стрижов В.В.,Svyatoslav Panchenko,,,,,,,
-ryabtsev-ant,Рябцев,Антон,2022,bachelor,Матвеев И.А.,Anton Ryabtsev,,,,,,,
-sadiev-abd,Садиев,Абдурахмон,2022,bachelor,Гасников А. В.,Abdurakhmon Sadiev,,,,,,,
+ryabtsev-ant,Рябцев,Антон,2022,bachelor,Матвеев И.А.,Anton Ryabtsev,A5113224270,A. B. Ryabtsev,5,5,1,Russian Academy of Sciences,Российская наука
+sadiev-abd,Садиев,Абдурахмон,2022,bachelor,Гасников А. В.,Abdurakhmon Sadiev,A5076528029,Abdurakhmon Sadiev,34,76,5,King Abdullah University of Science and Technology,Зарубежная наука
 severilov-pav,Северилов,Павел,2022,"bachelor,master",Стрижов В.В.,Pavel Severilov,,,,,,,
-sotnikov-ant,Сотников,Антон,2022,bachelor,Хорошевский В.Ф.,Anton Sotnikov,,,,,,,
+sotnikov-ant,Сотников,Антон,2022,bachelor,Хорошевский В.Ф.,Anton Sotnikov,A5075328139,Anton Sotnikov,2,28,1,MIREA - Russian Technological University,Российская наука
 usmanova-ana,Усманова,Анастасия,2022,bachelor,Цурков В.И.,Anastasia Usmanova,,,,,,,
 yusupov-igo,Юсупов,Игорь,2022,bachelor,Нейчев Р. Г.,Igor Yusupov,,,,,,,
-alsahanova-nad,Alsahanova,Nadezhda,2023,master,Strijov V.V.,Nadezhda Alsahanova,,,,,,,
+alsahanova-nad,Alsahanova,Nadezhda,2023,master,Strijov V.V.,Nadezhda Alsahanova,A5074092392,Nadezhda Alsahanova,9,15,3,Skolkovo Institute of Science and Technology,Российская наука
 lukyanenko-iva,Lukyanenko,Ivan,2023,bachelor,Vorontsov. K.V.,Ivan Lukyanenko,,,,,,,
 molozhavenko-ale,Molozhavenko,Alexander,2023,bachelor,Gasnikov A.V.,Alexander Molozhavenko,,,,,,,
 safiullin-rob,Safiullin,Robert,2023,master,Strijov V.V.,Robert Safiullin,,,,,,,
 tikhon-ant,Tikhon,Antyshev,2023,bachelor,Gasnikov A.V.,Antyshev Tikhon,,,,,,,
-viacheslav-sho,Viacheslav,Shokorov,2023,master,Vetrov D.P.,Shokorov Viacheslav,,,,,,,
+viacheslav-sho,Viacheslav,Shokorov,2023,master,Vetrov D.P.,Shokorov Viacheslav,A5136487438,Shokorov Viacheslav,2,0,0,Moscow Institute of Physics and Technology,Российская наука
 zharov-geo,Zharov,Georgiy,2023,bachelor,Vorontsov K.V.,Georgiy Zharov,,,,,,,
 akhiyarov-fil,Ахияров,Филипп,2023,bachelor,Цурков В.И.,Filipp Akhiyarov,,,,,,,
 bishuk-ant,Бишук,Антон,2023,"bachelor,master",Зухба А.В.,Anton Bishuk,,,,,,,
 vayser-kir,Вайсер,Кирилл,2023,bachelor,Панов М. Е.,Kirill Vayser,,,,,,,
 veselova-evg,Веселова,Евгения,2023,bachelor,Цурков В.И.,Evgeniya Veselova,,,,,,,
-grebenkova-olg,Гребенькова,Ольга,2023,"bachelor,master",Бахтеев О. Ю.,Olga Grebenkova,,,,,,,
+grebenkova-olg,Гребенькова,Ольга,2023,"bachelor,master",Бахтеев О. Ю.,Olga Grebenkova,A5078691622,Olga Grebenkova,10,148,3,Munich Center for Machine Learning,Зарубежная наука
 gunaev-rus,Гунаев,Руслан,2023,bachelor,Рудаков К. В.,Ruslan Gunaev,,,,,,,
-zholobov-vla,Жолобов,Владимир,2023,bachelor,А. В. Гасников,Vladimir Zholobov,,,,,,,
-islamov-rus,Исламов,Рустем,2023,"bachelor,master",Стрижов В. В.,Rustem Islamov,,,,,,,
+zholobov-vla,Жолобов,Владимир,2023,bachelor,А. В. Гасников,Vladimir Zholobov,A5086176514,Vladimir Zholobov,6,32,3,Skolkovo Institute of Science and Technology,Российская наука
+islamov-rus,Исламов,Рустем,2023,"bachelor,master",Стрижов В. В.,Rustem Islamov,A5114337673,Rustem Islamov,24,84,4,University of Basel,Зарубежная наука
 kotov-ale,Котов,Александр,2023,bachelor,Гнеушев А.Н.,Alexander Kotov,,,,,,,
 pankratov-vik,Панкратов,Виктор,2023,"bachelor,master",Воронцов К. В.,Viktor Pankratov,,,,,,,
-repeev-rom,Репеев,Роман,2023,bachelor,Хорошевский В.Ф.,Roman Repeev,,,,,,,
+repeev-rom,Репеев,Роман,2023,bachelor,Хорошевский В.Ф.,Roman Repeev,A5093393137,Roman Repeev,1,0,0,Moscow Institute of Physics and Technology,Российская наука
 savelev-nik,Савельев,Николай,2023,bachelor,Стрижов В. В.,Nikolay Savelev,,,,,,,
 sattarov-tag,Саттаров,Тагир,2023,bachelor,Воронцов К. В.,Tagir Sattarov,,,,,,,
 tabunov-ale,Табунов,Александр,2023,bachelor,Матвеев И.А.,Alexander Tabunov,,,,,,,
-trimbach-eka,Тримбач,Екатерина,2023,bachelor,Цурков В.И.,Ekaterina Trimbach,,,,,,,
+trimbach-eka,Тримбач,Екатерина,2023,bachelor,Цурков В.И.,Ekaterina Trimbach,A5012609100,Ekaterina Trimbach,7,14,2,École Polytechnique Fédérale de Lausanne,Зарубежная наука
 ulyanova-mar,Ульянова,Мария,2023,bachelor,Цурков В.И.,Maria Ulyanova,,,,,,,
 filatov-and,Филатов,Андрей,2023,"bachelor,master",Стрижов В. В.,Filatov Andrei,,,,,,,
 filippova-ana,Филиппова,Анастасия,2023,bachelor,Стрижов В. В.,Anastasia Filippova,,,,,,,
 khar-ale,Харь,Александра,2023,bachelor,Стрижов В. В.,Alexandra Khar,,,,,,,
-shimanogov-igo,Шиманогов,Игорь,2023,bachelor,Матвеев И.А.,Igor Shimanogov,,,,,,,
-shokorov-vya,Шокоров,Вячеслав,2023,bachelor,Стрижов В. В.,Vyacheslav Shokorov,,,,,,,
+shimanogov-igo,Шиманогов,Игорь,2023,bachelor,Матвеев И.А.,Igor Shimanogov,A5123304252,Шиманогов Игорь Николевич,2,0,0,Moscow Institute of Physics and Technology,Российская наука
+shokorov-vya,Шокоров,Вячеслав,2023,bachelor,Стрижов В. В.,Vyacheslav Shokorov,A5136487438,Shokorov Viacheslav,2,0,0,Moscow Institute of Physics and Technology,Российская наука
 shcherbak-igo,Щербак,Игорь,2023,bachelor,Гнеушев А.Н.,Igor Shcherbak,,,,,,,
 alexander-bog,Alexander,Bogdanov,2024,bachelor,Beznosikov A.N.,Bogdanov Alexander,,,,,,,
-alkin-emi,Alkin,Emil,2024,master,Ivan Oseledets,Emil Alkin,,,,,,,
+alkin-emi,Alkin,Emil,2024,master,Ivan Oseledets,Emil Alkin,A5073808140,Emil Alkin,9,0,0,Moscow Institute of Physics and Technology,Российская наука
 gregory-kse,Gregory,Ksenofontov,2024,master,Isachenko R.V.,Ksenofontov Gregory,,,,,,,
 konstantin-yak,Konstantin,Yakovlev,2024,master,Bakhteev O.Y.,Yakovlev Konstantin,,,,,,,
-kovaleva-mar,Kovaleva,Maria,2024,master,Zaytsev A. A.,Maria Kovaleva,,,,,,,
+kovaleva-mar,Kovaleva,Maria,2024,master,Zaytsev A. A.,Maria Kovaleva,A5112734655,Maria Kovaleva,13,19,3,Skolkovo Institute of Science and Technology,Российская наука
 mikhail-ole,Mikhail,Oleinik,2024,bachelor,Bakhteev O.Y.,Oleinik Mikhail,,,,,,,
-polina-bar,Polina,Barabanshchikova,2024,master,Polyanskii A.A.,Barabanshchikova Polina,,,,,,,
+polina-bar,Polina,Barabanshchikova,2024,master,Polyanskii A.A.,Barabanshchikova Polina,A5028556221,Polina Barabanshchikova,4,7,2,Aalto University,Зарубежная наука
 remizova-ann,Remizova,Anna,2024,bachelor,Grabovoy A. V.,Anna Remizova,,,,,,,
 roman-kly,Roman,Klypa,2024,master,Grudinin S.V.,Klypa Roman,,,,,,,
-tolmachev-ale,Tolmachev,Alexander,2024,master,Alexey Frolov,Alexander Tolmachev,,,,,,,
+tolmachev-ale,Tolmachev,Alexander,2024,master,Alexey Frolov,Alexander Tolmachev,A5076939794,A. D. Tolmachev,9,11,2,EURECOM,Зарубежная наука
 gorpinich-mar,Горпинич,Мария,2024,bachelor,Бахтеев О.Ю.,Gorpinich Mariya,,,,,,,
 gorchakov-vya,Горчаков,Вячеслав,2024,bachelor,Максимов Ю.В.,Vyacheslav Gorchakov,,,,,,,
 kurdyukova-ant,Курдюкова,Антонина,2024,bachelor,Стрижов В. В.,Kurdyukova Antonina,,,,,,,
-pilkevich-ant,Пилькевич,Антон,2024,bachelor,Стрижов В. В.,Pilkevich Anton,,,,,,,
+pilkevich-ant,Пилькевич,Антон,2024,bachelor,Стрижов В. В.,Pilkevich Anton,A5062960035,Anton Pilkevich,1,2,1,Moscow Institute of Physics and Technology,Российская наука
 khristolyubov-mak,Христолюбов,Максим,2024,bachelor,Стрижов В. В.,Maxim Khristolyubov,,,,,,,
 alexey-reb,Alexey,Rebrikov,2025,bachelor,Beznosikov A.N.,Rebrikov Alexey,,,,,,,
 altay-eyn,Altay,Eynullayev,2025,bachelor,Strijov V.V.,Eynullayev Altay,,,,,,,
@@ -319,20 +319,20 @@ denis-rub,Denis,Rubtsov,2025,bachelor,Gasnikov A.V.,Rubtsov Denis,,,,,,,
 eduard-vla,Eduard,Vladimirov,2025,"bachelor,master",Strijov V.V,Vladimirov Eduard,,,,,,,
 egor-zad,Egor,Zadvornov,2025,bachelor,Malkov A.S.,Zadvornov Egor,,,,,,,
 fanis-kha,Fanis,Khafizov,2025,bachelor,Beznosikov A.N.,Khafizov Fanis,,,,,,,
-fedor-sob,Fedor,Sobolevsky,2025,bachelor,Vorontsov K.V.,Sobolevsky Fedor,,,,,,,
+fedor-sob,Fedor,Sobolevsky,2025,bachelor,Vorontsov K.V.,Sobolevsky Fedor,A5120847684,Fedor Sobolevsky,1,0,0,Moscow Institute of Physics and Technology,Российская наука
 galina-boe,Galina,Boeva,2025,master,Zaytsev A. A.,Boeva Galina,,,,,,,
-german-gri,German,Gritsai,2025,master,Grabovoy A. V.,Gritsai German,,,,,,,
+german-gri,German,Gritsai,2025,master,Grabovoy A. V.,Gritsai German,A5106066836,German Gritsai,10,26,3,Moscow Institute of Physics and Technology,Российская наука
 gleb-kar,Gleb,Karpeev,2025,bachelor,Strijov V.V.,Karpeev Gleb,,,,,,,
-ildar-kha,Ildar,Khabutdinov,2025,master,Grabovoy A. V.,Khabutdinov Ildar,,,,,,,
+ildar-kha,Ildar,Khabutdinov,2025,master,Grabovoy A. V.,Khabutdinov Ildar,A5000539345,Ildar Khabutdinov,9,22,3,Moscow Institute of Physics and Technology,Российская наука
 ivan-pap,Ivan,Papay,2025,bachelor,Strijov V.V.,Papay Ivan,,,,,,,
 khusainov-mar,Khusainov,Marat,2025,master,Samsonov S.V.,Marat Khusainov,,,,,,,
-kseniia-pet,Kseniia,Petrushina,2025,master,Panchenko A. I.,Petrushina Kseniia,,,,,,,
+kseniia-pet,Kseniia,Petrushina,2025,master,Panchenko A. I.,Petrushina Kseniia,A5087933762,Kseniia Petrushina,9,2,1,National Research University Higher School of Economics,Российская наука
 muhammadsharif-nab,Muhammadsharif,Nabiev,2025,bachelor,Bakhteev O.Y.,Nabiev Muhammadsharif,,,,,,,
-nikita-kor,Nikita,Kornilov,2025,"bachelor,master",Gasnikov A.V.,Kornilov Nikita,,,,,,,
+nikita-kor,Nikita,Kornilov,2025,"bachelor,master",Gasnikov A.V.,Kornilov Nikita,A5078396193,Nikita М Kornilov,12,27,3,Skolkovo Institute of Science and Technology,Российская наука
 sergey-fir,Sergey,Firsov,2025,bachelor,Bakhteev O.Y.,Firsov Sergey,,,,,,,
 stepanov-ily,Stepanov,Ilya,2025,bachelor,Grabovoy A.V.,Ilya Stepanov,,,,,,,
 vadim-kas,Vadim,Kasiuk,2025,bachelor,Beznosikov A.N.,Kasiuk Vadim,,,,,,,
-vladislav-mes,Vladislav,Meshkov,2025,bachelor,Grabovoy A.V.,Meshkov Vladislav,,,,,,,
+vladislav-mes,Vladislav,Meshkov,2025,bachelor,Grabovoy A.V.,Meshkov Vladislav,A5085561603,Vladislav Meshkov,4,3,1,Moscow Institute of Physics and Technology,Российская наука
 anastasiya-lin,Анастасия,Линич,2025,bachelor,Баранников С.А.,Линич Анастасия,,,,,,,
 alexander-ter,Alexander,Terentyev,2026,"bachelor,master","Vadim Strijov, DSc",Terentyev Alexander,,,,,,,
 alexandr-ude,Alexandr,Udeneev,2026,bachelor,"Oleg Bakhteev, PhD",Udeneev Alexandr,,,,,,,
@@ -342,21 +342,21 @@ chernousov-dan,Chernousov,Danila,2026,bachelor,"Andrey Grabovoy, PhD",Danila Che
 dementev-ser,Dementev,Sergey,2026,bachelor,"Anton Khritankov, PhD",Sergey Dementev,,,,,,,
 dorin-dan,Dorin,Daniil,2026,"bachelor,master","Andrey Grabovoy, PhD",Daniil Dorin,,,,,,,
 german-ana,German,Anastasiia,2026,bachelor,"Grabovoy A.V., PhD",Anastasiia German,,,,,,,
-ignashin-igo,Ignashin,Igor,2026,"bachelor,master","Andrey Grabovoy, PhD",Igor Ignashin,,,,,,,
-ikonnikov-mar,Ikonnikov,Mark,2026,bachelor,"Vadim Strijov, DSc",Mark Ikonnikov,,,,,,,
+ignashin-igo,Ignashin,Igor,2026,"bachelor,master","Andrey Grabovoy, PhD",Igor Ignashin,A5094068824,Igor N. Ignashin,5,2,1,Moscow Institute of Physics and Technology,Российская наука
+ikonnikov-mar,Ikonnikov,Mark,2026,bachelor,"Vadim Strijov, DSc",Mark Ikonnikov,A5049951634,M.Yu. Ikonnikov,3,3,1,Moscow Institute of Physics and Technology,Российская наука
 ivanov-mak,Ivanov,Maksim,2026,bachelor,"Oleg Bakhteev, PhD",Maksim Ivanov,,,,,,,
 karpov-mat,Karpov,Matvey,2026,bachelor,"Konstantin Vorontsov, DSc",Matvey Karpov,,,,,,,
 kazachkov-dan,Kazachkov,Daniil,2026,bachelor,"Alexander Korotin, PhD",Daniil Kazachkov,,,,,,,
-kiselev-nik,Kiselev,Nikita,2026,"bachelor,master","Andrey Grabovoy, PhD",Nikita Kiselev,,,,,,,
+kiselev-nik,Kiselev,Nikita,2026,"bachelor,master","Andrey Grabovoy, PhD",Nikita Kiselev,A5100030302,Nikita Kiselev,9,5,2,Intelligent Systems Research (United States),Индустрия
 kravatskiy-ale,Kravatskiy,Alexey,2026,bachelor,"Ivan Oseledets, DSc",Alexey Kravatskiy,,,,,,,
 kreinin-mat,Kreinin,Matvei,2026,"bachelor,master","Andrey Grabovoy, PhD",Matvei Kreinin,,,,,,,
-latypov-ilg,Latypov,Ilgam,2026,"bachelor,master","Yuriy Dorn, PhD",Ilgam Latypov,,,,,,,
+latypov-ilg,Latypov,Ilgam,2026,"bachelor,master","Yuriy Dorn, PhD",Ilgam Latypov,A5034540720,Ilgam Latypov,7,2,1,Lomonosov Moscow State University,Российская наука
 nasyrov-rus,Nasyrov,Ruslan,2026,master,"Alexei Zaikin, PhD",Ruslan Nasyrov,,,,,,,
 nikitina-mar,Nikitina,Maria,2026,"bachelor,master","Oleg Bahteev, PhD<br>Anton Bishuk",Maria Nikitina,,,,,,,
 okhotnikov-nik,Okhotnikov,Nikita,2026,"bachelor,master","Andrey Grabovoy, PhD",Nikita Okhotnikov,,,,,,,
 petrov-ego,Petrov,Egor,2026,bachelor,"Andrey Grabovoy, PhD",Egor Petrov,,,,,,,
 semkin-kir,Semkin,Kirill,2026,"bachelor,master","Vadim Strijov, DSc",Kirill Semkin,,,,,,,
 shevchuk-rom,Shevchuk,Roman,2026,bachelor,"Andrey Grabovoy, PhD",Roman Shevchuk,,,,,,,
-veprikov-and,Veprikov,Andrey,2026,"bachelor,master","Anton Khritankov, PhD",Andrey Veprikov,,,,,,,
-voznyuk-ana,Voznyuk,Anastasia,2026,"bachelor,master","Andrey Grabovoy, PhD",Anastasia Voznyuk,,,,,,,
-zabarianska-iry,Zabarianska,Iryna,2026,master,"Alexander Korotin, PhD",Iryna Zabarianska,,,,,,,
+veprikov-and,Veprikov,Andrey,2026,"bachelor,master","Anton Khritankov, PhD",Andrey Veprikov,A5093118722,Andrey Veprikov,25,14,2,Russian Academy of Sciences,Российская наука
+voznyuk-ana,Voznyuk,Anastasia,2026,"bachelor,master","Andrey Grabovoy, PhD",Anastasia Voznyuk,A5017386288,Anastasia Voznyuk,15,6,2,Moscow Institute of Physics and Technology,Российская наука
+zabarianska-iry,Zabarianska,Iryna,2026,master,"Alexander Korotin, PhD",Iryna Zabarianska,A5099050061,Iryna Zabarianska,5,6,2,Moscow Institute of Physics and Technology,Российская наука

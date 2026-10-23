@@ -158,9 +158,9 @@
   \ifresearch{alumni-matched}{%
     \begin{columns}[T]
       \begin{column}{0.5\textwidth}
-        \cohortchart{cites}{медиана цитирований}\par
-        \cohortchart{h}{медиана индекса Хирша}
-        \source{OpenAlex: \research{alumni-matched} из \research{alumni} выпускников найдены по публикациям с~аффилиацией МФТИ, Сколтеха или ФИЦ ИУ РАН}
+        \cohortchart[2.5cm]{cites}{медиана цитирований}\par\vspace{0.1cm}
+        \cohortchart[2.5cm]{h}{медиана индекса Хирша}
+        \source{OpenAlex: найдены \research{alumni-matched} из \research{alumni} выпускников, у~которых есть публикации с~аффилиацией МФТИ, Сколтеха или ФИЦ ИУ РАН}
       \end{column}
       \begin{column}{0.46\textwidth}
         \subhead{Самые цитируемые выпускники}
@@ -172,21 +172,22 @@
 
 \begin{frame}{Где работают выпускники}
   \begin{columns}[T]
-    \begin{column}{0.4\textwidth}
-      Совместные проекты и стажировки с~компаниями и~Лабораторией машинного интеллекта МФТИ
-      \vspace{0.35cm}
-
-      \centering
+    \begin{column}{0.48\textwidth}
+      \ifresearch{alumni-placed}{%
+        \subhead{Последняя аффилиация в публикациях}
+        \sectorbars
+        \source{OpenAlex, \research{alumni-placed} выпускников с~публикациями; выпускники в~индустрии публикуются реже}
+      }{\card{Данные OpenAlex не загружены: запустите scripts/research\_stats.py.}}
+      \subhead{Стажировки и совместные проекты}
       \foreach \logo in {antiplagiat.jpg, forecsys.png, goods-forecast.png, yandex.png, sber.jpg, avito.png, huawei.png, ozon.png, mipt-mil.png} {%
-        \makebox[0.32\linewidth]{\includegraphics[height=0.7cm, width=0.26\linewidth, keepaspectratio]{\logo}}\hspace{0pt}%
+        \makebox[0.32\linewidth]{\includegraphics[height=0.6cm, width=0.26\linewidth, keepaspectratio]{\logo}}\hspace{0pt}%
       }
     \end{column}
-    \begin{column}{0.56\textwidth}
-      \ifresearch{alumni-placed}{%
-        \subhead{Текущая аффилиация публикующихся выпускников}
-        \sectorbars
-        \source{OpenAlex, последняя известная аффилиация; \research{alumni-placed} выпускников с~публикациями}
-      }{\card{Данные OpenAlex не загружены: запустите scripts/research\_stats.py.}}
+    \begin{column}{0.48\textwidth}
+      \ifresearch{abroad}{%
+        \subhead{Зарубежные организации выпускников}
+        \card{\footnotesize\research{abroad}}
+      }{}
     \end{column}
   \end{columns}
 \end{frame}
