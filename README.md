@@ -105,14 +105,16 @@ Optional `photo-height`, `photo-x`, `photo-y` adjust lecture framing.
 
 - **Titles grow upward from a fixed line; subtitles and the session line stay put.** Break long titles with a plain `\\`; adding `\vspace` or `session-y` to compensate shifts the layout.
 - **Text inside a TikZ node needs `\par` before the node ends.** Without it the paragraph ends outside the font group: lines use the normal-size baselineskip and `\hyphenpenalty` is lost.
+- **Packages in `sty/` are found only through `latexmkrc`, which adds `./sty//` to `TEXINPUTS`.** Plain `xelatex main.tex` fails with `intsystems-cover.sty not found`; build with `latexmk`.
 - **Open Sans is loaded by file name (`OpenSans-Regular.ttf`), not by family name.** Family lookup works on Overleaf but fails on a local TeX Live whose fonts fontconfig cannot see.
 
 ## Layout
 
 ```
 main.tex                 Overleaf entry
-latexmkrc                XeLaTeX
-sty/intsystems-cover.sty Layout, palette, commands
+latexmkrc                XeLaTeX, sty/ on TEXINPUTS, PNG zip
+sty/intsystems-base.sty  Font, palette, people registry
+sty/intsystems-cover.sty Cover layout and commands
 data/people.tex          People registry
 covers/                  One file per playlist
 assets/backgrounds/      16:9 backgrounds

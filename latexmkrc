@@ -1,4 +1,6 @@
 $pdf_mode = 5;
+# Packages and the beamer theme live in sty/.
+ensure_path('TEXINPUTS', './sty//');
 $xelatex = 'xelatex -interaction=nonstopmode -synctex=1 %O %S';
 
 push @generated_exts, 'zip';

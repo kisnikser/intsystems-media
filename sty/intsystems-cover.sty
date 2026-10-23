@@ -1,92 +1,14 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{intsystems-cover}[2026/09/11 Covers for the Intelligent Systems YouTube channel]
 
-\RequirePackage{etoolbox}
-\RequirePackage{xparse}
-\RequirePackage{tikz}
-\usetikzlibrary{calc}
-\RequirePackage{graphicx}
+\RequirePackage{intsystems-base}
 \RequirePackage{pgffor}
-\RequirePackage{polyglossia}
-
-\setdefaultlanguage{russian}
-\setotherlanguage{english}
-% Load by file name: family-name lookup needs fontconfig to see TeX Live fonts.
-\defaultfontfeatures[OpenSans]{
-  Extension      = .ttf,
-  UprightFont    = *-Regular,
-  BoldFont       = *-Bold,
-  ItalicFont     = *-Italic,
-  BoldItalicFont = *-BoldItalic,
-  Ligatures      = TeX,
-}
-\setsansfont{OpenSans}
-\newfontfamily\cyrillicfont{OpenSans}
-\newfontfamily\cyrillicfontsf{OpenSans}
-\renewcommand{\familydefault}{\sfdefault}
-
-\graphicspath{{assets/backgrounds/}{assets/people/}{assets/logo/}}
 
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{footline}{}
 \setbeamertemplate{headline}{}
 
 \@ifundefined{BuildCover}{\newcommand{\BuildCover}{all}}{}
-
-% --- palette: accent + text for each named background -----------------------
-
-\newcommand{\intsys@declarebg}[3]{%
-  \pgfkeys{/intsys/bg/#1/alert/.initial=#2}%
-  \pgfkeys{/intsys/bg/#1/text/.initial=#3}%
-}
-
-\intsys@declarebg{grey}{000000}{black}
-\intsys@declarebg{white-yellow}{FFBA00}{black}
-\intsys@declarebg{white-orange}{FF8C32}{black}
-\intsys@declarebg{white-red}{FF0000}{black}
-\intsys@declarebg{white-green}{1ED760}{black}
-\intsys@declarebg{white-blue}{0F52BA}{black}
-\intsys@declarebg{white-royal-blue}{4169E1}{black}
-\intsys@declarebg{white-violet}{7F3DFF}{black}
-\intsys@declarebg{white-purple}{CC00FF}{black}
-\intsys@declarebg{black-yellow}{FFBA00}{white}
-\intsys@declarebg{black-orange}{FF8C32}{white}
-\intsys@declarebg{black-red}{FF0000}{white}
-\intsys@declarebg{black-green}{1ED760}{white}
-\intsys@declarebg{black-blue}{1A96D5}{white}
-\intsys@declarebg{black-royal-blue}{4169E1}{white}
-\intsys@declarebg{black-violet}{7F3DFF}{white}
-\intsys@declarebg{black-purple}{CC00FF}{white}
-\intsys@declarebg{design-1}{000000}{black}
-\intsys@declarebg{design-2}{000000}{black}
-\intsys@declarebg{design-3}{000000}{black}
-\intsys@declarebg{black-design-1}{FFFFFF}{white}
-\intsys@declarebg{black-design-2}{FFFFFF}{white}
-\intsys@declarebg{black-design-3}{FFFFFF}{white}
-
-% --- people -----------------------------------------------------------------
-
-\newcommand{\intsys@pset}[2]{%
-  \expandafter\gdef\csname intsys@p@\intsys@pid @#1\endcsname{#2}%
-}
-
-\pgfqkeys{/intsys/person}{
-  name/.code=\intsys@pset{name}{#1},
-  photo/.code=\intsys@pset{photo}{#1},
-  photo-height/.code=\intsys@pset{photo-height}{#1},
-  photo-x/.code=\intsys@pset{photo-x}{#1},
-  photo-y/.code=\intsys@pset{photo-y}{#1},
-}
-
-\newcommand{\defineperson}[2]{%
-  \edef\intsys@pid{#1}%
-  \intsys@pset{name}{}%
-  \intsys@pset{photo}{}%
-  \intsys@pset{photo-height}{}%
-  \intsys@pset{photo-x}{}%
-  \intsys@pset{photo-y}{}%
-  \pgfqkeys{/intsys/person}{#2}%
-}
 
 % --- cover keys -------------------------------------------------------------
 
@@ -163,20 +85,6 @@
   \setbeamercolor{title}{fg=\intsys@textcolor}%
   \setbeamercolor{subtitle}{fg=\intsys@textcolor}%
   \usebeamercolor[fg]{normal text}%
-}
-
-\newcommand{\intsys@needperson}[1]{%
-  \edef\intsys@lookup{#1}%
-  \ifcsname intsys@p@\intsys@lookup @name\endcsname
-  \else
-    \PackageError{intsystems-cover}{Unknown person `\intsys@lookup'}{%
-      Add \string\defineperson{\intsys@lookup}{...} to data/people.tex.}%
-  \fi
-}
-
-\newcommand{\intsys@pget}[3]{%
-  \edef\intsys@pgetid{#1}%
-  \expandafter\let\expandafter#3\csname intsys@p@\intsys@pgetid @#2\endcsname
 }
 
 \newcommand{\intsys@resolvepicture}[1]{%
@@ -326,10 +234,6 @@
       \input{covers/#1}%
     }{}%
   }%
-}
-
-\IfFileExists{data/people.tex}{\input{data/people.tex}}{%
-  \PackageWarning{intsystems-cover}{data/people.tex not found}%
 }
 
 \endinput
