@@ -11,9 +11,18 @@
 
 \setdefaultlanguage{russian}
 \setotherlanguage{english}
-\setsansfont{Open Sans}[Ligatures=TeX]
-\newfontfamily\cyrillicfont{Open Sans}[Ligatures=TeX]
-\newfontfamily\cyrillicfontsf{Open Sans}[Ligatures=TeX]
+% Load by file name: family-name lookup needs fontconfig to see TeX Live fonts.
+\defaultfontfeatures[OpenSans]{
+  Extension      = .ttf,
+  UprightFont    = *-Regular,
+  BoldFont       = *-Bold,
+  ItalicFont     = *-Italic,
+  BoldItalicFont = *-BoldItalic,
+  Ligatures      = TeX,
+}
+\setsansfont{OpenSans}
+\newfontfamily\cyrillicfont{OpenSans}
+\newfontfamily\cyrillicfontsf{OpenSans}
 \renewcommand{\familydefault}{\sfdefault}
 
 \graphicspath{{assets/backgrounds/}{assets/people/}{assets/logo/}}
@@ -234,6 +243,12 @@
   }%
 }
 
+% Titles grow upward from a fixed bottom line, subtitles downward from a
+% fixed top line, so multi-line text never overlaps. Struts fix the box
+% height regardless of glyphs. The \par must stay inside the node text:
+% TikZ ends the paragraph after the font group, losing size and penalties.
+\newcommand{\intsys@nohyphen}{\hyphenpenalty=10000 \exhyphenpenalty=10000 \hbadness=10000 }
+
 \newcommand{\intsys@layoutlecture}{%
   \ifdefempty{\intsys@seminarist}{%
     \intsys@drawphoto{\intsys@lecturer}{0cm}{1}%
@@ -241,9 +256,9 @@
     \intsys@drawphoto{\intsys@lecturer}{0cm}{1}%
     \intsys@drawphoto{\intsys@seminarist}{-4.4cm}{0.75}%
   }%
-  \node[anchor=west, text width=0.9\paperwidth] at
-    ($(current page.west)+(0.8cm,1.0cm)$)
-    {\huge \intsys@title};%
+  \node[anchor=south west, text width=0.9\paperwidth, align=left] at
+    ($(current page.west)+(0.8cm,0.43cm)$)
+    {\huge\intsys@nohyphen\strut\intsys@title\strut\par};%
   \ifboolexpr{ test {\ifdefempty{\intsys@session}} and test {\ifdefempty{\intsys@sessionnumber}} }{}{%
     \node[anchor=west] at ($(current page.west)+(0.8cm,\intsys@sessiony)$)
       {\huge \intsys@session
@@ -259,18 +274,19 @@
 
 \newcommand{\intsys@layoutevent}{%
   \intsys@drawphoto{\intsys@lecturer}{0cm}{1}%
-  \node[anchor=west, text width=0.9\paperwidth] at
-    ($(current page.west)+(0.8cm,1.0cm)$)
-    {\Huge \intsys@title};%
+  \node[anchor=south west, text width=0.9\paperwidth, align=left] at
+    ($(current page.west)+(0.8cm,0.34cm)$)
+    {\Huge\intsys@nohyphen\strut\intsys@title\strut\par};%
   \ifdefempty{\intsys@subtitle}{}{%
     \ifdefempty{\intsys@lecturer}{%
       \def\intsys@subw{0.7\paperwidth}%
     }{%
       \def\intsys@subw{0.45\paperwidth}%
     }%
-    \node[anchor=west, text width=\intsys@subw] at
-      ($(current page.west)+(0.8cm,-0.5cm)$)
-      {\csname\intsys@subtitlesize\endcsname \intsys@subtitle};%
+    \node[anchor=north west, text width=\intsys@subw, align=left] at
+      ($(current page.west)+(0.8cm,-0.1cm)$)
+      {\csname\intsys@subtitlesize\endcsname\intsys@nohyphen
+        \strut\intsys@subtitle\strut\par};%
   }%
   \ifdefempty{\intsys@badge}{}{%
     \node[anchor=west] at ($(current page.south west)+(2.5cm,1.1cm)$)

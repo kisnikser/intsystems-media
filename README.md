@@ -78,7 +78,7 @@ Lecturer and seminarist on one cover:
 | `background` | File stem in `assets/backgrounds/` |
 | `session` | `Лекция`, `Занятие`, `Семинар` |
 | `session-number` | Session index |
-| `session-y` | Shift the session line if the title wraps |
+| `session-y` | Shift the session line |
 | `badge` | Event label at the bottom |
 | `lecturer` | Id from `data/people.tex` |
 | `seminarist` | Optional seminarist id |
@@ -100,6 +100,12 @@ Lecturer and seminarist on one cover:
 
 Put the photo in `assets/people/`.
 Optional `photo-height`, `photo-x`, `photo-y` adjust lecture framing.
+
+## Gotchas
+
+- **Titles grow upward from a fixed line; subtitles and the session line stay put.** Break long titles with a plain `\\`; adding `\vspace` or `session-y` to compensate shifts the layout.
+- **Text inside a TikZ node needs `\par` before the node ends.** Without it the paragraph ends outside the font group: lines use the normal-size baselineskip and `\hyphenpenalty` is lost.
+- **Open Sans is loaded by file name (`OpenSans-Regular.ttf`), not by family name.** Family lookup works on Overleaf but fails on a local TeX Live whose fonts fontconfig cannot see.
 
 ## Layout
 
