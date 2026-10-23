@@ -1,10 +1,10 @@
 % Department presentation for junior students. Overleaf: Main document = presentation.tex.
-% Course lists, people and stats come from data/site/ (scripts/sync_site.py).
+% Data: data/site/ (scripts/sync_site.py), data/research/ (scripts/research_stats.py).
 
 \documentclass[aspectratio=169, 9pt]{beamer}
 \usetheme{intsystems}
 
-\title[Презентация кафедры интеллектуальных систем]{Кафедра интеллектуальных систем}
+\title[Кафедра интеллектуальных систем МФТИ \quad intsystems.github.io]{Кафедра интеллектуальных систем}
 \date{\today}
 
 \begin{document}
@@ -12,6 +12,23 @@
 \coverframe{%
   \covertitle{Кафедра\\интеллектуальных систем}{Физтех-школа прикладной математики и~информатики МФТИ}%
 }
+
+\begin{frame}{Кафедра в цифрах}
+  \vspace{0.5cm}
+  \begin{columns}[T]
+    \begin{column}{0.3\textwidth}\statvalue{2003}{год основания кафедры}\end{column}
+    \begin{column}{0.3\textwidth}\statvalue{\research{alumni}}{выпускников с~\research{alumni-from} года}\end{column}
+    \begin{column}{0.3\textwidth}\statvalue{\thesestotal}{дипломов защищено за 2022--2026}\end{column}
+  \end{columns}
+  \vspace{0.9cm}
+  \begin{columns}[T]
+    \begin{column}{0.3\textwidth}\statvalue{\githubtotal}{открытых проектов на GitHub}\end{column}
+    \begin{column}{0.3\textwidth}\statvalue{<35}{средний возраст преподавателей курсов}\end{column}
+    \begin{column}{0.3\textwidth}\statvalue{>50\,\%}{выпускников защитили кандидатские}\end{column}
+  \end{columns}
+  \vfill
+  \source{Выпускники: machinelearning.ru и intsystems.github.io/thesis; проекты: GitHub API, организации intsystems и Intelligent-Systems-Phystech; возраст и кандидатские: intsystems.github.io}
+\end{frame}
 
 \begin{frame}{О кафедре}
   \begin{columns}[T]
@@ -24,16 +41,18 @@
       \end{itemize}
       \subhead{Базовая организация}
       Вычислительный центр им.~А.\,А.~Дородницына ФИЦ «Информатика и~управление» РАН
-      \vspace{0.3cm}
+      \vspace{0.25cm}
 
-      \includegraphics[height=0.55cm]{fpmi.png}\hspace{0.8cm}%
-      \includegraphics[height=1.1cm]{vc-ras.png}
+      \includegraphics[height=0.5cm]{fpmi.png}\hspace{0.8cm}%
+      \includegraphics[height=0.9cm]{vc-ras.png}
     \end{column}
     \begin{column}{0.46\textwidth}
-      \subhead{Теория}
-      Машинное обучение, глубокое обучение, генеративные нейросети, байесовские модели и мультимодели, функциональный анализ данных
-      \subhead{Практика}
-      Геометрические глубокие нейросети, анализ текстов и тематическое моделирование, анализ изображений, видео и аудио, анализ биомедицинских сигналов, интерфейсы человек--компьютер
+      \card{\subhead{Теория}
+        Машинное обучение, глубокое обучение, генеративные нейросети, байесовские модели и~мультимодели, функциональный анализ данных}
+      \vspace{0.2cm}
+
+      \card{\subhead{Практика}
+        Геометрические глубокие нейросети, анализ текстов и тематическое моделирование, анализ изображений, видео и~аудио, биомедицинские сигналы, интерфейсы человек--компьютер}
     \end{column}
   \end{columns}
 \end{frame}
@@ -41,23 +60,72 @@
 \begin{frame}{История}
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
-      \subhead{Интеллектуальный анализ данных}
-      Создана в 2003 году академиком РАН К.\,В.~Рудаковым на базе одной из старейших кафедр ФУПМ МФТИ «Управление и вычислительные системы».
+      \card[\linewidth][2.2cm]{\subhead{Интеллектуальный анализ данных}
+        Создана в 2003 году академиком РАН К.\,В.~Рудаковым на базе одной из старейших кафедр ФУПМ МФТИ «Управление и~вычислительные системы».}
     \end{column}
     \begin{column}{0.48\textwidth}
-      \subhead{Проектирование и организация систем}
-      Создана в 1970-е годы академиком Г.\,С.~Поспеловым, основоположником отечественной школы искусственного интеллекта, как базовая кафедра при ВЦ РАН.
+      \card[\linewidth][2.2cm]{\subhead{Проектирование и организация систем}
+        Создана в 1970-е годы академиком Г.\,С.~Поспеловым, основоположником отечественной школы искусственного интеллекта, как базовая кафедра при ВЦ РАН.}
     \end{column}
   \end{columns}
   \vfill
   \centering
   \foreach \file/\name in {zhuravlyov_yv/Ю.\,И.~Журавлёв, rudakov_kv/К.\,В.~Рудаков, vorontsov_kv/К.\,В.~Воронцов, pospelov_gs/Г.\,С.~Поспелов} {%
     \begin{tabular}{@{}c@{}}
-      \includegraphics[height=2.3cm]{\file.jpg}\\[0.1cm]
+      \roundphoto{\file.jpg}{2.2cm}\\[0.1cm]
       \scriptsize\name
     \end{tabular}\hspace{0.6cm}%
   }
   \vfill
+\end{frame}
+
+\begin{frame}{Студенты кафедры}
+  \begin{columns}[T]
+    \begin{column}{0.66\textwidth}
+      \begin{itemize}
+        \item Ежегодно кафедра принимает и выпускает \semibold{10--15 студентов} в~бакалавриат и магистратуру
+        \item Одновременно на кафедре учатся \semibold{до 50 студентов}
+        \item Часть студентов параллельно учится на международных программах: \semibold{Университет Гренобль-Альпы}, \semibold{Политехническая школа} (Париж), \semibold{KAUST}
+        \item После защиты выпускники идут в аспирантуру МФТИ и~ведущих университетов, в~исследовательские лаборатории и~компании
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]{uga.jpg}\\[0.25cm]
+      \includegraphics[width=0.38\linewidth]{polytechnique.png}\\[0.25cm]
+      \includegraphics[width=0.7\linewidth]{kaust.png}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Исследования в центре учёбы}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \researchsteps{%
+        3 курс/собеседование и выбор научного руководителя,
+        Моя первая научная статья/первая статья за семестр: paper{,} code{,} slides,
+        Каждый семестр/отчёт о НИР: статья{,} код эксперимента{,} доклад,
+        Конференции/NeurIPS{,} ICML{,} ICLR{,} AISTATS{,} конференция МФТИ,
+        Защита/диплом с работой{,} поданной к публикации}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \subhead{Защиты дипломов по годам}
+      \thesischart
+      \source{intsystems.github.io/thesis}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Бакалавриат: курсы кафедры}
+  \coursecards[2]{bachelor}
+  \vfill
+  \muted{Итог бакалавриата --- статья и код проекта; их учитывают при поступлении на «магистратуру плюс аспирантуру» в МФТИ и~других университетах.}
+\end{frame}
+
+\begin{frame}{Магистратура: курсы кафедры}
+  \coursecards[3][1.2cm]{master}
+  \vfill
+  \muted{Выпускники магистратуры --- авторы нескольких статей: этого достаточно для поступления в~аспирантуру МФТИ и~ведущих университетов.}
 \end{frame}
 
 \begin{frame}{Преподаватели}
@@ -70,73 +138,43 @@
   \teamgrid[5][1.5cm]{\supervisorids}
 \end{frame}
 
-\begin{frame}{Студенты кафедры}
+\begin{frame}{Открытый код}
   \begin{columns}[T]
-    \begin{column}{0.68\textwidth}
-      \begin{itemize}
-        \item Ежегодно кафедра принимает и выпускает \semibold{10--15 студентов} в~бакалавриат и магистратуру
-        \item Одновременно на кафедре учатся \semibold{до 50 студентов}
-        \item Часть студентов параллельно учится на международных программах: \semibold{Университет Гренобль-Альпы}, \semibold{Политехническая школа} (Париж), \semibold{KAUST}
-        \item \semibold{Половина выпускников} защитили диссертации кандидата физико-математических или технических наук
-      \end{itemize}
+    \begin{column}{0.72\textwidth}
+      \subhead{Новые открытые проекты по годам: всего \githubtotal}
+      \githubchart[4.6cm]
+      \source{GitHub API: собственные публичные репозитории (без форков) организаций Intelligent-Systems-Phystech и intsystems; \the\year{} --- неполный год}
     \end{column}
-    \begin{column}{0.28\textwidth}
+    \begin{column}{0.24\textwidth}
       \centering
-      \vspace{0.3cm}
-      \includegraphics[width=0.8\linewidth]{uga.jpg}\\[0.35cm]
-      \includegraphics[width=0.45\linewidth]{polytechnique.png}\\[0.35cm]
-      \includegraphics[width=0.8\linewidth]{kaust.png}
+      \vspace{0.6cm}
+      \qrlink[2cm]{https://github.com/intsystems}{github.com/intsystems}\\[0.4cm]
+      \qrlink[2cm]{https://www.youtube.com/c/MachineLearningPhystech}{YouTube: лекции и доклады}
     \end{column}
   \end{columns}
 \end{frame}
 
-\begin{frame}{Принципы работы}
-  \begin{columns}[T]
-    \begin{column}{0.74\textwidth}
-      \begin{enumerate}
-        \item Открытость идей, проектов и результатов на всех стадиях учёбы и исследований
-        \item Постоянная оценка качества идей и результатов студенческих исследований
-        \item Связь с научным сообществом и последними достижениями
-      \end{enumerate}
-      \subhead{Исследования --- центральная деятельность студентов}
-      \begin{itemize}
-        \item Каждый семестр студенты сдают отчёт о НИР: статья, доклад, код эксперимента
-        \item На защиту дипломной работы приходят со статьёй, поданной к публикации
-        \item Код исследований открыт: репозиториев на GitHub \semibold{intsystems}: \semibold{\stat{github_repos}}
-        \item Доклады и лекции --- на YouTube-канале «Machine Learning -- Intelligent Systems»
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.22\textwidth}
-      \centering
-      \qrlink[1.6cm]{https://github.com/intsystems}{github.com/intsystems}\\[0.3cm]
-      \qrlink[1.6cm]{https://www.youtube.com/c/MachineLearningPhystech}{YouTube}
-    \end{column}
-  \end{columns}
+\begin{frame}{Выпускники в науке}
+  \ifresearch{alumni-matched}{%
+    \begin{columns}[T]
+      \begin{column}{0.5\textwidth}
+        \cohortchart{cites}{медиана цитирований}\par
+        \cohortchart{h}{медиана индекса Хирша}
+        \source{OpenAlex: \research{alumni-matched} из \research{alumni} выпускников найдены по публикациям с~аффилиацией МФТИ, Сколтеха или ФИЦ ИУ РАН}
+      \end{column}
+      \begin{column}{0.46\textwidth}
+        \subhead{Самые цитируемые выпускники}
+        \scriptsize\topalumni
+      \end{column}
+    \end{columns}
+  }{\card{Данные OpenAlex не загружены: запустите scripts/research\_stats.py.}}
 \end{frame}
 
-\begin{frame}{Бакалавриат}
-  \courselist{bachelor}
-  \vfill
-  Студенты ведут исследования вместе с научным руководителем, лабораторией или компанией.
-  Итог --- опубликованная статья и код проекта; их учитывают при поступлении на программы «магистратура плюс аспирантура» в МФТИ и других университетах.
-  \vfill
-\end{frame}
-
-\begin{frame}{Магистратура}
-  \begin{multicols}{2}
-    \courselist{master}
-  \end{multicols}
-  \vfill
-  Результаты исследований докладываются на российских и международных конференциях.
-  Выпускники, как правило, авторы нескольких статей: этого достаточно для поступления в аспирантуру МФТИ и ведущих университетов.
-  \vfill
-\end{frame}
-
-\begin{frame}{Стажировки и трудоустройство}
+\begin{frame}{Где работают выпускники}
   \begin{columns}[T]
     \begin{column}{0.4\textwidth}
-      Совместные проекты и стажировки с компаниями и Лабораторией машинного интеллекта МФТИ
-      \vspace{0.4cm}
+      Совместные проекты и стажировки с~компаниями и~Лабораторией машинного интеллекта МФТИ
+      \vspace{0.35cm}
 
       \centering
       \foreach \logo in {antiplagiat.jpg, forecsys.png, goods-forecast.png, yandex.png, sber.jpg, avito.png, huawei.png, ozon.png, mipt-mil.png} {%
@@ -144,73 +182,35 @@
       }
     \end{column}
     \begin{column}{0.56\textwidth}
-      \subhead{Где работают выпускники, \%}
-      \small
-      \sharebar{Международные компании}{26.8}
-      \sharebar{Российские университеты и НИИ}{19.6}
-      \sharebar{Зарубежные университеты и НИИ}{19.6}
-      \sharebar{Российские компании}{14.4}
-      \sharebar{Mail, Яндекс, Сбер, Озон}{14.4}
-      \sharebar{Facebook, Amazon, Apple, Netflix, Google}{5.2}
+      \ifresearch{alumni-placed}{%
+        \subhead{Текущая аффилиация публикующихся выпускников}
+        \sectorbars
+        \source{OpenAlex, последняя известная аффилиация; \research{alumni-placed} выпускников с~публикациями}
+      }{\card{Данные OpenAlex не загружены: запустите scripts/research\_stats.py.}}
     \end{column}
   \end{columns}
 \end{frame}
 
 \begin{frame}{Научная стипендия им.~К.\,В.~Рудакова}
   \begin{columns}[T]
-    \begin{column}{0.7\textwidth}
+    \begin{column}{0.72\textwidth}
       \begin{itemize}
-        \item Для бакалавров и магистров кафедры
-        \item Назначается каждый семестр на один семестр
+        \item Для бакалавров и магистров кафедры, назначается на один семестр
         \item \semibold{20\,000 рублей} в месяц
+        \item Заявки: до 2 сентября и до 15 февраля, intsystems.github.io/materials/scholarship
       \end{itemize}
+      \subhead{Стипендиаты весны 2026 года}
+      \scriptsize
+      \begin{enumerate}
+        \item \semibold{Алексей Кравацкий}, 4 курс --- The Ky Fan Norms and Beyond: Dual Norms and Combinations for Matrix Optimization
+        \item \semibold{Фёдор Соболевский}, 5 курс --- Автоматическая иерархическая суммаризация научных текстов
+        \item \semibold{Даниил Дорин}, 6 курс --- Анализ причинно-следственных связей между биомедицинскими сигналами через скрытые представления автоэнкодеров
+        \item \semibold{Никита Киселев}, 6 курс --- Scaling Laws and Loss Landscapes: A Geometric Perspective on Data, Model, and Compute
+        \item \semibold{Андрей Веприков}, 6 курс --- Оптимальное управление в системах машинного обучения с петлёй обратной связи
+      \end{enumerate}
     \end{column}
-    \begin{column}{0.26\textwidth}
-      \raggedleft\includegraphics[height=2.2cm]{rudakov_kv.jpg}
-    \end{column}
-  \end{columns}
-  \subhead{Стипендиаты весны 2026 года}
-  \footnotesize
-  \begin{enumerate}
-    \item \semibold{Кравацкий Алексей (4 курс)} --- «The Ky Fan Norms and Beyond: Dual Norms and Combinations for Matrix Optimization»
-    \item \semibold{Соболевский Фёдор (5 курс)} --- «Автоматическая иерархическая суммаризация научных текстов»
-    \item \semibold{Дорин Даниил (6 курс)} --- «Анализ причинно-следственных связей между биомедицинскими сигналами через скрытые представления автоэнкодеров»
-    \item \semibold{Киселев Никита (6 курс)} --- «Scaling Laws and Loss Landscapes: A Geometric Perspective on Data, Model, and Compute»
-    \item \semibold{Веприков Андрей (6 курс)} --- «Оптимальное управление в системах машинного обучения с петлёй обратной связи»
-  \end{enumerate}
-\end{frame}
-
-\begin{frame}{Научная работа выпускников}
-  \begin{columns}[T]
-    \begin{column}{0.56\textwidth}
-      Более 20\,\% выпускников --- признанные в научном сообществе исследователи.
-      \subhead{Цитирования работ выпускников}
-      \footnotesize
-      \begin{itemize}
-        \item \semibold{Алексей Куракин, 2009}: Adversarial examples in the physical world --- 4700
-        \item \semibold{Олександр Фрей, 2010}: A global overview of pleiotropy and genetic architecture in complex traits --- 615
-        \item \semibold{Максим Панов, 2012}: Automatic bitcoin address clustering --- 129
-        \item \semibold{Михаил Карасиков, 2017}: A global metagenomic map of urban microbiomes and antimicrobial resistance --- 112
-        \item \semibold{Григорий Малиновский, 2021}: From local SGD to local fixed-point methods for federated learning --- 97
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.4\textwidth}
-      \centering
-      % Values read off the April 2026 chart; replace with source numbers.
-      \begin{tikzpicture}
-        \begin{axis}[
-          ybar, width=\linewidth, height=5.4cm, bar width=0.8cm,
-          ymin=0, ymax=380, axis y line=none, axis x line*=bottom,
-          symbolic x coords={0--4, 5--10, >10}, xtick=data,
-          xticklabel style={font=\scriptsize}, xlabel={\scriptsize лет после выпуска},
-          nodes near coords, nodes near coords style={font=\scriptsize},
-          enlarge x limits=0.25,
-          every axis plot/.append style={fill=intsysaccent, draw=none},
-          title={\scriptsize цитирований},
-        ]
-          \addplot coordinates {(0--4,35) (5--10,114) (>10,325)};
-        \end{axis}
-      \end{tikzpicture}
+    \begin{column}{0.24\textwidth}
+      \raggedleft\roundphoto{rudakov_kv.jpg}{2.4cm}
     \end{column}
   \end{columns}
 \end{frame}
@@ -228,15 +228,24 @@
     \end{column}
     \begin{column}{0.26\textwidth}
       \centering
-      \includegraphics[width=0.6\linewidth]{mipt.png}\\[0.3cm]
-      \includegraphics[width=0.7\linewidth]{mmro.png}\\[0.3cm]
-      \includegraphics[width=0.5\linewidth]{idp.png}
+      \includegraphics[width=0.55\linewidth]{mipt.png}\\[0.2cm]
+      \includegraphics[width=0.6\linewidth]{mmro.png}\\[0.2cm]
+      \includegraphics[width=0.4\linewidth]{idp.png}
     \end{column}
   \end{columns}
 \end{frame}
 
+\begin{frame}{Выпуск 2026}
+  \centering
+  \vspace{0.2cm}
+  \begin{tabular}{@{}c@{\hspace{0.4cm}}c@{}}
+    \roundphoto{bachelors-2026.jpeg}{4.6cm} & \roundphoto{masters-2026.jpeg}{4.6cm}\\[0.1cm]
+    \scriptsize\muted{Бакалавры} & \scriptsize\muted{Магистры}
+  \end{tabular}
+\end{frame}
+
 \begin{frame}{Приём на кафедру}
-  \begin{columns}[c]
+  \begin{columns}[T]
     \begin{column}{0.62\textwidth}
       \begin{enumerate}
         \item Заполните анкету на странице \semibold{intsystems.github.io/admission}
@@ -245,10 +254,12 @@
         \item Расскажите, какая работа студента кафедры вам понравилась
         \item Дождитесь решения деканата
       \end{enumerate}
+      \subhead{Даты}
+      \footnotesize\admissiondates
     \end{column}
     \begin{column}{0.34\textwidth}
       \centering
-      \qrlink[3.6cm]{https://intsystems.github.io/admission/}{intsystems.github.io/admission}
+      \qrlink[3.4cm]{https://intsystems.github.io/admission/}{intsystems.github.io/admission}
     \end{column}
   \end{columns}
 \end{frame}
@@ -259,7 +270,7 @@
     \qrlink{https://intsystems.github.io}{intsystems.github.io}\hspace{0.5cm}%
     \qrlink{https://t.me/IS_MIPT}{t.me/IS\_MIPT}\hspace{0.5cm}%
     \qrlink{https://www.youtube.com/c/MachineLearningPhystech}{YouTube}\hspace{0.5cm}%
-    \qrlink{http://www.machinelearning.ru}{machinelearning.ru}%
+    \qrlink{https://github.com/intsystems}{GitHub}%
   };
 }
 

@@ -1,31 +1,37 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerthemeintsystems}[2026/10/23 Slides in the Intelligent Systems cover style]
+\ProvidesPackage{beamerthemeintsystems}[2026/10/23 Slides in the Intelligent Systems cover and site style]
 
 \RequirePackage{intsystems-base}
 \RequirePackage{pgffor}
-\RequirePackage{multicol}
 \RequirePackage{qrcode}
+\RequirePackage{pdftexcmds}
 \RequirePackage{pgfplots}
 \pgfplotsset{compat=1.18}
+% Numbers in text mode, so charts use Open Sans instead of math fonts.
+\pgfkeys{/pgf/number format/assume math mode=true}
 
 \graphicspath{{assets/backgrounds/}{assets/people/}{assets/logo/}%
-  {assets/site-people/}{assets/slides/}}
+  {assets/site-people/}{assets/site-life/}{assets/slides/}}
 
 \newfontfamily\intsys@semibold{OpenSans}[UprightFont=*-SemiBold]
 \newcommand{\semibold}[1]{{\intsys@semibold #1}}
 
-% --- colors -----------------------------------------------------------------
+% --- colors: intsystems.github.io (_sass/_variables.scss, _main.scss) --------
 
-\definecolor{intsysink}{HTML}{1A1A1A}
-\definecolor{intsysmuted}{HTML}{7A7A7A}
-\definecolor{intsyspaper}{HTML}{F6F6F6}% matches the design-* backgrounds
-\definecolor{intsysaccent}{HTML}{\pgfkeysvalueof{/intsys/bg/white-royal-blue/alert}}
+\definecolor{intsysaccent}{HTML}{C42929}% $href-color
+\definecolor{intsysaccentsoft}{HTML}{FFEEEE}% $href-bg-color
+\definecolor{intsysheading}{HTML}{111111}
+\definecolor{intsysink}{HTML}{333333}
+\definecolor{intsysmuted}{HTML}{555555}
+\definecolor{intsysfaint}{HTML}{999999}
+\definecolor{intsyscard}{HTML}{F5F5F5}
+\definecolor{intsysline}{HTML}{E5E5E5}
 
 \setbeamercolor{normal text}{fg=intsysink}
 \setbeamercolor{structure}{fg=intsysaccent}
-\setbeamercolor{frametitle}{fg=intsysink}
+\setbeamercolor{frametitle}{fg=intsysheading}
 \setbeamercolor{alerted text}{fg=intsysaccent}
-\setbeamercolor{footline}{fg=intsysmuted}
+\setbeamercolor{footline}{fg=intsysfaint}
 
 % --- page -------------------------------------------------------------------
 
@@ -33,16 +39,16 @@
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{headline}{}
 
-% Empty: content slide with the square logo. Otherwise a background name.
+% Empty: white content slide with the square logo. Otherwise a background name.
 \def\intsys@slidebg{}
 
 \setbeamertemplate{background}{%
   \begin{tikzpicture}
     \useasboundingbox (0,0) rectangle (\paperwidth,\paperheight);
     \ifx\intsys@slidebg\empty
-      \fill[intsyspaper] (0,0) rectangle (\paperwidth,\paperheight);
+      \fill[white] (0,0) rectangle (\paperwidth,\paperheight);
       \node[anchor=north east, inner sep=0pt] at (\paperwidth-0.8cm,\paperheight-0.45cm)
-        {\includegraphics[height=0.75cm]{square.png}};
+        {\includegraphics[height=0.7cm]{square.png}};
     \else
       \node[anchor=south west, inner sep=0pt] at (0,0)
         {\includegraphics[width=\paperwidth,height=\paperheight]{\intsys@slidebg.png}};
@@ -50,31 +56,52 @@
   \end{tikzpicture}%
 }
 
-\setbeamerfont{frametitle}{size=\fontsize{20}{24}\selectfont}
 \setbeamertemplate{frametitle}{%
-  \vskip0.35cm
-  {\usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle\par}%
-  \vskip0.1cm
+  \vskip0.4cm
+  {\fontsize{19}{23}\selectfont\intsys@semibold\usebeamercolor[fg]{frametitle}\insertframetitle\par}%
+  \vskip0.12cm
+  {\color{intsysaccent}\rule{0.9cm}{1.6pt}}%
+  \vskip0.05cm
 }
 
 \setbeamerfont{footline}{size=\tiny}
 \setbeamertemplate{footline}{%
   \usebeamerfont{footline}\usebeamercolor[fg]{footline}%
   \hbox to\paperwidth{%
-    \hskip0.8cm\insertshorttitle, \insertdate\hfill\insertframenumber\hskip0.8cm}%
+    \hskip0.8cm\insertshorttitle\hfill\insertframenumber\hskip0.8cm}%
   \vskip0.3cm
 }
 
-% --- lists ------------------------------------------------------------------
+% --- text -------------------------------------------------------------------
 
 \setbeamertemplate{itemize item}{%
   \raise0.3ex\hbox{\color{intsysaccent}\rule{0.5ex}{0.5ex}}}
 \setbeamertemplate{itemize subitem}{\color{intsysaccent}--}
-\setbeamertemplate{enumerate item}{\color{intsysaccent}\insertenumlabel.}
-\setbeamertemplate{itemize/enumerate body begin}{\setlength{\itemsep}{0.2em}}
+\setbeamertemplate{enumerate item}{{\intsys@semibold\color{intsysaccent}\insertenumlabel}}
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\itemsep}{0.25em}}
 
-% Small bold heading inside a frame.
-\newcommand{\subhead}[1]{\par\vspace{0.5em}{\semibold{#1}}\par\vspace{0.15em}}
+% Small heading inside a frame.
+\newcommand{\subhead}[1]{\par\vspace{0.45em}{\intsys@semibold\color{intsysheading}#1}\par\vspace{0.2em}}
+\newcommand{\muted}[1]{{\color{intsysmuted}#1}}
+% Source line at the bottom of a chart.
+\newcommand{\source}[1]{\par\vspace{0.15em}{\tiny\color{intsysfaint}#1}\par}
+
+% \card[width][height]{content}: light grey rounded box, the site's card.
+\NewDocumentCommand{\card}{O{\linewidth} O{0pt} +m}{%
+  \begin{tikzpicture}
+    \node[fill=intsyscard, rounded corners=3pt, inner sep=0.22cm, anchor=north west,
+          text width=#1-0.44cm, align=left, minimum height=#2] {#3};
+  \end{tikzpicture}%
+}
+
+% \statvalue{value}{label}: the site's home-page number tile.
+\newcommand{\statvalue}[2]{%
+  \begin{minipage}[t]{\linewidth}\centering
+    {\fontsize{26}{27}\selectfont\intsys@semibold\color{intsysheading}#1\par}
+    \vspace{0.18cm}
+    {\footnotesize\color{intsysmuted}#2\par}
+  \end{minipage}%
+}
 
 % --- cover-style frames -----------------------------------------------------
 
@@ -103,13 +130,7 @@
     {\fontsize{12}{14.5}\selectfont\intsys@nohyphen\strut#2\strut\par};
 }
 
-% \sharebar{label}{percent}: one row of a horizontal bar chart, 0.12 cm per percent.
-\newcommand{\sharebar}[2]{%
-  \par\noindent\parbox[c]{3.9cm}{\raggedright\scriptsize#1}\hspace{0.15cm}%
-  {\color{intsysaccent}\rule[-0.1cm]{\fpeval{#2*0.12}cm}{0.32cm}}\hspace{0.1cm}{\scriptsize#2}\par\vspace{0.12cm}%
-}
-
-% \qrlink{url}{caption}: QR code with a caption under it.
+% \qrlink[size]{url}{caption}: QR code with a caption under it.
 \newcommand{\qrlink}[3][1.9cm]{%
   \begin{tabular}{@{}c@{}}
     \qrcode[height=#1]{#2}\\[0.15cm]
@@ -117,10 +138,39 @@
   \end{tabular}%
 }
 
-% --- site data (data/site/*.tex, data/supervisors.tex) ----------------------
+% --- charts -----------------------------------------------------------------
+
+\pgfplotsset{
+  intsys/.style={
+    width=\linewidth, scale only axis=false,
+    axis line style={draw=intsysline}, axis y line=none, axis x line*=bottom,
+    tick style={draw=none}, tick label style={font=\scriptsize, color=intsysmuted},
+    label style={font=\scriptsize, color=intsysmuted},
+    nodes near coords style={font=\scriptsize\intsys@semibold, color=intsysink},
+    every axis plot/.append style={draw=none},
+    legend style={draw=none, fill=none, font=\scriptsize, text=intsysmuted},
+    legend cell align=left,
+  },
+  intsys bars/.style={intsys, ybar, bar width=#1, ymin=0, enlarge x limits=0.08},
+  intsys bars/.default=0.32cm,
+}
+
+% \sharebar{label}{value}{max}: one row of a horizontal bar chart, 5 cm at max.
+\newcommand{\sharebar}[3]{%
+  \par\noindent\parbox[c]{4.2cm}{\raggedright\scriptsize#1}\hspace{0.15cm}%
+  {\color{intsysaccent}\rule[-0.08cm]{\fpeval{5*#2/#3}cm}{0.3cm}}%
+  \hspace{0.12cm}{\scriptsize\intsys@semibold#2}\par\vspace{0.1cm}%
+}
+
+% --- data store -------------------------------------------------------------
 
 \newcommand{\intsys@sset}[3]{\expandafter\gdef\csname intsys@s@#1@#2\endcsname{#3}}
 \newcommand{\intsys@sget}[2]{\csname intsys@s@#1@#2\endcsname}
+% \intsys@append{\list}{item}: comma list, expanded; \intsys@appendraw: tokens as is.
+\newcommand{\intsys@append}[2]{\ifx#1\empty\xdef#1{#2}\else\xdef#1{#1,#2}\fi}
+\newcommand{\intsys@appendraw}[2]{\g@addto@macro#1{#2}}
+
+% --- site data (data/site/*.tex, data/supervisors.tex) ----------------------
 
 \newcommand{\siteperson}[6]{%
   \intsys@sset{#1}{position}{#2}%
@@ -137,12 +187,7 @@
   \intsys@sset{#1}{lecturers}{#4}%
   \intsys@sset{#1}{url}{#5}%
   \ifcsname intsys@courses@#2\endcsname
-    \expandafter\ifx\csname intsys@courses@#2\endcsname\empty
-      \expandafter\xdef\csname intsys@courses@#2\endcsname{#1}%
-    \else
-      \expandafter\xdef\csname intsys@courses@#2\endcsname
-        {\csname intsys@courses@#2\endcsname,#1}%
-    \fi
+    \expandafter\intsys@append\csname intsys@courses@#2\endcsname{#1}%
   \fi
 }
 
@@ -153,6 +198,133 @@
 \newcommand{\supervisors}[1]{\xdef\intsys@supervisors{\zap@space#1 \@empty}}
 \newcommand{\sitestat}[2]{\intsys@sset{stat}{#1}{#2}}
 \newcommand{\stat}[1]{\intsys@sget{stat}{#1}}
+\newcommand{\instructors}{\intsys@instructors}
+\newcommand{\supervisorids}{\intsys@supervisors}
+
+% Theses per year: bachelor and master coordinates for a stacked bar chart.
+\def\intsys@thesesbachelor{}
+\def\intsys@thesesmaster{}
+\newcounter{intsystheses}
+\newcommand{\sitetheses}[3]{%
+  \intsys@appendraw\intsys@thesesbachelor{(#1,#2)}%
+  \intsys@appendraw\intsys@thesesmaster{(#1,#3)}%
+  \addtocounter{intsystheses}{\numexpr#2+#3\relax}%
+}
+\newcommand{\thesestotal}{\arabic{intsystheses}}
+
+% Admission dates: shown only if not before the build date.
+\def\intsys@admission{}
+\newcommand{\siteadmission}[2]{%
+  \ifnum\pdf@strcmp{#1}{\the\year-\two@digits{\month}-\two@digits{\day}}<0 \else
+    \intsys@appendraw\intsys@admission{\intsys@admissionitem{#1}{#2}}%
+  \fi
+}
+\def\intsys@monthname#1{\ifcase#1\or января\or февраля\or марта\or апреля\or мая\or июня\or
+  июля\or августа\or сентября\or октября\or ноября\or декабря\fi}
+\def\intsys@isodate#1-#2-#3\@nil{\number#3~\intsys@monthname{\number#2}}
+\newcommand{\intsys@admissionitem}[2]{%
+  \par\noindent\makebox[2.2cm][l]{\intsys@semibold\color{intsysaccent}\intsys@isodate#1\@nil}%
+  \parbox[t]{\dimexpr\linewidth-2.2cm}{#2}\par\vspace{0.3em}}
+\newcommand{\admissiondates}{\intsys@admission}
+
+% --- research data (data/research/stats.tex) --------------------------------
+
+\newcommand{\researchstat}[2]{\intsys@sset{research}{#1}{#2}}
+\newcommand{\research}[1]{\intsys@sget{research}{#1}}
+\newcommand{\ifresearch}[1]{\ifcsname intsys@s@research@#1\endcsname
+  \expandafter\@firstoftwo\else\expandafter\@secondoftwo\fi}
+
+% The build year is still running: its bar is drawn lighter.
+\def\intsys@github{}
+\def\intsys@githubpartial{}
+\newcounter{intsysgithub}
+\newcommand{\githubyear}[2]{%
+  \ifnum#1=\year \intsys@appendraw\intsys@githubpartial{(#1,#2)}%
+  \else\intsys@appendraw\intsys@github{(#1,#2)}\fi
+  \addtocounter{intsysgithub}{#2}}
+\newcommand{\githubtotal}{\arabic{intsysgithub}}
+
+\def\intsys@cohortcites{}
+\def\intsys@cohorth{}
+\def\intsys@cohortworks{}
+\def\intsys@cohortlabels{}
+\newcommand{\alumnicohort}[5]{%
+  \intsys@append\intsys@cohortlabels{#1}%
+  \intsys@appendraw\intsys@cohortworks{(#1,#3)}%
+  \intsys@appendraw\intsys@cohortcites{(#1,#4)}%
+  \intsys@appendraw\intsys@cohorth{(#1,#5)}%
+  \intsys@sset{cohort}{#1}{#2}%
+}
+
+\def\intsys@sectors{}
+\newcommand{\alumnisector}[2]{\intsys@appendraw\intsys@sectors{\intsys@sectorrow{#1}{#2}}}
+
+\def\intsys@top{}
+\newcommand{\alumnitop}[6]{%
+  \intsys@appendraw\intsys@top{\intsys@toprow{#1}{#2}{#3}{#4}{#5}{#6}}}
+
+% Chart and list bodies; each needs its data file, see README.
+\newcommand{\githubchart}[1][4.4cm]{%
+  \begin{tikzpicture}
+    \begin{axis}[intsys bars=0.42cm, height=#1, xtick=data,
+        xticklabel style={/pgf/number format/1000 sep={}}, nodes near coords]
+      \expandafter\addplot\expandafter[fill=intsysaccent, bar shift=0pt] coordinates {\intsys@github};
+      \ifx\intsys@githubpartial\empty\else
+        \expandafter\addplot\expandafter[fill=intsysaccent!40, bar shift=0pt]
+          coordinates {\intsys@githubpartial};
+      \fi
+    \end{axis}
+  \end{tikzpicture}%
+}
+
+\newcommand{\thesischart}[1][4.4cm]{%
+  \begin{tikzpicture}
+    \begin{axis}[intsys bars=0.3cm, height=#1, xtick=data, enlarge x limits=0.12,
+        xticklabel style={/pgf/number format/1000 sep={}}, nodes near coords,
+        legend columns=2, legend style={at={(0,1.02)}, anchor=south west},
+        legend image code/.code={\fill[##1] (0cm,-0.08cm) rectangle (0.25cm,0.12cm);}]
+      \expandafter\addplot\expandafter[fill=intsysaccent] coordinates {\intsys@thesesbachelor};
+      \expandafter\addplot\expandafter[fill=intsysaccent!40] coordinates {\intsys@thesesmaster};
+      \legend{бакалавры, магистры}
+    \end{axis}
+  \end{tikzpicture}%
+}
+
+% \cohortchart{cites|h|works}{title}
+\newcommand{\cohortchart}[3][4.2cm]{%
+  \edef\intsys@coords{\csname intsys@cohort#2\endcsname}%
+  \edef\intsys@labels{\intsys@cohortlabels}%
+  \begin{tikzpicture}
+    \begin{axis}[intsys bars=0.75cm, height=#1, width=0.95\linewidth,
+        symbolic x coords/.expanded=\intsys@labels, xtick=data, enlarge x limits=0.28,
+        nodes near coords, title={\scriptsize\color{intsysmuted}#3},
+        xlabel={лет после выпуска}]
+      \expandafter\addplot\expandafter[fill=intsysaccent] coordinates {\intsys@coords};
+    \end{axis}
+  \end{tikzpicture}%
+}
+
+\def\intsys@sectorrow#1#2{\sharebar{#1}{#2}{\research{sector-max}}}
+\newcommand{\sectorbars}{\intsys@sectors}
+
+\def\intsys@toprow#1#2#3#4#5#6{%
+  \item {\intsys@semibold#1}, выпуск #2 --- {\color{intsysaccent}\intsys@semibold#3} цитирований, $h=#4$\\
+  {\tiny\color{intsysmuted}самая цитируемая: #5 (#6)}}
+\newcommand{\topalumni}{\begin{itemize}\intsys@top\end{itemize}}
+
+% \researchsteps{head/body, ...}: vertical timeline with accent dots.
+\newcommand{\researchsteps}[1]{%
+  \begin{tikzpicture}[y=-0.95cm]
+    \foreach \head/\body [count=\i from 0] in {#1} {%
+      \ifnum\i>0 \draw[intsysline, line width=1.2pt] (0,\i-1) -- (0,\i);\fi
+      \node[circle, fill=intsysaccent, inner sep=0pt, minimum size=0.22cm] at (0,\i) {};
+      \node[anchor=west, text width=6.2cm, align=left, font=\footnotesize] at (0.3,\i)
+        {{\intsys@semibold\color{intsysheading}\head}\\{\color{intsysmuted}\body}};
+    }
+  \end{tikzpicture}%
+}
+
+% --- people -----------------------------------------------------------------
 
 \def\intsys@firstchar#1#2\@nil{#1}
 \newcommand{\intsys@initial}[1]{%
@@ -166,19 +338,27 @@
   \,\intsys@initial{\intsys@sget{#1}{patronymic}}%
 }
 
-% \courselist{bachelor|master}: numbered course names with lecturers.
-\newcommand{\courselist}[1]{%
-  \edef\intsys@list{\csname intsys@courses@#1\endcsname}%
-  \begin{enumerate}
-    \foreach \cid in \intsys@list {%
-      \item \intsys@sget{\cid}{name}
-        {\footnotesize\textcolor{intsysmuted}{(%
-          \gdef\intsys@sep{}%
-          \edef\intsys@ids{\intsys@sget{\cid}{lecturers}}%
-          \foreach \p in \intsys@ids {\intsys@sep\shortname{\p}\gdef\intsys@sep{, }}%
-        )}}%
+\newcommand{\intsys@lecturers}[1]{%
+  \gdef\intsys@sep{}%
+  \edef\intsys@ids{\intsys@sget{#1}{lecturers}}%
+  \foreach \p in \intsys@ids {\intsys@sep\shortname{\p}\gdef\intsys@sep{, }}%
+}
+
+% \coursecards[columns][card height]{bachelor|master}: grid of course cards.
+\NewDocumentCommand{\coursecards}{O{2} O{1.05cm} m}{%
+  \edef\intsys@list{\csname intsys@courses@#3\endcsname}%
+  \begin{tikzpicture}
+    \pgfmathsetmacro{\intsys@cellw}{(\linewidth+0.25cm)/#1}%
+    \foreach \cid [count=\i from 0] in \intsys@list {%
+      \pgfmathsetmacro{\intsys@x}{mod(\i,#1)*\intsys@cellw}%
+      \pgfmathsetmacro{\intsys@y}{-floor(\i/#1)*(#2+0.18cm)}%
+      \node[fill=intsyscard, rounded corners=3pt, anchor=north west, inner sep=0.16cm,
+            minimum height=#2, text width=\intsys@cellw pt-0.25cm-0.32cm, align=left]
+        at (\intsys@x pt,\intsys@y pt) {%
+          {\footnotesize\intsys@semibold\color{intsysheading}\intsys@sget{\cid}{name}}\\[0.05cm]
+          {\tiny\color{intsysmuted}\intsys@lecturers{\cid}}};
     }
-  \end{enumerate}%
+  \end{tikzpicture}%
 }
 
 % Avatar file: site avatar, else the cover portrait <id>.png.
@@ -191,7 +371,7 @@
 % \teamgrid[columns][photo size]{ids}: round photos with names under them.
 \NewDocumentCommand{\teamgrid}{O{9} O{1.15cm} m}{%
   \begin{tikzpicture}
-    \pgfmathsetmacro{\intsys@cellw}{(\textwidth)/#1}%
+    \pgfmathsetmacro{\intsys@cellw}{(\linewidth)/#1}%
     \edef\intsys@ids{#3}%
     \foreach \p [count=\i from 0] in \intsys@ids {%
       \pgfmathsetmacro{\intsys@x}{mod(\i,#1)*\intsys@cellw}%
@@ -215,12 +395,22 @@
     }
   \end{tikzpicture}%
 }
-\newcommand{\instructors}{\intsys@instructors}
-\newcommand{\supervisorids}{\intsys@supervisors}
+
+% \roundphoto[radius]{file}{height}: photo with rounded corners.
+\NewDocumentCommand{\roundphoto}{O{3pt} m m}{%
+  \sbox\intsys@photobox{\includegraphics[height=#3]{#2}}%
+  \begin{tikzpicture}
+    \clip[rounded corners=#1] (0,0) rectangle (\wd\intsys@photobox,\ht\intsys@photobox);
+    \node[inner sep=0pt, anchor=south west] at (0,0) {\usebox\intsys@photobox};
+  \end{tikzpicture}%
+}
 
 \IfFileExists{data/site/people.tex}{\input{data/site/people.tex}}{}
 \IfFileExists{data/site/courses.tex}{\input{data/site/courses.tex}}{}
 \IfFileExists{data/site/stats.tex}{\input{data/site/stats.tex}}{}
+\IfFileExists{data/site/theses.tex}{\input{data/site/theses.tex}}{}
+\IfFileExists{data/site/admission.tex}{\input{data/site/admission.tex}}{}
 \IfFileExists{data/supervisors.tex}{\input{data/supervisors.tex}}{}
+\IfFileExists{data/research/stats.tex}{\input{data/research/stats.tex}}{}
 
 \endinput
