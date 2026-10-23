@@ -1,0 +1,1854 @@
+{
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80+%D0%9C%D0%B0%D1%84%D1%83%D1%81%D0%B0%D0%BB%D0%BE%D0%B2&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80+%D0%9C%D0%B0%D1%84%D1%83%D1%81%D0%B0%D0%BB%D0%BE%D0%B2&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80+%D0%A4%D1%80%D0%B5%D0%B9&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80+%D0%A4%D1%80%D0%B5%D0%B9&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9+%D0%91%D0%B0%D0%B4%D0%B7%D1%8F%D0%BD&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9+%D0%91%D0%B0%D0%B4%D0%B7%D1%8F%D0%BD&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80+%D0%A7%D0%B5%D1%80%D0%BD%D1%8B%D1%85&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=%D0%9B%D1%8E%D0%B1%D0%BE%D0%B2%D1%8C+%D0%9B%D0%B5%D0%BE%D0%BD%D1%82%D1%8C%D0%B5%D0%B2%D0%B0&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=%D0%9B%D1%8E%D0%B1%D0%BE%D0%B2%D1%8C+%D0%9B%D0%B5%D0%BE%D0%BD%D1%82%D1%8C%D0%B5%D0%B2%D0%B0&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=%D0%9C%D0%B8%D1%85%D0%B0%D0%B8%D0%BB+%D0%A8%D0%B0%D0%B2%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=%D0%9C%D0%B8%D1%85%D0%B0%D0%B8%D0%BB+%D0%A8%D0%B0%D0%B2%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=%D0%9F%D0%B0%D0%B2%D0%B5%D0%BB+%D0%9C%D0%B8%D1%89%D0%B5%D0%BD%D0%BA%D0%BE&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=%D0%9F%D0%B0%D0%B2%D0%B5%D0%BB+%D0%9C%D0%B8%D1%89%D0%B5%D0%BD%D0%BA%D0%BE&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=%D0%A1%D0%B2%D0%B5%D1%82%D0%BB%D0%B0%D0%BD%D0%B0+%D0%A8%D0%B8%D1%88%D0%BA%D0%BE%D0%B2%D0%B5%D1%86&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Aleksandr+Frei&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Aleksei+Kurakin&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Alexander+Frey&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Alexander+Frey&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Alexander+Mafusalov&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Alexander+Mafusalov&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Alexey+Kravatskiy&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Alexey+Kravatskiy&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Alexey+Kurakin&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": [
+{
+"cited_by_count": 17480,
+"display_name": "Alexey Kurakin",
+"id": "https://openalex.org/A5052664531",
+"last_known_institutions": null,
+"summary_stats": {
+"2yr_mean_citedness": 1.3333333333333333,
+"h_index": 22,
+"i10_index": 25
+},
+"works_count": 45
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Alexey+Kurakin&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": [
+{
+"affiliations": [
+{
+"institution": {
+"country_code": "US",
+"display_name": "Google (United States)",
+"id": "https://openalex.org/I1291425158",
+"lineage": [
+"https://openalex.org/I1291425158",
+"https://openalex.org/I4210128969"
+],
+"ror": "https://ror.org/00njsd438",
+"type": "company"
+},
+"years": [
+2025,
+2024,
+2023,
+2022,
+2021,
+2020,
+2019,
+2018,
+2017,
+2016
+]
+},
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Moscow Institute of Physics and Technology",
+"id": "https://openalex.org/I153845743",
+"lineage": [
+"https://openalex.org/I153845743"
+],
+"ror": "https://ror.org/00v0z9322",
+"type": "education"
+},
+"years": [
+2016,
+2011,
+2007
+]
+}
+],
+"cited_by_count": 17480,
+"display_name": "Alexey Kurakin",
+"id": "https://openalex.org/A5052664531",
+"last_known_institutions": null,
+"summary_stats": {
+"2yr_mean_citedness": 1.3333333333333333,
+"h_index": 22,
+"i10_index": 25
+},
+"works_count": 45
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Andrei+Badzian&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Andrey+Badzyan&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Andrey+Badzyan&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Ekaterina+Krymova&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": [
+{
+"cited_by_count": 680,
+"display_name": "Ekaterina Krymova",
+"id": "https://openalex.org/A5029889274",
+"last_known_institutions": [
+{
+"country_code": "CH",
+"display_name": "ETH Zurich",
+"id": "https://openalex.org/I35440088",
+"lineage": [
+"https://openalex.org/I2799323385",
+"https://openalex.org/I35440088"
+],
+"ror": "https://ror.org/05a28rw58",
+"type": "education"
+},
+{
+"country_code": "CH",
+"display_name": "Swiss Data Science Center",
+"id": "https://openalex.org/I4210122261",
+"lineage": [
+"https://openalex.org/I2799323385",
+"https://openalex.org/I35440088",
+"https://openalex.org/I4210122261",
+"https://openalex.org/I5124864"
+],
+"ror": "https://ror.org/02hdt9m26",
+"type": "education"
+},
+{
+"country_code": "CH",
+"display_name": "École Polytechnique Fédérale de Lausanne",
+"id": "https://openalex.org/I5124864",
+"lineage": [
+"https://openalex.org/I2799323385",
+"https://openalex.org/I5124864"
+],
+"ror": "https://ror.org/02s376052",
+"type": "education"
+}
+],
+"summary_stats": {
+"2yr_mean_citedness": 1.3636363636363635,
+"h_index": 11,
+"i10_index": 12
+},
+"works_count": 79
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Ekaterina+Krymova&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": [
+{
+"affiliations": [
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Russian Academy of Sciences",
+"id": "https://openalex.org/I1313323035",
+"lineage": [
+"https://openalex.org/I1313323035"
+],
+"ror": "https://ror.org/05qrfxd25",
+"type": "government"
+},
+"years": [
+2018,
+2017,
+2016,
+2013,
+2011
+]
+},
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Moscow Institute of Physics and Technology",
+"id": "https://openalex.org/I153845743",
+"lineage": [
+"https://openalex.org/I153845743"
+],
+"ror": "https://ror.org/00v0z9322",
+"type": "education"
+},
+"years": [
+2015
+]
+},
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Dorodnitsyn Computing Centre",
+"id": "https://openalex.org/I2801535751",
+"lineage": [
+"https://openalex.org/I1313323035",
+"https://openalex.org/I2801535751",
+"https://openalex.org/I4210124601"
+],
+"ror": "https://ror.org/01vgda714",
+"type": "facility"
+},
+"years": [
+2011
+]
+},
+{
+"institution": {
+"country_code": "CH",
+"display_name": "ETH Zurich",
+"id": "https://openalex.org/I35440088",
+"lineage": [
+"https://openalex.org/I2799323385",
+"https://openalex.org/I35440088"
+],
+"ror": "https://ror.org/05a28rw58",
+"type": "education"
+},
+"years": [
+2026,
+2025,
+2024,
+2023,
+2022,
+2021
+]
+},
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Institute of Earthquake Prediction Theory and Mathematical Geophysics",
+"id": "https://openalex.org/I4210096249",
+"lineage": [
+"https://openalex.org/I1313323035",
+"https://openalex.org/I4210096249",
+"https://openalex.org/I4210163714"
+],
+"ror": "https://ror.org/00s1q1t70",
+"type": "facility"
+},
+"years": [
+2017
+]
+},
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Institute for Information Transmission Problems",
+"id": "https://openalex.org/I4210107660",
+"lineage": [
+"https://openalex.org/I4210107660"
+],
+"ror": "https://ror.org/013w2d378",
+"type": "facility"
+},
+"years": [
+2018,
+2017,
+2016,
+2015,
+2013
+]
+},
+{
+"institution": {
+"country_code": "DE",
+"display_name": "Essen University Hospital",
+"id": "https://openalex.org/I4210119759",
+"lineage": [
+"https://openalex.org/I4210119759"
+],
+"ror": "https://ror.org/02na8dn90",
+"type": "funder"
+},
+"years": [
+2018
+]
+},
+{
+"institution": {
+"country_code": "CH",
+"display_name": "Swiss Data Science Center",
+"id": "https://openalex.org/I4210122261",
+"lineage": [
+"https://openalex.org/I2799323385",
+"https://openalex.org/I35440088",
+"https://openalex.org/I4210122261",
+"https://openalex.org/I5124864"
+],
+"ror": "https://ror.org/02hdt9m26",
+"type": "education"
+},
+"years": [
+2026,
+2025,
+2024,
+2023,
+2022,
+2021,
+2020
+]
+},
+{
+"institution": {
+"country_code": "CH",
+"display_name": "École Polytechnique Fédérale de Lausanne",
+"id": "https://openalex.org/I5124864",
+"lineage": [
+"https://openalex.org/I2799323385",
+"https://openalex.org/I5124864"
+],
+"ror": "https://ror.org/02s376052",
+"type": "education"
+},
+"years": [
+2026,
+2025,
+2023,
+2022,
+2021,
+2020
+]
+},
+{
+"institution": {
+"country_code": "DE",
+"display_name": "University of Duisburg-Essen",
+"id": "https://openalex.org/I62318514",
+"lineage": [
+"https://openalex.org/I62318514"
+],
+"ror": "https://ror.org/04mz5ra38",
+"type": "education"
+},
+"years": [
+2019,
+2018,
+2017
+]
+},
+{
+"institution": {
+"country_code": "US",
+"display_name": "Massachusetts Institute of Technology",
+"id": "https://openalex.org/I63966007",
+"lineage": [
+"https://openalex.org/I63966007"
+],
+"ror": "https://ror.org/042nb2s44",
+"type": "education"
+},
+"years": [
+2021
+]
+}
+],
+"cited_by_count": 680,
+"display_name": "Ekaterina Krymova",
+"id": "https://openalex.org/A5029889274",
+"last_known_institutions": [
+{
+"country_code": "CH",
+"display_name": "ETH Zurich",
+"id": "https://openalex.org/I35440088",
+"lineage": [
+"https://openalex.org/I2799323385",
+"https://openalex.org/I35440088"
+],
+"ror": "https://ror.org/05a28rw58",
+"type": "education"
+},
+{
+"country_code": "CH",
+"display_name": "Swiss Data Science Center",
+"id": "https://openalex.org/I4210122261",
+"lineage": [
+"https://openalex.org/I2799323385",
+"https://openalex.org/I35440088",
+"https://openalex.org/I4210122261",
+"https://openalex.org/I5124864"
+],
+"ror": "https://ror.org/02hdt9m26",
+"type": "education"
+},
+{
+"country_code": "CH",
+"display_name": "École Polytechnique Fédérale de Lausanne",
+"id": "https://openalex.org/I5124864",
+"lineage": [
+"https://openalex.org/I2799323385",
+"https://openalex.org/I5124864"
+],
+"ror": "https://ror.org/02s376052",
+"type": "education"
+}
+],
+"summary_stats": {
+"2yr_mean_citedness": 1.3636363636363635,
+"h_index": 11,
+"i10_index": 12
+},
+"works_count": 79
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Grigorii+Malinovskii&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Grigory+Malinovskiy&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": [
+{
+"cited_by_count": 179,
+"display_name": "Grigory Malinovsky",
+"id": "https://openalex.org/A5026967025",
+"last_known_institutions": [
+{
+"country_code": "SA",
+"display_name": "King Abdullah University of Science and Technology",
+"id": "https://openalex.org/I71920554",
+"lineage": [
+"https://openalex.org/I71920554"
+],
+"ror": "https://ror.org/01q3tbs38",
+"type": "education"
+}
+],
+"summary_stats": {
+"2yr_mean_citedness": 0.5333333333333333,
+"h_index": 6,
+"i10_index": 5
+},
+"works_count": 34
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Grigory+Malinovskiy&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": [
+{
+"affiliations": [
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Moscow Institute of Physics and Technology",
+"id": "https://openalex.org/I153845743",
+"lineage": [
+"https://openalex.org/I153845743"
+],
+"ror": "https://ror.org/00v0z9322",
+"type": "education"
+},
+"years": [
+2020
+]
+},
+{
+"institution": {
+"country_code": "SA",
+"display_name": "King Abdullah University of Science and Technology",
+"id": "https://openalex.org/I71920554",
+"lineage": [
+"https://openalex.org/I71920554"
+],
+"ror": "https://ror.org/01q3tbs38",
+"type": "education"
+},
+"years": [
+2026,
+2025,
+2024,
+2023,
+2022,
+2021
+]
+}
+],
+"cited_by_count": 179,
+"display_name": "Grigory Malinovsky",
+"id": "https://openalex.org/A5026967025",
+"last_known_institutions": [
+{
+"country_code": "SA",
+"display_name": "King Abdullah University of Science and Technology",
+"id": "https://openalex.org/I71920554",
+"lineage": [
+"https://openalex.org/I71920554"
+],
+"ror": "https://ror.org/01q3tbs38",
+"type": "education"
+}
+],
+"summary_stats": {
+"2yr_mean_citedness": 0.5333333333333333,
+"h_index": 6,
+"i10_index": 5
+},
+"works_count": 34
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Liubov+Leonteva&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Lyubov+Leonteva&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Lyubov+Leonteva&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Maxim+Panov&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": [
+{
+"cited_by_count": 674,
+"display_name": "Maxim Panov",
+"id": "https://openalex.org/A5047074710",
+"last_known_institutions": [
+{
+"country_code": "AU",
+"display_name": "The University of Melbourne",
+"id": "https://openalex.org/I165779595",
+"lineage": [
+"https://openalex.org/I165779595"
+],
+"ror": "https://ror.org/01ej9dk98",
+"type": "education"
+},
+{
+"country_code": "AE",
+"display_name": "Mohamed bin Zayed University of Artificial Intelligence",
+"id": "https://openalex.org/I4210113480",
+"lineage": [
+"https://openalex.org/I4210113480"
+],
+"ror": "https://ror.org/0258gkt32",
+"type": "education"
+},
+{
+"country_code": "AE",
+"display_name": "Zayed University",
+"id": "https://openalex.org/I91044093",
+"lineage": [
+"https://openalex.org/I91044093"
+],
+"ror": "https://ror.org/03snqfa66",
+"type": "education"
+}
+],
+"summary_stats": {
+"2yr_mean_citedness": 0.7560975609756098,
+"h_index": 14,
+"i10_index": 17
+},
+"works_count": 95
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Maxim+Panov&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": [
+{
+"affiliations": [
+{
+"institution": {
+"country_code": "RU",
+"display_name": "National Research University Higher School of Economics",
+"id": "https://openalex.org/I118501908",
+"lineage": [
+"https://openalex.org/I118501908"
+],
+"ror": "https://ror.org/055f7t516",
+"type": "education"
+},
+"years": [
+2023
+]
+},
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Skolkovo Institute of Science and Technology",
+"id": "https://openalex.org/I125989756",
+"lineage": [
+"https://openalex.org/I125989756"
+],
+"ror": "https://ror.org/03f9nc143",
+"type": "education"
+},
+"years": [
+2025,
+2023,
+2022,
+2021,
+2020,
+2019,
+2018,
+2017
+]
+},
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Russian Academy of Sciences",
+"id": "https://openalex.org/I1313323035",
+"lineage": [
+"https://openalex.org/I1313323035"
+],
+"ror": "https://ror.org/05qrfxd25",
+"type": "government"
+},
+"years": [
+2018,
+2017,
+2016,
+2014
+]
+},
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Moscow Institute of Physics and Technology",
+"id": "https://openalex.org/I153845743",
+"lineage": [
+"https://openalex.org/I153845743"
+],
+"ror": "https://ror.org/00v0z9322",
+"type": "education"
+},
+"years": [
+2016,
+2015,
+2014,
+2011
+]
+},
+{
+"institution": {
+"country_code": "AU",
+"display_name": "The University of Melbourne",
+"id": "https://openalex.org/I165779595",
+"lineage": [
+"https://openalex.org/I165779595"
+],
+"ror": "https://ror.org/01ej9dk98",
+"type": "education"
+},
+"years": [
+2026
+]
+},
+{
+"institution": {
+"country_code": "AE",
+"display_name": "Technology Innovation Institute",
+"id": "https://openalex.org/I4210087059",
+"lineage": [
+"https://openalex.org/I4210087059"
+],
+"ror": "https://ror.org/001kv2y39",
+"type": "facility"
+},
+"years": [
+2025,
+2024,
+2023,
+2022
+]
+},
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Institute for Information Transmission Problems",
+"id": "https://openalex.org/I4210107660",
+"lineage": [
+"https://openalex.org/I4210107660"
+],
+"ror": "https://ror.org/013w2d378",
+"type": "facility"
+},
+"years": [
+2023,
+2018,
+2017,
+2016,
+2015,
+2014
+]
+},
+{
+"institution": {
+"country_code": "AE",
+"display_name": "Mohamed bin Zayed University of Artificial Intelligence",
+"id": "https://openalex.org/I4210113480",
+"lineage": [
+"https://openalex.org/I4210113480"
+],
+"ror": "https://ror.org/0258gkt32",
+"type": "education"
+},
+"years": [
+2026,
+2025,
+2024,
+2023
+]
+},
+{
+"institution": {
+"country_code": "US",
+"display_name": "University of Missouri",
+"id": "https://openalex.org/I76835614",
+"lineage": [
+"https://openalex.org/I76835614"
+],
+"ror": "https://ror.org/02ymw8z06",
+"type": "education"
+},
+"years": [
+2024
+]
+},
+{
+"institution": {
+"country_code": "AE",
+"display_name": "Zayed University",
+"id": "https://openalex.org/I91044093",
+"lineage": [
+"https://openalex.org/I91044093"
+],
+"ror": "https://ror.org/03snqfa66",
+"type": "education"
+},
+"years": [
+2026
+]
+}
+],
+"cited_by_count": 674,
+"display_name": "Maxim Panov",
+"id": "https://openalex.org/A5047074710",
+"last_known_institutions": [
+{
+"country_code": "AU",
+"display_name": "The University of Melbourne",
+"id": "https://openalex.org/I165779595",
+"lineage": [
+"https://openalex.org/I165779595"
+],
+"ror": "https://ror.org/01ej9dk98",
+"type": "education"
+},
+{
+"country_code": "AE",
+"display_name": "Mohamed bin Zayed University of Artificial Intelligence",
+"id": "https://openalex.org/I4210113480",
+"lineage": [
+"https://openalex.org/I4210113480"
+],
+"ror": "https://ror.org/0258gkt32",
+"type": "education"
+},
+{
+"country_code": "AE",
+"display_name": "Zayed University",
+"id": "https://openalex.org/I91044093",
+"lineage": [
+"https://openalex.org/I91044093"
+],
+"ror": "https://ror.org/03snqfa66",
+"type": "education"
+}
+],
+"summary_stats": {
+"2yr_mean_citedness": 0.7560975609756098,
+"h_index": 14,
+"i10_index": 17
+},
+"works_count": 95
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Mihail+Karasikov&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Mihail+Matrosov&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Mihail+Shavlovskii&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Mikhail+Karasikov&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": [
+{
+"cited_by_count": 1557,
+"display_name": "Mikhail Karasikov",
+"id": "https://openalex.org/A5085609478",
+"last_known_institutions": [
+{
+"country_code": "CH",
+"display_name": "SIB Swiss Institute of Bioinformatics",
+"id": "https://openalex.org/I12708293",
+"lineage": [
+"https://openalex.org/I12708293"
+],
+"ror": "https://ror.org/002n09z45",
+"type": "nonprofit"
+},
+{
+"country_code": "CH",
+"display_name": "ETH Zurich",
+"id": "https://openalex.org/I35440088",
+"lineage": [
+"https://openalex.org/I2799323385",
+"https://openalex.org/I35440088"
+],
+"ror": "https://ror.org/05a28rw58",
+"type": "education"
+},
+{
+"country_code": "CH",
+"display_name": "University Hospital Zurich",
+"id": "https://openalex.org/I4210100468",
+"lineage": [
+"https://openalex.org/I4210100468"
+],
+"ror": "https://ror.org/01462r250",
+"type": "healthcare"
+}
+],
+"summary_stats": {
+"2yr_mean_citedness": 15.0,
+"h_index": 13,
+"i10_index": 16
+},
+"works_count": 26
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Mikhail+Karasikov&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": [
+{
+"affiliations": [
+{
+"institution": {
+"country_code": "FR",
+"display_name": "Institut polytechnique de Grenoble",
+"id": "https://openalex.org/I106785703",
+"lineage": [
+"https://openalex.org/I106785703",
+"https://openalex.org/I899635006"
+],
+"ror": "https://ror.org/05sbt2524",
+"type": "education"
+},
+"years": [
+2018
+]
+},
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Skolkovo Institute of Science and Technology",
+"id": "https://openalex.org/I125989756",
+"lineage": [
+"https://openalex.org/I125989756"
+],
+"ror": "https://ror.org/03f9nc143",
+"type": "education"
+},
+"years": [
+2020,
+2019,
+2018,
+2017
+]
+},
+{
+"institution": {
+"country_code": "CH",
+"display_name": "SIB Swiss Institute of Bioinformatics",
+"id": "https://openalex.org/I12708293",
+"lineage": [
+"https://openalex.org/I12708293"
+],
+"ror": "https://ror.org/002n09z45",
+"type": "nonprofit"
+},
+"years": [
+2025,
+2024,
+2022,
+2021,
+2020,
+2019,
+2018
+]
+},
+{
+"institution": {
+"country_code": "FR",
+"display_name": "Centre National de la Recherche Scientifique",
+"id": "https://openalex.org/I1294671590",
+"lineage": [
+"https://openalex.org/I1294671590"
+],
+"ror": "https://ror.org/02feahw73",
+"type": "government"
+},
+"years": [
+2018
+]
+},
+{
+"institution": {
+"country_code": "FR",
+"display_name": "Institut national de recherche en sciences et technologies du numérique",
+"id": "https://openalex.org/I1326498283",
+"lineage": [
+"https://openalex.org/I1326498283"
+],
+"ror": "https://ror.org/02kvxyf05",
+"type": "government"
+},
+"years": [
+2018
+]
+},
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Moscow Institute of Physics and Technology",
+"id": "https://openalex.org/I153845743",
+"lineage": [
+"https://openalex.org/I153845743"
+],
+"ror": "https://ror.org/00v0z9322",
+"type": "education"
+},
+"years": [
+2020,
+2019,
+2018,
+2017
+]
+},
+{
+"institution": {
+"country_code": "CH",
+"display_name": "Board of the Swiss Federal Institutes of Technology",
+"id": "https://openalex.org/I2799323385",
+"lineage": [
+"https://openalex.org/I2799323385"
+],
+"ror": "https://ror.org/01rvn4p91",
+"type": "government"
+},
+"years": [
+2021
+]
+},
+{
+"institution": {
+"country_code": "CH",
+"display_name": "ETH Zurich",
+"id": "https://openalex.org/I35440088",
+"lineage": [
+"https://openalex.org/I2799323385",
+"https://openalex.org/I35440088"
+],
+"ror": "https://ror.org/05a28rw58",
+"type": "education"
+},
+"years": [
+2025,
+2024,
+2022,
+2021,
+2020,
+2019,
+2018,
+2017
+]
+},
+{
+"institution": {
+"country_code": "CH",
+"display_name": "University Hospital Zurich",
+"id": "https://openalex.org/I4210100468",
+"lineage": [
+"https://openalex.org/I4210100468"
+],
+"ror": "https://ror.org/01462r250",
+"type": "healthcare"
+},
+"years": [
+2025,
+2024,
+2022,
+2021,
+2020,
+2019,
+2018
+]
+},
+{
+"institution": {
+"country_code": "FR",
+"display_name": "Laboratoire Jean Kuntzmann",
+"id": "https://openalex.org/I4210149092",
+"lineage": [
+"https://openalex.org/I106785703",
+"https://openalex.org/I1294671590",
+"https://openalex.org/I1326498283",
+"https://openalex.org/I4210149092",
+"https://openalex.org/I899635006"
+],
+"ror": "https://ror.org/04ett5b41",
+"type": "facility"
+},
+"years": [
+2018
+]
+}
+],
+"cited_by_count": 1557,
+"display_name": "Mikhail Karasikov",
+"id": "https://openalex.org/A5085609478",
+"last_known_institutions": [
+{
+"country_code": "CH",
+"display_name": "SIB Swiss Institute of Bioinformatics",
+"id": "https://openalex.org/I12708293",
+"lineage": [
+"https://openalex.org/I12708293"
+],
+"ror": "https://ror.org/002n09z45",
+"type": "nonprofit"
+},
+{
+"country_code": "CH",
+"display_name": "ETH Zurich",
+"id": "https://openalex.org/I35440088",
+"lineage": [
+"https://openalex.org/I2799323385",
+"https://openalex.org/I35440088"
+],
+"ror": "https://ror.org/05a28rw58",
+"type": "education"
+},
+{
+"country_code": "CH",
+"display_name": "University Hospital Zurich",
+"id": "https://openalex.org/I4210100468",
+"lineage": [
+"https://openalex.org/I4210100468"
+],
+"ror": "https://ror.org/01462r250",
+"type": "healthcare"
+}
+],
+"summary_stats": {
+"2yr_mean_citedness": 15.0,
+"h_index": 13,
+"i10_index": 16
+},
+"works_count": 26
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Mikhail+Matrosov&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": [
+{
+"cited_by_count": 28,
+"display_name": "Mikhail Matrosov",
+"id": "https://openalex.org/A5034561672",
+"last_known_institutions": [
+{
+"country_code": "RU",
+"display_name": "Skolkovo Institute of Science and Technology",
+"id": "https://openalex.org/I125989756",
+"lineage": [
+"https://openalex.org/I125989756"
+],
+"ror": "https://ror.org/03f9nc143",
+"type": "education"
+}
+],
+"summary_stats": {
+"2yr_mean_citedness": 0.0,
+"h_index": 2,
+"i10_index": 1
+},
+"works_count": 5
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Mikhail+Matrosov&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": [
+{
+"affiliations": [
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Skolkovo Institute of Science and Technology",
+"id": "https://openalex.org/I125989756",
+"lineage": [
+"https://openalex.org/I125989756"
+],
+"ror": "https://ror.org/03f9nc143",
+"type": "education"
+},
+"years": [
+2020,
+2018,
+2016
+]
+},
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Lomonosov Moscow State University",
+"id": "https://openalex.org/I19880235",
+"lineage": [
+"https://openalex.org/I19880235"
+],
+"ror": "https://ror.org/010pmpe69",
+"type": "education"
+},
+"years": [
+2013
+]
+}
+],
+"cited_by_count": 28,
+"display_name": "Mikhail Matrosov",
+"id": "https://openalex.org/A5034561672",
+"last_known_institutions": [
+{
+"country_code": "RU",
+"display_name": "Skolkovo Institute of Science and Technology",
+"id": "https://openalex.org/I125989756",
+"lineage": [
+"https://openalex.org/I125989756"
+],
+"ror": "https://ror.org/03f9nc143",
+"type": "education"
+}
+],
+"summary_stats": {
+"2yr_mean_citedness": 0.0,
+"h_index": 2,
+"i10_index": 1
+},
+"works_count": 5
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Mikhail+Shavlovskiy&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Mikhail+Shavlovskiy&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Oleg+Bakhteev&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": [
+{
+"cited_by_count": 78,
+"display_name": "Oleg Bakhteev",
+"id": "https://openalex.org/A5010405643",
+"last_known_institutions": null,
+"summary_stats": {
+"2yr_mean_citedness": 0.2,
+"h_index": 6,
+"i10_index": 2
+},
+"works_count": 28
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Oleg+Grinchuk&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": [
+{
+"cited_by_count": 127,
+"display_name": "Oleg Grinchuk",
+"id": "https://openalex.org/A5003702883",
+"last_known_institutions": null,
+"summary_stats": {
+"2yr_mean_citedness": 0.0,
+"h_index": 5,
+"i10_index": 1
+},
+"works_count": 11
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Oleg+Grinchuk&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": [
+{
+"affiliations": [
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Skolkovo Institute of Science and Technology",
+"id": "https://openalex.org/I125989756",
+"lineage": [
+"https://openalex.org/I125989756"
+],
+"ror": "https://ror.org/03f9nc143",
+"type": "education"
+},
+"years": [
+2018,
+2016
+]
+},
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Moscow Institute of Physics and Technology",
+"id": "https://openalex.org/I153845743",
+"lineage": [
+"https://openalex.org/I153845743"
+],
+"ror": "https://ror.org/00v0z9322",
+"type": "education"
+},
+"years": [
+2020,
+2019,
+2018
+]
+}
+],
+"cited_by_count": 127,
+"display_name": "Oleg Grinchuk",
+"id": "https://openalex.org/A5003702883",
+"last_known_institutions": null,
+"summary_stats": {
+"2yr_mean_citedness": 0.0,
+"h_index": 5,
+"i10_index": 1
+},
+"works_count": 11
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Olga+Grebenkova&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": [
+{
+"cited_by_count": 148,
+"display_name": "Olga Grebenkova",
+"id": "https://openalex.org/A5078691622",
+"last_known_institutions": null,
+"summary_stats": {
+"2yr_mean_citedness": 18.5,
+"h_index": 3,
+"i10_index": 2
+},
+"works_count": 10
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Olga+Grebenkova&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": [
+{
+"affiliations": [
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Skolkovo Institute of Science and Technology",
+"id": "https://openalex.org/I125989756",
+"lineage": [
+"https://openalex.org/I125989756"
+],
+"ror": "https://ror.org/03f9nc143",
+"type": "education"
+},
+"years": [
+2023
+]
+},
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Moscow Institute of Physics and Technology",
+"id": "https://openalex.org/I153845743",
+"lineage": [
+"https://openalex.org/I153845743"
+],
+"ror": "https://ror.org/00v0z9322",
+"type": "education"
+},
+"years": [
+2023,
+2022
+]
+},
+{
+"institution": {
+"country_code": null,
+"display_name": "Munich Center for Machine Learning",
+"id": "https://openalex.org/I4403386549",
+"lineage": [
+"https://openalex.org/I4403386549",
+"https://openalex.org/I62916508",
+"https://openalex.org/I8204097"
+],
+"ror": "https://ror.org/02nfy3535",
+"type": "education"
+},
+"years": [
+2025,
+2024
+]
+},
+{
+"institution": {
+"country_code": "DE",
+"display_name": "Ludwig-Maximilians-Universität München",
+"id": "https://openalex.org/I8204097",
+"lineage": [
+"https://openalex.org/I8204097"
+],
+"ror": "https://ror.org/05591te55",
+"type": "education"
+},
+"years": [
+2025,
+2024
+]
+}
+],
+"cited_by_count": 148,
+"display_name": "Olga Grebenkova",
+"id": "https://openalex.org/A5078691622",
+"last_known_institutions": null,
+"summary_stats": {
+"2yr_mean_citedness": 18.5,
+"h_index": 3,
+"i10_index": 2
+},
+"works_count": 10
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Pavel+Mishchenko&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Pavel+Mishchenko&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Roman+Repeev&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": [
+{
+"cited_by_count": 0,
+"display_name": "Roman Repeev",
+"id": "https://openalex.org/A5093393137",
+"last_known_institutions": [
+{
+"country_code": "RU",
+"display_name": "Moscow Institute of Physics and Technology",
+"id": "https://openalex.org/I153845743",
+"lineage": [
+"https://openalex.org/I153845743"
+],
+"ror": "https://ror.org/00v0z9322",
+"type": "education"
+}
+],
+"summary_stats": {
+"2yr_mean_citedness": 0.0,
+"h_index": 0,
+"i10_index": 0
+},
+"works_count": 1
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Roman+Repeev&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": [
+{
+"affiliations": [
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Moscow Institute of Physics and Technology",
+"id": "https://openalex.org/I153845743",
+"lineage": [
+"https://openalex.org/I153845743"
+],
+"ror": "https://ror.org/00v0z9322",
+"type": "education"
+},
+"years": [
+2024
+]
+}
+],
+"cited_by_count": 0,
+"display_name": "Roman Repeev",
+"id": "https://openalex.org/A5093393137",
+"last_known_institutions": [
+{
+"country_code": "RU",
+"display_name": "Moscow Institute of Physics and Technology",
+"id": "https://openalex.org/I153845743",
+"lineage": [
+"https://openalex.org/I153845743"
+],
+"ror": "https://ror.org/00v0z9322",
+"type": "education"
+}
+],
+"summary_stats": {
+"2yr_mean_citedness": 0.0,
+"h_index": 0,
+"i10_index": 0
+},
+"works_count": 1
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Rustem+Islamov&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": [
+{
+"cited_by_count": 84,
+"display_name": "Rustem Islamov",
+"id": "https://openalex.org/A5114337673",
+"last_known_institutions": [
+{
+"country_code": "CH",
+"display_name": "University of Basel",
+"id": "https://openalex.org/I1850255",
+"lineage": [
+"https://openalex.org/I1850255"
+],
+"ror": "https://ror.org/02s6k3f65",
+"type": "education"
+},
+{
+"country_code": "AE",
+"display_name": "Mohamed bin Zayed University of Artificial Intelligence",
+"id": "https://openalex.org/I4210113480",
+"lineage": [
+"https://openalex.org/I4210113480"
+],
+"ror": "https://ror.org/0258gkt32",
+"type": "education"
+},
+{
+"country_code": "CH",
+"display_name": "Department of Biomedicine Basel",
+"id": "https://openalex.org/I4210128905",
+"lineage": [
+"https://openalex.org/I4210128905"
+],
+"ror": "https://ror.org/03ybx0x41",
+"type": "facility"
+}
+],
+"summary_stats": {
+"2yr_mean_citedness": 0.2,
+"h_index": 4,
+"i10_index": 2
+},
+"works_count": 24
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Rustem+Islamov&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": [
+{
+"affiliations": [
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Moscow Institute of Physics and Technology",
+"id": "https://openalex.org/I153845743",
+"lineage": [
+"https://openalex.org/I153845743"
+],
+"ror": "https://ror.org/00v0z9322",
+"type": "education"
+},
+"years": [
+2021
+]
+},
+{
+"institution": {
+"country_code": "CH",
+"display_name": "University of Basel",
+"id": "https://openalex.org/I1850255",
+"lineage": [
+"https://openalex.org/I1850255"
+],
+"ror": "https://ror.org/02s6k3f65",
+"type": "education"
+},
+"years": [
+2026,
+2025,
+2024,
+2023
+]
+},
+{
+"institution": {
+"country_code": "AE",
+"display_name": "Mohamed bin Zayed University of Artificial Intelligence",
+"id": "https://openalex.org/I4210113480",
+"lineage": [
+"https://openalex.org/I4210113480"
+],
+"ror": "https://ror.org/0258gkt32",
+"type": "education"
+},
+"years": [
+2026
+]
+},
+{
+"institution": {
+"country_code": "CH",
+"display_name": "Department of Biomedicine Basel",
+"id": "https://openalex.org/I4210128905",
+"lineage": [
+"https://openalex.org/I4210128905"
+],
+"ror": "https://ror.org/03ybx0x41",
+"type": "facility"
+},
+"years": [
+2026
+]
+},
+{
+"institution": {
+"country_code": "FR",
+"display_name": "Institut Polytechnique de Paris",
+"id": "https://openalex.org/I4210145102",
+"lineage": [
+"https://openalex.org/I4210145102"
+],
+"ror": "https://ror.org/042tfbd02",
+"type": "education"
+},
+"years": [
+2023,
+2022
+]
+},
+{
+"institution": {
+"country_code": "SA",
+"display_name": "King Abdullah University of Science and Technology",
+"id": "https://openalex.org/I71920554",
+"lineage": [
+"https://openalex.org/I71920554"
+],
+"ror": "https://ror.org/01q3tbs38",
+"type": "education"
+},
+"years": [
+2021
+]
+}
+],
+"cited_by_count": 84,
+"display_name": "Rustem Islamov",
+"id": "https://openalex.org/A5114337673",
+"last_known_institutions": [
+{
+"country_code": "CH",
+"display_name": "University of Basel",
+"id": "https://openalex.org/I1850255",
+"lineage": [
+"https://openalex.org/I1850255"
+],
+"ror": "https://ror.org/02s6k3f65",
+"type": "education"
+},
+{
+"country_code": "AE",
+"display_name": "Mohamed bin Zayed University of Artificial Intelligence",
+"id": "https://openalex.org/I4210113480",
+"lineage": [
+"https://openalex.org/I4210113480"
+],
+"ror": "https://ror.org/0258gkt32",
+"type": "education"
+},
+{
+"country_code": "CH",
+"display_name": "Department of Biomedicine Basel",
+"id": "https://openalex.org/I4210128905",
+"lineage": [
+"https://openalex.org/I4210128905"
+],
+"ror": "https://ror.org/03ybx0x41",
+"type": "facility"
+}
+],
+"summary_stats": {
+"2yr_mean_citedness": 0.2,
+"h_index": 4,
+"i10_index": 2
+},
+"works_count": 24
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Sergei+Buhonov&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Sergey+Bukhonov&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": [
+{
+"affiliations": [
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Moscow Institute of Physics and Technology",
+"id": "https://openalex.org/I153845743",
+"lineage": [
+"https://openalex.org/I153845743"
+],
+"ror": "https://ror.org/00v0z9322",
+"type": "education"
+},
+"years": [
+2019
+]
+}
+],
+"cited_by_count": 3,
+"display_name": "Sergey Bukhonov",
+"id": "https://openalex.org/A5087397188",
+"last_known_institutions": [
+{
+"country_code": "RU",
+"display_name": "Moscow Institute of Physics and Technology",
+"id": "https://openalex.org/I153845743",
+"lineage": [
+"https://openalex.org/I153845743"
+],
+"ror": "https://ror.org/00v0z9322",
+"type": "education"
+}
+],
+"summary_stats": {
+"2yr_mean_citedness": 0.0,
+"h_index": 1,
+"i10_index": 0
+},
+"works_count": 3
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Svetlana+Shishkovets&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Vladimir+Chernykh&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Vladislav+Lialin&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": []
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Vladislav+Lyalin&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions": {
+"group_by": [],
+"results": [
+{
+"cited_by_count": 10,
+"display_name": "Vladislav Lyalin",
+"id": "https://openalex.org/A5008222863",
+"last_known_institutions": [
+{
+"country_code": "RU",
+"display_name": "Moscow Institute of Physics and Technology",
+"id": "https://openalex.org/I153845743",
+"lineage": [
+"https://openalex.org/I153845743"
+],
+"ror": "https://ror.org/00v0z9322",
+"type": "education"
+}
+],
+"summary_stats": {
+"2yr_mean_citedness": 0.0,
+"h_index": 1,
+"i10_index": 1
+},
+"works_count": 1
+}
+]
+},
+"authors?filter=affiliations.institution.id%3AI153845743%7CI125989756%7CI4405258151&per-page=5&search=Vladislav+Lyalin&select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Csummary_stats%2Clast_known_institutions%2Caffiliations": {
+"group_by": [],
+"results": [
+{
+"affiliations": [
+{
+"institution": {
+"country_code": "RU",
+"display_name": "Moscow Institute of Physics and Technology",
+"id": "https://openalex.org/I153845743",
+"lineage": [
+"https://openalex.org/I153845743"
+],
+"ror": "https://ror.org/00v0z9322",
+"type": "education"
+},
+"years": [
+2018
+]
+}
+],
+"cited_by_count": 10,
+"display_name": "Vladislav Lyalin",
+"id": "https://openalex.org/A5008222863",
+"last_known_institutions": [
+{
+"country_code": "RU",
+"display_name": "Moscow Institute of Physics and Technology",
+"id": "https://openalex.org/I153845743",
+"lineage": [
+"https://openalex.org/I153845743"
+],
+"ror": "https://ror.org/00v0z9322",
+"type": "education"
+}
+],
+"summary_stats": {
+"2yr_mean_citedness": 0.0,
+"h_index": 1,
+"i10_index": 1
+},
+"works_count": 1
+}
+]
+}
+}
