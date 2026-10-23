@@ -29397,6 +29397,16 @@
 }
 ]
 },
+"works?filter=author.id%3AA5025477585&per-page=1&select=title%2Ccited_by_count%2Cpublication_year&sort=cited_by_count%3Adesc": {
+"group_by": [],
+"results": [
+{
+"cited_by_count": 132,
+"publication_year": 2019,
+"title": "SGD: General Analysis and Improved Rates"
+}
+]
+},
 "works?filter=author.id%3AA5026215052&per-page=1&select=publication_year&sort=publication_year%3Aasc": {
 "group_by": [],
 "results": [
@@ -29418,6 +29428,16 @@
 "results": [
 {
 "publication_year": 2020
+}
+]
+},
+"works?filter=author.id%3AA5026967025&per-page=1&select=title%2Ccited_by_count%2Cpublication_year&sort=cited_by_count%3Adesc": {
+"group_by": [],
+"results": [
+{
+"cited_by_count": 59,
+"publication_year": 2020,
+"title": "From Local SGD to Local Fixed Point Methods for Federated Learning"
 }
 ]
 },
@@ -29701,6 +29721,16 @@
 }
 ]
 },
+"works?filter=author.id%3AA5057859442&per-page=1&select=title%2Ccited_by_count%2Cpublication_year&sort=cited_by_count%3Adesc": {
+"group_by": [],
+"results": [
+{
+"cited_by_count": 16,
+"publication_year": 2022,
+"title": "Automatic Detection of Machine Generated Texts: Need More Tokens"
+}
+]
+},
 "works?filter=author.id%3AA5062960035&per-page=1&select=publication_year&sort=publication_year%3Aasc": {
 "group_by": [],
 "results": [
@@ -29829,6 +29859,16 @@
 }
 ]
 },
+"works?filter=author.id%3AA5078691622&per-page=1&select=title%2Ccited_by_count%2Cpublication_year&sort=cited_by_count%3Adesc": {
+"group_by": [],
+"results": [
+{
+"cited_by_count": 100,
+"publication_year": 2024,
+"title": "ZigMa: A DiT-style Zigzag Mamba Diffusion Model"
+}
+]
+},
 "works?filter=author.id%3AA5081713888&per-page=1&select=publication_year&sort=publication_year%3Aasc": {
 "group_by": [],
 "results": [
@@ -29924,6 +29964,16 @@
 "results": [
 {
 "publication_year": 2019
+}
+]
+},
+"works?filter=author.id%3AA5088060268&per-page=1&select=title%2Ccited_by_count%2Cpublication_year&sort=cited_by_count%3Adesc": {
+"group_by": [],
+"results": [
+{
+"cited_by_count": 93,
+"publication_year": 2020,
+"title": "On Biased Compression for Distributed Learning"
 }
 ]
 },

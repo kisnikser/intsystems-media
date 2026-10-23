@@ -4,7 +4,6 @@
 \RequirePackage{intsystems-base}
 \RequirePackage{pgffor}
 \RequirePackage{qrcode}
-\RequirePackage{pdftexcmds}
 \RequirePackage{pgfplots}
 \pgfplotsset{compat=1.18}
 % Numbers in text mode, so charts use Open Sans instead of math fonts.
@@ -77,20 +76,21 @@
 \setbeamertemplate{itemize item}{%
   \raise0.3ex\hbox{\color{intsysaccent}\rule{0.5ex}{0.5ex}}}
 \setbeamertemplate{itemize subitem}{\color{intsysaccent}--}
-\setbeamertemplate{enumerate item}{{\intsys@semibold\color{intsysaccent}\insertenumlabel}}
+\setbeamertemplate{enumerate item}{{\intsys@semibold\color{intsysaccent}\insertenumlabel)}}
 \setbeamertemplate{itemize/enumerate body begin}{\setlength{\itemsep}{0.25em}}
 
-% Small heading inside a frame.
-\newcommand{\subhead}[1]{\par\vspace{0.45em}{\intsys@semibold\color{intsysheading}#1}\par\vspace{0.2em}}
+% Small heading inside a frame; a card sets the space above it to zero.
+\def\intsys@subheadtop{0.45em}
+\newcommand{\subhead}[1]{%
+  \par\vspace{\intsys@subheadtop}{\intsys@semibold\color{intsysheading}#1}\par\vspace{0.2em}}
 \newcommand{\muted}[1]{{\color{intsysmuted}#1}}
-% Source line at the bottom of a chart.
-\newcommand{\source}[1]{\par\vspace{0.15em}{\tiny\color{intsysfaint}#1}\par}
 
 % \card[width][height]{content}: light grey rounded box, the site's card.
 \NewDocumentCommand{\card}{O{\linewidth} O{0pt} +m}{%
   \begin{tikzpicture}
     \node[fill=intsyscard, rounded corners=3pt, inner sep=0.22cm, anchor=north west,
-          text width=#1-0.44cm, align=left, minimum height=#2] {#3};
+          text width=#1-0.44cm, align=left, minimum height=#2]
+      {\def\intsys@subheadtop{0pt}\intsys@nohyphen#3\par};
   \end{tikzpicture}%
 }
 
@@ -121,13 +121,14 @@
 
 % Title and subtitle at the event-cover positions and sizes (11pt \Huge, \large),
 % independent of the slide base size; see intsystems-cover.sty.
-\newcommand{\covertitle}[2]{%
+% The optional argument moves both down, e.g. to center a three-line title.
+\newcommand{\covertitle}[3][0cm]{%
   \node[anchor=south west, text width=0.8\paperwidth, align=left] at
-    ($(current page.west)+(0.8cm,0.34cm)$)
-    {\fontsize{24.88}{30}\selectfont\intsys@nohyphen\strut#1\strut\par};
-  \node[anchor=north west, text width=0.5\paperwidth, align=left] at
-    ($(current page.west)+(0.8cm,-0.1cm)$)
-    {\fontsize{12}{14.5}\selectfont\intsys@nohyphen\strut#2\strut\par};
+    ($(current page.west)+(0.8cm,0.34cm-#1)$)
+    {\fontsize{24.88}{30}\selectfont\intsys@nohyphen\strut#2\strut\par};
+  \node[anchor=north west, text width=0.75\paperwidth, align=left] at
+    ($(current page.west)+(0.8cm,-0.1cm-#1)$)
+    {\fontsize{12}{14.5}\selectfont\intsys@nohyphen\strut#3\strut\par};
 }
 
 % \qrlink[size]{url}{caption}: QR code with a caption under it.
@@ -212,13 +213,10 @@
 }
 \newcommand{\thesestotal}{\arabic{intsystheses}}
 
-% Admission dates: shown only if not before the build date.
+% Admission dates of the current semester (scripts/sync_site.py picks them).
 \def\intsys@admission{}
 \newcommand{\siteadmission}[2]{%
-  \ifnum\pdf@strcmp{#1}{\the\year-\two@digits{\month}-\two@digits{\day}}<0 \else
-    \intsys@appendraw\intsys@admission{\intsys@admissionitem{#1}{#2}}%
-  \fi
-}
+  \intsys@appendraw\intsys@admission{\intsys@admissionitem{#1}{#2}}}
 \def\intsys@monthname#1{\ifcase#1\or января\or февраля\or марта\or апреля\or мая\or июня\or
   июля\or августа\or сентября\or октября\or ноября\or декабря\fi}
 \def\intsys@isodate#1-#2-#3\@nil{\number#3~\intsys@monthname{\number#2}}
@@ -260,8 +258,11 @@
 \newcommand{\alumnisector}[2]{\intsys@appendraw\intsys@sectors{\intsys@sectorrow{#1}{#2}}}
 
 \def\intsys@top{}
+\def\intsys@toprecent{}
 \newcommand{\alumnitop}[6]{%
   \intsys@appendraw\intsys@top{\intsys@toprow{#1}{#2}{#3}{#4}{#5}{#6}}}
+\newcommand{\alumnitoprecent}[6]{%
+  \intsys@appendraw\intsys@toprecent{\intsys@toprow{#1}{#2}{#3}{#4}{#5}{#6}}}
 
 % Chart and list bodies; each needs its data file, see README.
 \newcommand{\githubchart}[1][4.4cm]{%
@@ -310,13 +311,18 @@
 \def\intsys@toprow#1#2#3#4#5#6{%
   \item {\intsys@semibold#1}, #2 --- {\color{intsysaccent}\intsys@semibold#3} цитирований, h-индекс~#4\\
   {\tiny\color{intsysmuted}самая цитируемая: #5 (#6)}}
-\newcommand{\topalumni}{\begin{itemize}\intsys@top\end{itemize}}
+% \topalumni: all years; \topalumni[recent]: the last five graduation years.
+% The second optional argument is the space between entries.
+\NewDocumentCommand{\topalumni}{O{} O{0.25em}}{%
+  \begin{itemize}\setlength{\itemsep}{#2}\csname intsys@top#1\endcsname\end{itemize}}
 
-% \researchsteps{head/body, ...}: vertical timeline with accent dots.
+% \researchsteps{head/body, ...}: vertical timeline with accent dots over a grey line.
 \newcommand{\researchsteps}[1]{%
   \begin{tikzpicture}[y=-0.95cm]
     \foreach \head/\body [count=\i from 0] in {#1} {%
       \ifnum\i>0 \draw[intsysline, line width=1.2pt] (0,\i-1) -- (0,\i);\fi
+    }
+    \foreach \head/\body [count=\i from 0] in {#1} {%
       \node[circle, fill=intsysaccent, inner sep=0pt, minimum size=0.22cm] at (0,\i) {};
       \node[anchor=west, text width=6.2cm, align=left, font=\footnotesize] at (0.3,\i)
         {{\intsys@semibold\color{intsysheading}\head}\\{\color{intsysmuted}\body}};
@@ -344,27 +350,48 @@
   \foreach \p in \intsys@ids {\intsys@sep\shortname{\p}\gdef\intsys@sep{, }}%
 }
 
-% \coursecards[columns][card height]{bachelor|master}: grid of course cards.
-\NewDocumentCommand{\coursecards}{O{2} O{1.05cm} m}{%
-  \edef\intsys@list{\csname intsys@courses@#3\endcsname}%
-  \begin{tikzpicture}
-    \pgfmathsetmacro{\intsys@cellw}{(\linewidth+0.25cm)/#1}%
-    \foreach \cid [count=\i from 0] in \intsys@list {%
-      \pgfmathsetmacro{\intsys@x}{mod(\i,#1)*\intsys@cellw}%
-      \pgfmathsetmacro{\intsys@y}{-floor(\i/#1)*(#2+0.18cm)}%
-      \node[fill=intsyscard, rounded corners=3pt, anchor=north west, inner sep=0.16cm,
-            minimum height=#2, text width=\intsys@cellw pt-0.25cm-0.32cm, align=left]
-        at (\intsys@x pt,\intsys@y pt) {%
-          {\footnotesize\intsys@semibold\color{intsysheading}\intsys@sget{\cid}{name}}\\[0.05cm]
-          {\tiny\color{intsysmuted}\intsys@lecturers{\cid}}};
-    }
-  \end{tikzpicture}%
+% \coursecards[columns]{bachelor|master}: course cards in rows of equal height.
+\newsavebox{\intsys@cardbox}
+\newlength{\intsys@cardw}
+\newlength{\intsys@rowh}
+\newcommand{\intsys@coursetext}[1]{%
+  \parbox[t]{\intsys@cardw}{\intsys@nohyphen\raggedright
+    {\footnotesize\intsys@semibold\color{intsysheading}\intsys@sget{#1}{name}\par}
+    \vspace{0.05cm}{\tiny\color{intsysmuted}\intsys@lecturers{#1}\par}}}
+\NewDocumentCommand{\coursecards}{O{2} m}{%
+  \edef\intsys@list{\csname intsys@courses@#2\endcsname}%
+  \setlength{\intsys@cardw}{\dimexpr(\linewidth-0.2cm*(#1-1))/#1-0.3cm-0.5pt\relax}%
+  \foreach \cid [count=\i from 1] in \intsys@list {\expandafter\xdef\csname intsys@card\i\endcsname{\cid}\xdef\intsys@n{\i}}%
+  \pgfmathtruncatemacro{\intsys@rows}{ceil(\intsys@n/#1)}%
+  \foreach \r in {1,...,\intsys@rows} {%
+    % Row height: the tallest card text in the row.
+    \global\intsys@rowh=0pt
+    \foreach \c in {1,...,#1} {%
+      \pgfmathtruncatemacro{\k}{(\r-1)*#1+\c}%
+      \ifnum\k>\intsys@n\else
+        \sbox\intsys@cardbox{\intsys@coursetext{\csname intsys@card\k\endcsname}}%
+        \ifdim\dimexpr\ht\intsys@cardbox+\dp\intsys@cardbox>\intsys@rowh
+          \global\intsys@rowh=\dimexpr\ht\intsys@cardbox+\dp\intsys@cardbox\relax\fi
+      \fi}%
+    \noindent\foreach \c in {1,...,#1} {%
+      \pgfmathtruncatemacro{\k}{(\r-1)*#1+\c}%
+      \ifnum\k>\intsys@n\else
+        \ifnum\c>1 \hspace{0.2cm}\fi
+        \begin{tikzpicture}[baseline=(card.north)]
+          \node[fill=intsyscard, rounded corners=3pt, inner sep=0.15cm, anchor=north west] (card)
+            {\vbox to \intsys@rowh{\hsize=\intsys@cardw\noindent\intsys@coursetext{\csname intsys@card\k\endcsname}\vfil}};
+        \end{tikzpicture}%
+      \fi}%
+    \par\vspace{0.14cm}%
+  }%
 }
 
-% Avatar file: site avatar, else the cover portrait <id>.png.
+% Avatar file: assets/slides/avatars/<id>.jpg, else the site avatar unless it is the
+% placeholder, else the cover portrait <id>.png.
 \newcommand{\intsys@avatar}[1]{%
   \edef\intsys@file{\intsys@sget{#1}{avatar}}%
-  \ifx\intsys@file\empty\def\intsys@file{#1.png}\fi
+  \IfFileExists{assets/slides/avatars/#1.jpg}{\def\intsys@file{avatars/#1.jpg}}{%
+    \ifx\intsys@file\empty\def\intsys@file{#1.png}\fi}%
 }
 
 \newsavebox{\intsys@photobox}
@@ -393,6 +420,22 @@
           {\intsys@sget{\p}{given}\\\intsys@sget{\p}{surname}};
       \end{scope}
     }
+  \end{tikzpicture}%
+}
+
+% \cropphoto{file}{width}{height}: photo cut to a fixed box, centered horizontally,
+% top aligned (faces), with rounded corners.
+\newcommand{\cropphoto}[3]{%
+  \sbox\intsys@photobox{\includegraphics{#1}}%
+  \pgfmathparse{\wd\intsys@photobox/\ht\intsys@photobox > (#2)/(#3)}%
+  \ifnum\pgfmathresult=1
+    \sbox\intsys@photobox{\includegraphics[height=#3]{#1}}%
+  \else
+    \sbox\intsys@photobox{\includegraphics[width=#2]{#1}}%
+  \fi
+  \begin{tikzpicture}
+    \clip[rounded corners=3pt] (0,0) rectangle (#2,#3);
+    \node[inner sep=0pt, anchor=north] at (0.5*#2,#3) {\usebox\intsys@photobox};
   \end{tikzpicture}%
 }
 

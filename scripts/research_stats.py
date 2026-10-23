@@ -40,6 +40,8 @@ GITHUB_ORGS = ("Intelligent-Systems-Phystech", "intsystems")
 # MIPT, Skoltech, FRC CSC RAS: where alumni published as students.
 HOME_INSTITUTIONS = ("I153845743", "I125989756", "I4405258151")
 NOW = 2026
+# "Recent graduates" on the slides: the last five graduation years.
+RECENT_YEARS = 5
 # A student's first paper comes at most this many years before graduation.
 FIRST_PAPER_LEAD = 7
 CORE_FIELDS = ("Computer Science", "Mathematics", "Decision Sciences")
@@ -548,14 +550,21 @@ def main() -> None:
         )
         names = [re.sub(r"\s*\(.*\)$", "", n) for n, _ in abroad.most_common()]
         lines.append(f"\\researchstat{{abroad}}{{{tex(', '.join(names))}}}")
-        top = sorted(matched, key=lambda pa: -pa[1]["cited_by_count"])[:5]
-        for person, author in top:
-            work = openalex.top_work(author["id"].split("/")[-1]) or {}
-            lines.append(
-                f"\\alumnitop{{{tex(person.given)} {tex(person.surname)}}}{{{person.year}}}"
-                f"{{{author['cited_by_count']}}}{{{author['summary_stats']['h_index']}}}"
-                f"{{{tex(work.get('title') or '')}}}{{{work.get('cited_by_count', 0)}}}"
-            )
+        recent = [(p, a) for p, a in matched if p.year >= NOW - RECENT_YEARS]
+        for macro, group in (("alumnitop", matched), ("alumnitoprecent", recent)):
+            for person, author in sorted(
+                group, key=lambda pa: -pa[1]["cited_by_count"]
+            )[:5]:
+                work = openalex.top_work(author["id"].split("/")[-1]) or {}
+                cyrillic = re.search("[а-яё]", person.surname.lower())
+                name = (
+                    f"{person.given} {person.surname}" if cyrillic else person.name_en
+                )
+                lines.append(
+                    f"\\{macro}{{{tex(name)}}}{{{person.year}}}"
+                    f"{{{author['cited_by_count']}}}{{{author['summary_stats']['h_index']}}}"
+                    f"{{{tex(work.get('title') or '')}}}{{{work.get('cited_by_count', 0)}}}"
+                )
         openalex.save()
     (OUT / "stats.tex").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"wrote {(OUT / 'stats.tex').relative_to(REPO)}: {len(lines) - 1} entries")

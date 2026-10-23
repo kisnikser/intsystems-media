@@ -110,7 +110,7 @@ On Overleaf set Main document to **`presentation.tex`**; switch back to `main.te
 Courses, instructors, theses, admission dates, and graduation photos come from `data/site/`; alumni and open-source charts from `data/research/`; scholarship holders are typed in `presentation.tex`.
 Colors follow the site: accent `#c42929`, white slides, `#f5f5f5` cards.
 Logos and portraits live in `assets/slides/`.
-Team slides use site avatars from `assets/site-people/`; a person without one falls back to the cover portrait `assets/people/<id>.png`.
+Team slides take `assets/slides/avatars/<id>.jpg` first (for people whose site avatar is missing or the placeholder), then the site avatar from `assets/site-people/`, then the cover portrait `assets/people/<id>.png`.
 
 ## Site data
 

@@ -9,7 +9,9 @@ import argparse
 import re
 import shutil
 import subprocess
+from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 REPO = Path(__file__).resolve().parent.parent
 OUT = REPO / "data" / "site"
@@ -186,14 +188,20 @@ def main() -> None:
 
 
 def admission_dates(path: Path) -> list[tuple[str, str]]:
-    """`tag: admission` key dates as (YYYY-MM-DD, Russian text without links)."""
+    """`tag: admission` key dates of the current semester as (YYYY-MM-DD, Russian text)."""
+    today = datetime.now(ZoneInfo("Europe/Moscow")).date().isoformat()
     dates = []
-    for item in re.split(r"\n\s*- date: ", path.read_text(encoding="utf-8"))[1:]:
-        day = item.split()[0]
-        ru = re.search(r'^\s*ru: "(.*)"', item, re.MULTILINE)
-        if re.search(r"^\s*tag: admission\b", item, re.MULTILINE) and ru:
-            text = re.sub(r",?\s*\[подробнее\]\([^)]*\)", "", ru[1])
-            dates.append((day, re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", text)))
+    for semester in re.split(r"\n  - id: ", path.read_text(encoding="utf-8"))[1:]:
+        start = re.search(r"^\s+start: (\S+)", semester, re.MULTILINE)
+        end = re.search(r"^\s+end: (\S+)", semester, re.MULTILINE)
+        if not (start and end and start[1] <= today <= end[1]):
+            continue
+        for item in re.split(r"\n\s*- date: ", semester)[1:]:
+            day = item.split()[0]
+            ru = re.search(r'^\s*ru: "(.*)"', item, re.MULTILINE)
+            if re.search(r"^\s*tag: admission\b", item, re.MULTILINE) and ru:
+                text = re.sub(r",?\s*\[подробнее\]\([^)]*\)", "", ru[1])
+                dates.append((day, re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", text)))
     return sorted(dates)
 
 

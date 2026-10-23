@@ -10,7 +10,7 @@
 \begin{document}
 
 \coverframe{%
-  \covertitle{Кафедра\\интеллектуальных систем}{Физтех-школа прикладной математики и~информатики МФТИ}%
+  \covertitle[1.2cm]{Кафедра\\интеллектуальных\\систем}{Физтех-школа прикладной математики и~информатики\\МФТИ}%
 }
 
 \begin{frame}{Кафедра в цифрах}
@@ -27,7 +27,6 @@
     \begin{column}{0.3\textwidth}\statvalue{>50\,\%}{выпускников защитили кандидатские}\end{column}
   \end{columns}
   \vfill
-  \source{Выпускники: machinelearning.ru и intsystems.github.io/thesis; проекты: GitHub API, организации intsystems и Intelligent-Systems-Phystech; возраст и кандидатские: intsystems.github.io}
 \end{frame}
 
 \begin{frame}{О кафедре}
@@ -48,11 +47,11 @@
     \end{column}
     \begin{column}{0.46\textwidth}
       \card{\subhead{Теория}
-        Машинное обучение, глубокое обучение, генеративные нейросети, байесовские модели и~мультимодели, функциональный анализ данных}
+        \footnotesize Машинное обучение, глубокое обучение, генеративные нейросети, байесовские модели и~мультимодели, функциональный анализ данных}
       \vspace{0.2cm}
 
       \card{\subhead{Практика}
-        Геометрические глубокие нейросети, анализ текстов и тематическое моделирование, анализ изображений, видео и~аудио, биомедицинские сигналы, интерфейсы человек--компьютер}
+        \footnotesize Геометрические глубокие нейросети, анализ текстов и тематическое моделирование, анализ изображений, видео и~аудио, биомедицинские сигналы, интерфейсы человек--компьютер}
     \end{column}
   \end{columns}
 \end{frame}
@@ -60,11 +59,11 @@
 \begin{frame}{История}
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
-      \card[\linewidth][2.2cm]{\subhead{Интеллектуальный анализ данных}
+      \card[\linewidth][2.05cm]{\subhead{Интеллектуальный анализ данных}
         Создана в 2003 году академиком РАН К.\,В.~Рудаковым на базе одной из старейших кафедр ФУПМ МФТИ «Управление и~вычислительные системы».}
     \end{column}
     \begin{column}{0.48\textwidth}
-      \card[\linewidth][2.2cm]{\subhead{Проектирование и организация систем}
+      \card[\linewidth][2.05cm]{\subhead{Проектирование и организация систем}
         Создана в 1970-е годы академиком Г.\,С.~Поспеловым, основоположником отечественной школы искусственного интеллекта, как базовая кафедра при ВЦ РАН.}
     \end{column}
   \end{columns}
@@ -72,7 +71,7 @@
   \centering
   \foreach \file/\name in {zhuravlyov_yv/Ю.\,И.~Журавлёв, rudakov_kv/К.\,В.~Рудаков, vorontsov_kv/К.\,В.~Воронцов, pospelov_gs/Г.\,С.~Поспелов} {%
     \begin{tabular}{@{}c@{}}
-      \roundphoto{\file.jpg}{2.2cm}\\[0.1cm]
+      \cropphoto{\file.jpg}{1.75cm}{2.3cm}\\[0.1cm]
       \scriptsize\name
     \end{tabular}\hspace{0.6cm}%
   }
@@ -111,7 +110,6 @@
     \begin{column}{0.46\textwidth}
       \subhead{Защиты дипломов по годам}
       \thesischart
-      \source{intsystems.github.io/thesis}
     \end{column}
   \end{columns}
 \end{frame}
@@ -123,7 +121,7 @@
 \end{frame}
 
 \begin{frame}{Магистратура: курсы кафедры}
-  \coursecards[3][1.2cm]{master}
+  \coursecards[3]{master}
   \vfill
   \muted{Выпускники магистратуры --- авторы нескольких статей: этого достаточно для поступления в~аспирантуру МФТИ и~ведущих университетов.}
 \end{frame}
@@ -133,17 +131,11 @@
   \teamgrid{\instructors}
 \end{frame}
 
-\begin{frame}{Научные руководители}
-  \vspace{0.2cm}
-  \teamgrid[5][1.5cm]{\supervisorids}
-\end{frame}
-
 \begin{frame}{Открытый код}
   \begin{columns}[T]
     \begin{column}{0.72\textwidth}
       \subhead{Новые открытые проекты по годам: всего \githubtotal}
       \githubchart[4.6cm]
-      \source{GitHub API: собственные публичные репозитории (без форков) организаций Intelligent-Systems-Phystech и intsystems; \the\year{} --- неполный год}
     \end{column}
     \begin{column}{0.24\textwidth}
       \centering
@@ -160,7 +152,6 @@
       \begin{column}{0.5\textwidth}
         \cohortchart[2.5cm]{cites}{медиана цитирований}\par\vspace{0.1cm}
         \cohortchart[2.5cm]{h}{медиана индекса Хирша}
-        \source{OpenAlex: найдены \research{alumni-matched} из \research{alumni} выпускников, у~которых есть публикации с~аффилиацией МФТИ, Сколтеха или ФИЦ ИУ РАН}
       \end{column}
       \begin{column}{0.46\textwidth}
         \subhead{Самые цитируемые выпускники}
@@ -170,13 +161,19 @@
   }{\card{Данные OpenAlex не загружены: запустите scripts/research\_stats.py.}}
 \end{frame}
 
+\begin{frame}{Выпускники последних пяти лет}
+  \ifresearch{alumni-matched}{%
+    \subhead{Самые цитируемые выпускники \the\numexpr\year-5\relax--\the\year{} годов}
+    \vspace{0.2cm}\small\topalumni[recent][0.7em]
+  }{\card{Данные OpenAlex не загружены: запустите scripts/research\_stats.py.}}
+\end{frame}
+
 \begin{frame}{Где работают выпускники}
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
       \ifresearch{alumni-placed}{%
         \subhead{Последняя аффилиация в публикациях}
         \sectorbars
-        \source{OpenAlex, \research{alumni-placed} выпускников с~публикациями; выпускники в~индустрии публикуются реже}
       }{\card{Данные OpenAlex не загружены: запустите scripts/research\_stats.py.}}
       \subhead{Стажировки и совместные проекты}
       \foreach \logo in {antiplagiat.jpg, forecsys.png, goods-forecast.png, yandex.png, sber.jpg, avito.png, huawei.png, ozon.png, mipt-mil.png} {%
@@ -200,14 +197,14 @@
         \item \semibold{20\,000 рублей} в месяц
         \item Заявки: до 2 сентября и до 15 февраля, intsystems.github.io/materials/scholarship
       \end{itemize}
-      \subhead{Стипендиаты весны 2026 года}
+      \subhead{Стипендиаты осени 2026 года}
       \scriptsize
       \begin{enumerate}
-        \item \semibold{Алексей Кравацкий}, 4 курс --- The Ky Fan Norms and Beyond: Dual Norms and Combinations for Matrix Optimization
-        \item \semibold{Фёдор Соболевский}, 5 курс --- Автоматическая иерархическая суммаризация научных текстов
-        \item \semibold{Даниил Дорин}, 6 курс --- Анализ причинно-следственных связей между биомедицинскими сигналами через скрытые представления автоэнкодеров
-        \item \semibold{Никита Киселев}, 6 курс --- Scaling Laws and Loss Landscapes: A Geometric Perspective on Data, Model, and Compute
-        \item \semibold{Андрей Веприков}, 6 курс --- Оптимальное управление в системах машинного обучения с петлёй обратной связи
+        \item \semibold{Алексей Кравацкий} --- ImprovEvolve: Ask AlphaEvolve to Improve the Input Solution and Then Improvise
+        \item \semibold{Ксения Ибрагимова}
+        \item \semibold{Дмитрий Василенко} --- Jacobian Analysis of a Recurrent Transformer Block
+        \item \semibold{Владислав Мешков} --- Model Compression via Internal Regularization: A Comparative Study of Sparsity-Inducing Algorithms for Layer Pruning
+        \item \semibold{Фёдор Соболевский} --- Automatic Hierarchical Summarization of Scientific Texts
       \end{enumerate}
     \end{column}
     \begin{column}{0.24\textwidth}
