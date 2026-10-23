@@ -42,7 +42,7 @@ Lecture:
   session    = {Лекция},
   semester   = {FALL 2026},
 }
-\covers{1,...,14}{vorontsov}
+\covers{1,...,14}{vorontsov_kv}
 ```
 
 Event:
@@ -54,7 +54,7 @@ Event:
   subtitle   = {Subtitle},
   background = design-2,
   badge      = {Интервью},
-  lecturer   = panov,
+  lecturer   = panov_maxim,
 }
 \cover
 ```
@@ -62,8 +62,8 @@ Event:
 Lecturer and seminarist on one cover:
 
 ```tex
-\cover[session-number=1, lecturer=grabovoy, seminarist=kiselev]
-\covers[kiselev]{1,...,14}{grabovoy}
+\cover[session-number=1, lecturer=grabovoy_av, seminarist=kiselev_ns]
+\covers[kiselev_ns]{1,...,14}{grabovoy_av}
 ```
 
 ## Keys
@@ -92,13 +92,14 @@ Lecturer and seminarist on one cover:
 ## Add a person
 
 ```tex
-\defineperson{kiselev}{
+\defineperson{kiselev_ns}{
   name  = {НИКИТА КИСЕЛЕВ},
   photo = {kiselev_ns.png},
 }
 ```
 
 Put the photo in `assets/people/`.
+The id and the photo stem are the person's id on the department site (`lastname_ii`, as in `intsystems.github.io/_people/`), so slides can join cover data with site data.
 Optional `photo-height`, `photo-x`, `photo-y` adjust lecture framing.
 
 ## Gotchas
