@@ -165,7 +165,7 @@ class Alumnus:
 def http_json(url: str, headers: dict[str, str] | None = None) -> dict | list:
     """GET JSON; retries twice, since long GitHub pages sometimes arrive cut."""
     request = urllib.request.Request(
-        url, headers={"User-Agent": "intsystems-cover", **(headers or {})}
+        url, headers={"User-Agent": "intsystems-media", **(headers or {})}
     )
     for attempt in range(3):
         try:

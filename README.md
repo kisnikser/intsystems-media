@@ -1,4 +1,4 @@
-# intsystems-cover
+# intsystems-media
 
 YouTube covers for the Intelligent Systems channel and the department presentation for junior students, in one visual style.
 Overleaf project, XeLaTeX: `main.tex` builds covers, `presentation.tex` builds slides.
