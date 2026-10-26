@@ -1,7 +1,7 @@
 name: Preview posts
 
-# Render each added or changed draft in posts/ and send its header, caption,
-# and metadata to the editor in Telegram, exactly as the channel will show it.
+# Render each added or changed draft in posts/ and send it to the editor in Telegram,
+# exactly as the channel will show it, with approval buttons (worker/index.js).
 on:
   push:
     branches: [main]
@@ -19,12 +19,12 @@ jobs:
     container: texlive/texlive:latest
     env:
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-      EDITOR_ID: ${{ vars.TELEGRAM_EDITOR_ID }}
+      TELEGRAM_EDITOR_ID: ${{ vars.TELEGRAM_EDITOR_ID }}
       INPUT_POST: ${{ inputs.post }}
       BEFORE: ${{ github.event.before }}
     steps:
       - name: Install tools
-        run: apt-get update -qq && apt-get install -y -qq git poppler-utils python3 curl >/dev/null
+        run: apt-get update -qq && apt-get install -y -qq git poppler-utils python3 >/dev/null
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -45,16 +45,4 @@ jobs:
         if: steps.drafts.outputs.files != ''
         env:
           FILES: ${{ steps.drafts.outputs.files }}
-          REPO_URL: ${{ github.server_url }}/${{ github.repository }}/blob/${{ github.sha }}
-        run: |
-          python3 scripts/render_post.py $FILES
-          api="https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN"
-          for f in $FILES; do
-            stem=$(basename "$f" .md)
-            curl -sS --fail-with-body "$api/sendPhoto" -F chat_id="$EDITOR_ID" -F parse_mode=HTML \
-              -F photo=@"build/posts/$stem.png" -F caption="<build/posts/$stem.html"
-            meta=$(grep -E '^(date|rubric):' "$f" | tr '\n' ' ')
-            curl -sS --fail-with-body "$api/sendMessage" -F chat_id="$EDITOR_ID" \
-              -F text="Draft $f · $meta" -F link_preview_options='{"is_disabled":true}' \
-              -F reply_markup="{\"inline_keyboard\":[[{\"text\":\"Open on GitHub\",\"url\":\"$REPO_URL/$f\"}]]}"
-          done
+        run: python3 scripts/send_post.py preview $FILES

@@ -1,0 +1,49 @@
+name: Publish posts
+
+# Post approved posts whose date (Moscow time) has passed to the channel, then
+# mark them published. A cheap check runs first; the TeX container starts only
+# when something is due. The bot's "Publish now" button dispatches this directly.
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+concurrency: publish-posts
+
+jobs:
+  due:
+    runs-on: ubuntu-latest
+    outputs:
+      files: ${{ steps.due.outputs.files }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: due
+        run: echo "files=$(python3 scripts/send_post.py due)" >> "$GITHUB_OUTPUT"
+
+  publish:
+    needs: due
+    if: needs.due.outputs.files != ''
+    runs-on: ubuntu-latest
+    container: texlive/texlive:latest
+    permissions:
+      contents: write
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_EDITOR_ID: ${{ vars.TELEGRAM_EDITOR_ID }}
+      TELEGRAM_CHANNEL_ID: ${{ vars.TELEGRAM_CHANNEL_ID }}
+      FILES: ${{ needs.due.outputs.files }}
+    steps:
+      - name: Install tools
+        run: apt-get update -qq && apt-get install -y -qq git poppler-utils python3 >/dev/null
+      - uses: actions/checkout@v4
+      - name: Publish and record message ids
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for f in $FILES; do
+            python3 scripts/send_post.py publish "$f"
+            git add "$f"
+            git commit -q -m "chore: publish $f"
+            git pull -q --rebase && git push -q
+          done

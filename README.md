@@ -168,11 +168,28 @@ It refuses a post with an unknown rubric or status, a tag Telegram rejects, or a
 Rubric defaults live in `RUBRICS` in `scripts/render_post.py`.
 `build/` is not committed.
 
-A push to `main` that adds or changes a post with `status: draft` runs `.github/workflows/preview-posts.yml`: it renders the post and sends the header, caption, and metadata to the editor through [@intsystems_media_bot](https://t.me/intsystems_media_bot).
-Resend one post with Actions → Preview posts → Run workflow.
-The workflow needs the repository secret `TELEGRAM_BOT_TOKEN` and the variable `TELEGRAM_EDITOR_ID` (the editor's numeric Telegram id).
-The editor must have sent `/start` to the bot once; a bot cannot open a chat.
-The repository is public, so a pushed draft is public before it is posted: push news under embargo only once it is announced.
+### Bot
+
+```
+push draft ──► preview-posts.yml ──► editor: header + caption, then a card with buttons
+button / reply ──► worker/index.js (Cloudflare) ──► commit to posts/*.md [skip ci]
+approved, date passed ──► publish-posts.yml (every 15 min, or "Publish now") ──► channel, status: published
+```
+
+A push to `main` that adds or changes a post with `status: draft` sends its preview through [@intsystems_media_bot](https://t.me/intsystems_media_bot); resend one with Actions → Preview posts → Run workflow.
+Buttons: **Publish now** (approve, date now), **At date** (approve for the file's `date`), **Text**, **Header**, **Date** (the bot asks for a reply), **Reject**.
+`worker/index.js` keeps no state: the post path and the preview photo id travel in the button data and in the text of the bot's question.
+`scripts/send_post.py` sends previews and publishes; `scripts/render_post.py` only renders and checks.
+
+| Setting | Where | Value |
+|---|---|---|
+| `TELEGRAM_BOT_TOKEN` | Actions secret and Worker secret | @BotFather token, Keychain service `telegram-intsystems-media` |
+| `TELEGRAM_EDITOR_ID` | Actions variable; `EDITOR_ID` in `worker/wrangler.toml` | Editor's numeric Telegram id |
+| `TELEGRAM_CHANNEL_ID` | Actions variable | `@channel`, or `-100<id>` for a private one (forward a channel post to the bot to read it); the bot is a channel admin allowed to post |
+| `GITHUB_TOKEN` | Worker secret | Fine-grained token, this repo only: Contents and Actions read and write |
+| `WEBHOOK_SECRET` | Worker secret, and `secret_token` of `setWebhook` | Random hex |
+
+Deploy the Worker with `cd worker && npx wrangler deploy`.
 
 ## Gotchas
 
@@ -182,6 +199,10 @@ The repository is public, so a pushed draft is public before it is posted: push 
 - **The PNG export in `latexmkrc` skips the root file `presentation`.** Rename `presentation.tex` and Overleaf will zip the slides as covers.
 - **OpenAlex matching misses alumni whose profiles have no MIPT, Skoltech, or FRC CSC affiliation, and those spelled unlike the transliteration (`Фрей` is `Frei`).** Charts say how many alumni were matched; add misses to `data/research/overrides.csv`.
 - **A search costs $0.001 of OpenAlex budget; without a key the whole network shares $0.10 a day.** A full run without the cache needs about $0.6, so use the free key (Keychain service `openalex`).
+- **The repository is public, so a pushed draft is public before it is posted.** Push news under embargo only once it is announced.
+- **The editor must send `/start` to the bot once.** A bot cannot open a chat; previews fail with `chat not found` until then.
+- **Worker commits carry `[skip ci]`.** Without it every caption edit would trigger a new preview; header edits and "Publish now" dispatch their workflow explicitly.
+- **Post file names are at most 60 bytes.** Telegram callback data is limited to 64 bytes and carries the file name; `render_post.py` refuses longer names.
 - **Only `design-*` and `black-design-*` backgrounds carry the logo that the `event` badge sits next to.** On other backgrounds the badge floats right of an empty spot; keep post backgrounds to these six.
 - **Open Sans is loaded by file name (`OpenSans-Regular.ttf`), not by family name.** Family lookup works on Overleaf but fails on a local TeX Live whose fonts fontconfig cannot see.
 
@@ -198,7 +219,9 @@ scripts/sync_site.py           Site data for the presentation
 data/site/                     Generated from the site, do not edit
 scripts/research_stats.py      Alumni and GitHub data for the charts
 scripts/render_post.py         Telegram post header and caption check
-.github/workflows/             Post previews to the editor
+scripts/send_post.py           Telegram previews and publishing
+.github/workflows/             Post previews and publishing
+worker/                        Cloudflare Worker: bot buttons and replies
 posts/                         One file per Telegram post
 data/research/                 Generated research data and OpenAlex cache
 data/supervisors.tex           Supervisors for team slides

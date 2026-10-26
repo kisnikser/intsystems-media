@@ -27,6 +27,7 @@ RUBRICS = {
     "deadlines": ("design-3", "Дедлайны"),
     "news": ("design-1", "Новости"),
 }
+STEM_LIMIT = 60  # Telegram callback data is at most 64 bytes, 2 go to the action prefix
 STATUSES = ("draft", "approved", "published", "rejected")
 REQUIRED = ("date", "rubric", "status", "title")
 TELEGRAM_TAGS = {
@@ -67,6 +68,10 @@ def parse_post(path: Path) -> tuple[dict[str, str], str]:
 def check(path: Path, meta: dict[str, str], caption: str) -> int:
     """Return the caption length; exit on errors that would break posting."""
     errors = [f"missing `{key}`" for key in REQUIRED if not meta.get(key)]
+    if len(path.stem.encode()) > STEM_LIMIT:
+        errors.append(
+            f"file name is over {STEM_LIMIT} bytes; bot buttons cannot carry it"
+        )
     if meta.get("rubric") and meta["rubric"] not in RUBRICS:
         errors.append(f"rubric `{meta['rubric']}` not in {', '.join(RUBRICS)}")
     if meta.get("status") and meta["status"] not in STATUSES:
@@ -120,7 +125,9 @@ def render(stem: str, tex: str) -> Path:
     ]
     env = {**os.environ, "TEXINPUTS": f"{REPO / 'sty'}//:"}
     for _ in range(2):
-        result = subprocess.run(cmd, cwd=REPO, env=env, capture_output=True, text=True)
+        result = subprocess.run(
+            cmd, cwd=REPO, env=env, capture_output=True, text=True, check=False
+        )
         if result.returncode:
             sys.exit(f"xelatex failed, see {OUT / f'{stem}.log'}")
     png = OUT / f"{stem}.png"
@@ -141,15 +148,21 @@ def render(stem: str, tex: str) -> Path:
     return png
 
 
+def build(path: Path) -> tuple[dict[str, str], str, Path, int]:
+    """Check a post, render its header, and write its caption next to the PNG."""
+    meta, caption = parse_post(path)
+    length = check(path, meta, caption)
+    png = render(path.stem, cover_tex(meta))
+    (OUT / f"{path.stem}.html").write_text(caption + "\n", encoding="utf-8")
+    return meta, caption, png, length
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("posts", nargs="+", type=Path)
     args = parser.parse_args()
     for path in args.posts:
-        meta, caption = parse_post(path)
-        length = check(path, meta, caption)
-        png = render(path.stem, cover_tex(meta))
-        (OUT / f"{path.stem}.html").write_text(caption + "\n", encoding="utf-8")
+        _, _, png, length = build(path)
         print(f"{png.relative_to(REPO)}  caption {length}/{CAPTION_LIMIT}")
 
 

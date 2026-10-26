@@ -1,0 +1,9 @@
+name = "intsystems-media-bot"
+main = "index.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+EDITOR_ID = "209404191"
+REPO = "kisnikser/intsystems-media"
+
+# Secrets (npx wrangler secret put <NAME>): TELEGRAM_BOT_TOKEN, GITHUB_TOKEN, WEBHOOK_SECRET.
