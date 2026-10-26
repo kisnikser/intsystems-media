@@ -22,8 +22,8 @@ from urllib.request import Request, urlopen
 from render_post import REPO, RUBRICS, parse_post
 from send_post import MOSCOW, preview
 
-# Workers AI free plan: 10,000 neurons a day; one draft here is ~600, so ~15 drafts a day.
-MODEL = "@cf/deepseek-ai/deepseek-v4-pro-0813"
+# Workers AI free plan: 10,000 neurons a day. DeepSeek, Kimi, and GLM need the paid plan.
+MODEL = "@cf/openai/gpt-oss-120b"
 EXAMPLES = 3  # latest published posts shown to the model as the house style
 ATOM = "{http://www.w3.org/2005/Atom}"
 
@@ -34,9 +34,10 @@ Rules:
 - Use only the facts and the paper abstract given. Do not add venues, ranks, numbers, dates, links, or claims that are not there.
 - No clichés: no "рады сообщить", "с гордостью", "невероятный", "уникальный".
 - Caption in Telegram HTML: <b>, <i>, <a href="...">; no other tags; 300-700 characters; first line is a bold headline.
-- For a paper, explain the result in one or two plain sentences a second-year student understands.
+- Lead with the news from the facts: who from the department did what (accepted, awarded, held, published), named as in the facts.
+- For a paper, the abstract only explains the result: one or two plain sentences a second-year student understands.
 - End with the links from the facts.
-- Header: title of at most 60 characters, subtitle of at most 90 characters, plain text, no markup.
+- Header in Russian: the title states the news (at most 60 characters), the subtitle adds who or where (at most 90); plain text, no markup.
 - rubric is one of: {rubrics}.
 - person is the id of the one department member the news is about, from the list, or "" if none fits or several do.
 - slug: 2-5 lowercase English words joined by "-".
@@ -92,6 +93,9 @@ def ask_model(facts: str, paper: str) -> dict[str, str]:
     body = {
         "model": MODEL,
         "temperature": 0.4,
+        # gpt-oss reasons before it answers; the default limit ends it mid-thought.
+        "max_tokens": 4000,
+        "reasoning_effort": "low",
         "messages": [
             {
                 "role": "system",
@@ -113,7 +117,7 @@ def ask_model(facts: str, paper: str) -> dict[str, str]:
             answer = json.load(response)
     except HTTPError as error:
         sys.exit(f"Workers AI: {error.code} {error.read().decode()}")
-    content = answer["choices"][0]["message"]["content"]
+    content = answer["choices"][0]["message"]["content"] or ""
     # Not every model honors a JSON mode: take the outermost object from the text.
     match = re.search(r"\{.*\}", content, re.DOTALL)
     if not match:
@@ -129,7 +133,12 @@ def unsupported(draft: dict[str, str], source: str) -> list[str]:
         for link in re.findall(r'https?://[^\s"<>]+', text)
         if link.rstrip("/.") not in source
     ]
-    numbers = [n for n in set(re.findall(r"\d+(?:[.,]\d+)?", text)) if n not in source]
+    plain = source.replace(",", ".")  # 54,5 in Russian is 54.5 in the abstract
+    numbers = [
+        n
+        for n in set(re.findall(r"\d+(?:[.,]\d+)?", text))
+        if n.replace(",", ".") not in plain
+    ]
     return [f"link {link}" for link in links] + [f"number {n}" for n in sorted(numbers)]
 
 
