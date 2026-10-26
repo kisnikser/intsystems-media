@@ -1,0 +1,60 @@
+name: Preview posts
+
+# Render each added or changed draft in posts/ and send its header, caption,
+# and metadata to the editor in Telegram, exactly as the channel will show it.
+on:
+  push:
+    branches: [main]
+    paths: ["posts/**.md"]
+  workflow_dispatch:
+    inputs:
+      post:
+        description: Post file, e.g. posts/2026-10-27-mipt-conference.md
+        required: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    # Full TeX Live, the same year as local builds; Open Sans comes with it.
+    container: texlive/texlive:latest
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      EDITOR_ID: ${{ vars.TELEGRAM_EDITOR_ID }}
+      INPUT_POST: ${{ inputs.post }}
+      BEFORE: ${{ github.event.before }}
+    steps:
+      - name: Install tools
+        run: apt-get update -qq && apt-get install -y -qq git poppler-utils python3 curl >/dev/null
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Find drafts
+        id: drafts
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          if [ -n "$INPUT_POST" ]; then
+            files="$INPUT_POST"
+          else
+            files=$(git diff --name-only --diff-filter=AM "$BEFORE" HEAD -- 'posts/*.md' | grep -vx 'posts/template.md' || true)
+          fi
+          drafts=$(for f in $files; do grep -qx 'status: draft' "$f" && echo "$f"; done || true)
+          echo "files=$(echo $drafts)" >> "$GITHUB_OUTPUT"
+          echo "Drafts: ${drafts:-none}"
+      - name: Render and send
+        if: steps.drafts.outputs.files != ''
+        env:
+          FILES: ${{ steps.drafts.outputs.files }}
+          REPO_URL: ${{ github.server_url }}/${{ github.repository }}/blob/${{ github.sha }}
+        run: |
+          python3 scripts/render_post.py $FILES
+          api="https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN"
+          for f in $FILES; do
+            stem=$(basename "$f" .md)
+            curl -sS --fail-with-body "$api/sendPhoto" -F chat_id="$EDITOR_ID" -F parse_mode=HTML \
+              -F photo=@"build/posts/$stem.png" -F caption="<build/posts/$stem.html"
+            meta=$(grep -E '^(date|rubric):' "$f" | tr '\n' ' ')
+            curl -sS --fail-with-body "$api/sendMessage" -F chat_id="$EDITOR_ID" \
+              -F text="Draft $f · $meta" -F link_preview_options='{"is_disabled":true}' \
+              -F reply_markup="{\"inline_keyboard\":[[{\"text\":\"Open on GitHub\",\"url\":\"$REPO_URL/$f\"}]]}"
+          done

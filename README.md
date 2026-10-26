@@ -1,6 +1,6 @@
 # intsystems-media
 
-YouTube covers for the Intelligent Systems channel and the department presentation for junior students, in one visual style.
+YouTube covers for the Intelligent Systems channel, Telegram post headers, and the department presentation for junior students, in one visual style.
 Overleaf project, XeLaTeX: `main.tex` builds covers, `presentation.tex` builds slides.
 
 Old standalone covers live in `legacy/` and are not part of the build.
@@ -144,6 +144,36 @@ It writes `data/research/stats.tex` and `data/research/alumni.csv`, one row per 
 Check the CSV after a run; fix a wrong match by adding `key,openalex` rows (`openalex` is an author id or `none`) to `data/research/overrides.csv` and rerun.
 OpenAlex answers are cached in `data/research/openalex.json`, so a rerun only pays for new queries.
 
+## Telegram posts
+
+One file per channel post: `posts/YYYY-MM-DD-slug.md`, copied from `posts/template.md`.
+Front matter is flat `key: value`; the body is the caption in Telegram HTML (`<b>`, `<i>`, `<a href>`, `<blockquote>`).
+
+| Key | Meaning |
+|---|---|
+| `date` | Publication time, `YYYY-MM-DD HH:MM` |
+| `rubric` | `paper`, `accepted`, `award`, `event`, `seminar`, `deadlines`, `news`; sets the default background and badge |
+| `status` | `draft`, `approved`, `published`, `rejected` |
+| `title`, `subtitle` | Header text, TeX as in `covers/` |
+| `person` | Optional id from `data/people.tex`, drawn on the header |
+| `background`, `badge` | Override the rubric defaults |
+| `message_id` | Channel message id once published |
+
+```sh
+uv run --python 3.11 scripts/render_post.py posts/2026-10-27-mipt-conference.md
+```
+
+It writes `build/posts/<stem>.png` (1920×1080, the `event` cover layout) and `build/posts/<stem>.html` (the caption).
+It refuses a post with an unknown rubric or status, a tag Telegram rejects, or a caption over 1024 characters.
+Rubric defaults live in `RUBRICS` in `scripts/render_post.py`.
+`build/` is not committed.
+
+A push to `main` that adds or changes a post with `status: draft` runs `.github/workflows/preview-posts.yml`: it renders the post and sends the header, caption, and metadata to the editor through [@intsystems_media_bot](https://t.me/intsystems_media_bot).
+Resend one post with Actions → Preview posts → Run workflow.
+The workflow needs the repository secret `TELEGRAM_BOT_TOKEN` and the variable `TELEGRAM_EDITOR_ID` (the editor's numeric Telegram id).
+The editor must have sent `/start` to the bot once; a bot cannot open a chat.
+The repository is public, so a pushed draft is public before it is posted: push news under embargo only once it is announced.
+
 ## Gotchas
 
 - **Titles grow upward from a fixed line; subtitles and the session line stay put.** Break long titles with a plain `\\`; adding `\vspace` or `session-y` to compensate shifts the layout.
@@ -152,6 +182,7 @@ OpenAlex answers are cached in `data/research/openalex.json`, so a rerun only pa
 - **The PNG export in `latexmkrc` skips the root file `presentation`.** Rename `presentation.tex` and Overleaf will zip the slides as covers.
 - **OpenAlex matching misses alumni whose profiles have no MIPT, Skoltech, or FRC CSC affiliation, and those spelled unlike the transliteration (`Фрей` is `Frei`).** Charts say how many alumni were matched; add misses to `data/research/overrides.csv`.
 - **A search costs $0.001 of OpenAlex budget; without a key the whole network shares $0.10 a day.** A full run without the cache needs about $0.6, so use the free key (Keychain service `openalex`).
+- **Only `design-*` and `black-design-*` backgrounds carry the logo that the `event` badge sits next to.** On other backgrounds the badge floats right of an empty spot; keep post backgrounds to these six.
 - **Open Sans is loaded by file name (`OpenSans-Regular.ttf`), not by family name.** Family lookup works on Overleaf but fails on a local TeX Live whose fonts fontconfig cannot see.
 
 ## Layout
@@ -166,6 +197,9 @@ sty/beamerthemeintsystems.sty  Slide theme
 scripts/sync_site.py           Site data for the presentation
 data/site/                     Generated from the site, do not edit
 scripts/research_stats.py      Alumni and GitHub data for the charts
+scripts/render_post.py         Telegram post header and caption check
+.github/workflows/             Post previews to the editor
+posts/                         One file per Telegram post
 data/research/                 Generated research data and OpenAlex cache
 data/supervisors.tex           Supervisors for team slides
 data/people.tex                People registry
