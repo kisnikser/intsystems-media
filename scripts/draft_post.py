@@ -1,10 +1,10 @@
-"""Draft a post from the editor's facts with an LLM, commit it, and send the preview.
+"""Make a draft from the editor's own post text: an LLM proposes only the header.
 
-    python3 scripts/draft_post.py "Kiselev and Grabovoy: paper accepted at ICLR 2027, https://arxiv.org/abs/..."
+    python3 scripts/draft_post.py '<b>Статья принята на ICLR 2027</b> ...'
 
 Runs in .github/workflows/draft-post.yml, dispatched by the bot for any message that is not a reply.
+The caption is the editor's text as Telegram HTML, kept verbatim; the model picks rubric, title, subtitle, and person.
 Env: CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN (Workers AI); Telegram variables as in send_post.py.
-The model writes only from the facts and the arXiv abstract; links and numbers it adds anyway are flagged on the card.
 """
 
 import argparse
@@ -13,39 +13,27 @@ import os
 import re
 import subprocess
 import sys
-import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 from pathlib import Path
 from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
-from render_post import REPO, RUBRICS, parse_post
+from render_post import REPO, RUBRICS
 from send_post import MOSCOW, preview
 
 # Workers AI free plan: 10,000 neurons a day. DeepSeek, Kimi, and GLM need the paid plan.
 MODEL = "@cf/openai/gpt-oss-120b"
-EXAMPLES = 3  # latest published posts shown to the model as the house style
-ATOM = "{http://www.w3.org/2005/Atom}"
 
-SYSTEM = """You write posts for the Telegram channel of the Intelligent Systems Department at MIPT (Moscow).
-Readers are students and alumni. Write in Russian, in a calm, factual, friendly tone, as the examples show.
-
-Rules:
-- Use only the facts and the paper abstract given. Do not add venues, ranks, numbers, dates, links, or claims that are not there.
-- No clichés: no "рады сообщить", "с гордостью", "невероятный", "уникальный".
-- Caption in Telegram HTML: <b>, <i>, <a href="...">; no other tags; 300-700 characters; first line is a bold headline.
-- Lead with the news from the facts: who from the department did what (accepted, awarded, held, published), named as in the facts.
-- For a paper, the abstract only explains the result: one or two plain sentences a second-year student understands.
-- End with the links from the facts.
-- Header in Russian: the title states the news (at most 60 characters), the subtitle adds who or where (at most 90); plain text, no markup.
-- rubric is one of: {rubrics}.
-- person is the id of the one department member the news is about, from the list, or "" if none fits or several do.
+SYSTEM = """You make the header image text for a post in the Telegram channel of the Intelligent Systems Department at MIPT.
+The editor wrote the post; read it and answer with one JSON object {{"rubric", "slug", "title", "subtitle", "person"}}:
+- title: the news in Russian, at most 60 characters, plain text; use only what the post says.
+- subtitle: who or where, at most 90 characters, or "".
+- rubric: one of {rubrics}.
+- person: the id of the one department member the post is about, from the list, or "" if none fits or several do.
 - slug: 2-5 lowercase English words joined by "-".
 
 People (id: name):
-{people}
-
-Answer with one JSON object: {{"rubric", "slug", "title", "subtitle", "person", "caption"}}."""
+{people}"""
 
 
 def people() -> dict[str, str]:
@@ -53,43 +41,8 @@ def people() -> dict[str, str]:
     return dict(re.findall(r"\\defineperson\{(\w+)\}\{\s*name\s*=\s*\{([^}]*)\}", text))
 
 
-def arxiv(facts: str) -> str:
-    """Title, authors, and abstract of the first arXiv link in the facts, or ""."""
-    match = re.search(r"arxiv\.org/(?:abs|pdf)/(\d{4}\.\d{4,5})", facts)
-    if not match:
-        return ""
-    with urlopen(
-        f"https://export.arxiv.org/api/query?id_list={match.group(1)}", timeout=60
-    ) as response:
-        entry = ET.parse(response).getroot().find(f"{ATOM}entry")
-    authors = ", ".join(
-        a.findtext(f"{ATOM}name") for a in entry.findall(f"{ATOM}author")
-    )
-    title = " ".join(entry.findtext(f"{ATOM}title").split())
-    abstract = " ".join(entry.findtext(f"{ATOM}summary").split())
-    return f"Paper: {title}\nAuthors: {authors}\nAbstract: {abstract}"
-
-
-def examples() -> str:
-    published = []
-    for path in sorted((REPO / "posts").glob("*.md"), reverse=True):
-        meta, caption = parse_post(path)
-        if meta.get("status") == "published":
-            published.append(
-                f"rubric: {meta['rubric']}\ntitle: {meta['title']}\ncaption:\n{caption}"
-            )
-        if len(published) == EXAMPLES:
-            break
-    return "\n\n---\n\n".join(published)
-
-
-def ask_model(facts: str, paper: str) -> dict[str, str]:
+def ask_model(caption: str) -> dict[str, str]:
     staff = "\n".join(f"{key}: {name.title()}" for key, name in people().items())
-    user = f"Facts from the editor:\n{facts}"
-    if paper:
-        user += f"\n\n{paper}"
-    if shots := examples():
-        user += f"\n\nPublished posts, for style only:\n\n{shots}"
     body = {
         "model": MODEL,
         "temperature": 0.4,
@@ -101,7 +54,7 @@ def ask_model(facts: str, paper: str) -> dict[str, str]:
                 "role": "system",
                 "content": SYSTEM.format(rubrics=", ".join(RUBRICS), people=staff),
             },
-            {"role": "user", "content": user},
+            {"role": "user", "content": caption},
         ],
     }
     request = Request(
@@ -125,29 +78,12 @@ def ask_model(facts: str, paper: str) -> dict[str, str]:
     return json.loads(match.group(0))
 
 
-def unsupported(draft: dict[str, str], source: str) -> list[str]:
-    """Links and numbers in the draft that appear nowhere in the facts or the abstract."""
-    text = " ".join([draft["title"], draft["subtitle"], draft["caption"]])
-    links = [
-        link
-        for link in re.findall(r'https?://[^\s"<>]+', text)
-        if link.rstrip("/.") not in source
-    ]
-    plain = source.replace(",", ".")  # 54,5 in Russian is 54.5 in the abstract
-    numbers = [
-        n
-        for n in set(re.findall(r"\d+(?:[.,]\d+)?", text))
-        if n.replace(",", ".") not in plain
-    ]
-    return [f"link {link}" for link in links] + [f"number {n}" for n in sorted(numbers)]
-
-
 def tex(line: str) -> str:
     """Header fields are TeX; escape what the model writes as plain text."""
     return re.sub(r"(?<!\\)([%&#$_])", r"\\\1", line.strip())
 
 
-def write(draft: dict[str, str]) -> Path:
+def write(draft: dict[str, str], caption: str) -> Path:
     date = (datetime.now(MOSCOW) + timedelta(days=1)).strftime("%Y-%m-%d")
     slug = re.sub(r"[^a-z0-9]+", "-", draft["slug"].lower()).strip("-")[:40] or "post"
     path = REPO / "posts" / f"{date}-{slug}.md"
@@ -167,18 +103,16 @@ def write(draft: dict[str, str]) -> Path:
         lines.append(f"subtitle: {tex(draft['subtitle'])}")
     if draft.get("person") in people():
         lines.append(f"person: {draft['person']}")
-    lines += ["---", draft["caption"].strip(), ""]
+    lines += ["---", caption.strip(), ""]
     path.write_text("\n".join(lines), encoding="utf-8")
     return path
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("facts")
+    parser.add_argument("caption", help="post text in Telegram HTML")
     args = parser.parse_args()
-    paper = arxiv(args.facts)
-    draft = ask_model(args.facts, paper)
-    path = write(draft)
+    path = write(ask_model(args.caption), args.caption)
     relative = path.relative_to(REPO)
     for cmd in (
         ["git", "add", str(relative)],
@@ -186,13 +120,7 @@ def main() -> None:
         ["git", "push", "-q"],
     ):
         subprocess.run(cmd, cwd=REPO, check=True)
-    flags = unsupported(draft, f"{args.facts}\n{paper}")
-    note = (
-        ("⚠️ Not in the facts: " + ", ".join(flags))
-        if flags
-        else "Facts check: no unsupported links or numbers."
-    )
-    preview(path, note)
+    preview(path)
 
 
 if __name__ == "__main__":

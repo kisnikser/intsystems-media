@@ -34,27 +34,25 @@ async function handle(update, env) {
   if (!message || String(message.from?.id) !== env.EDITOR_ID) return;
   const prompt = message.reply_to_message?.text ?? "";
   const kind = Object.keys(PROMPTS).find((key) => prompt.startsWith(PROMPTS[key]));
-  if (!kind) return onFacts(message, env);
+  if (!kind) return onPost(message, env);
   const path = prompt.match(/posts\/\S+\.md/)[0];
   const photoId = Number(prompt.match(/#(\d+)/)[1]);
   return onReply(kind, path, photoId, message, env);
 }
 
-// Any other message is a set of facts for a new post; /start and /help explain that.
-async function onFacts(message, env) {
-  const facts = message.text ?? message.caption ?? "";
-  if (!facts || facts.startsWith("/")) {
+// Any other message is a post the editor wrote: the text is kept, the Action makes the header.
+async function onPost(message, env) {
+  const text = message.text ?? message.caption ?? "";
+  if (!text || text.startsWith("/")) {
     return tg(env, "sendMessage", {
       chat_id: env.EDITOR_ID,
-      text: "Send the facts of a news item: who, what, where, links. A draft with a preview comes back in about 3 min.",
+      text: "Send a post as it should appear in the channel. The bot makes the header and sends a preview in about 3 min.",
     });
   }
-  await dispatch(env, "draft-post.yml", { facts });
-  return tg(env, "sendMessage", {
-    chat_id: env.EDITOR_ID,
-    text: "📝 Drafting, the preview comes in about 3 min.",
-    reply_parameters: { message_id: message.message_id },
-  });
+  const reply = (body) => tg(env, "sendMessage", { chat_id: env.EDITOR_ID, text: body, reply_parameters: { message_id: message.message_id } });
+  if (text.length > CAPTION_LIMIT) return reply(`Too long: ${text.length}/${CAPTION_LIMIT}.`);
+  await dispatch(env, "draft-post.yml", { caption: toHtml(text, message.entities ?? message.caption_entities) });
+  return reply("🖼 Making the header, the preview comes in about 3 min.");
 }
 
 async function onButton(query, env) {

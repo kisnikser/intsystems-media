@@ -171,7 +171,7 @@ Rubric defaults live in `RUBRICS` in `scripts/render_post.py`.
 ### Bot
 
 ```
-facts sent to the bot ──► worker/index.js ──► draft-post.yml (Workers AI) ──► commit draft, preview
+post sent to the bot ──► worker/index.js ──► draft-post.yml (Workers AI picks the header) ──► commit draft, preview
 push draft ──► preview-posts.yml ──► editor: header + caption, then a card with buttons
 button / reply ──► worker/index.js (Cloudflare) ──► commit to posts/*.md [skip ci]
 approved, date passed ──► publish-posts.yml (every 15 min, or "Publish now") ──► channel, status: published
@@ -180,8 +180,7 @@ approved, date passed ──► publish-posts.yml (every 15 min, or "Publish now
 A push to `main` that adds or changes a post with `status: draft` sends its preview through [@intsystems_media_bot](https://t.me/intsystems_media_bot); resend one with Actions → Preview posts → Run workflow.
 Buttons: **Publish now** (approve, date now), **At date** (approve for the file's `date`), **Text**, **Header**, **Date** (the bot asks for a reply), **Reject**.
 `worker/index.js` keeps no state: the post path and the preview photo id travel in the button data and in the text of the bot's question.
-Any message to the bot that is not a reply is a set of facts: `scripts/draft_post.py` adds the arXiv abstract of the first arXiv link, asks `MODEL` (gpt-oss-120b on Workers AI) for a draft in the style of the latest published posts, commits it with `date` tomorrow 10:00, and sends the preview.
-The card lists links and numbers in the draft that appear in neither the facts nor the abstract.
+Any message to the bot that is not a reply is a post the editor wrote: the Worker converts its formatting to Telegram HTML and refuses text over 1024 characters; `scripts/draft_post.py` keeps the text verbatim, asks `MODEL` (gpt-oss-120b on Workers AI) only for rubric, title, subtitle, and person, commits the draft with `date` tomorrow 10:00, and sends the preview.
 `scripts/send_post.py` sends previews and publishes; `scripts/render_post.py` only renders and checks.
 
 | Setting | Where | Value |
@@ -208,7 +207,7 @@ Deploy the Worker with `cd worker && npx wrangler deploy`.
 - **The editor must send `/start` to the bot once.** A bot cannot open a chat; previews fail with `chat not found` until then.
 - **Worker commits carry `[skip ci]`.** Without it every caption edit would trigger a new preview; header edits and "Publish now" dispatch their workflow explicitly.
 - **Post file names are at most 60 bytes.** Telegram callback data is limited to 64 bytes and carries the file name; `render_post.py` refuses longer names.
-- **The Workers AI free plan gives 10,000 neurons a day, about 70 drafts with `MODEL` (~130 neurons each).** DeepSeek, Kimi, and GLM on Workers AI answer 403 on the free plan; only smaller open models such as gpt-oss-120b and Qwen are free.
+- **The Workers AI free plan gives 10,000 neurons a day, several hundred headers with `MODEL`.** DeepSeek, Kimi, and GLM on Workers AI answer 403 on the free plan; only smaller open models such as gpt-oss-120b and Qwen are free.
 - **The bot commits to `main`.** Run `git pull --ff-only` before editing posts locally, or the push is rejected.
 - **Only `design-*` and `black-design-*` backgrounds carry the logo that the `event` badge sits next to.** On other backgrounds the badge floats right of an empty spot; keep post backgrounds to these six.
 - **Open Sans is loaded by file name (`OpenSans-Regular.ttf`), not by family name.** Family lookup works on Overleaf but fails on a local TeX Live whose fonts fontconfig cannot see.
@@ -227,7 +226,7 @@ data/site/                     Generated from the site, do not edit
 scripts/research_stats.py      Alumni and GitHub data for the charts
 scripts/render_post.py         Telegram post header and caption check
 scripts/send_post.py           Telegram previews and publishing
-scripts/draft_post.py          LLM drafts from the editor's facts
+scripts/draft_post.py          Draft from the editor's text, LLM header
 .github/workflows/             Post previews and publishing
 worker/                        Cloudflare Worker: bot buttons and replies
 posts/                         One file per Telegram post

@@ -1,12 +1,12 @@
 name: Draft post
 
-# Turn the editor's facts (sent to the bot) into a draft with Workers AI,
-# commit it, and send its preview with buttons. Dispatched by worker/index.js.
+# Turn a post the editor sent to the bot into a draft: Workers AI proposes the header,
+# the text stays as written. Commit it and send the preview. Dispatched by worker/index.js.
 on:
   workflow_dispatch:
     inputs:
-      facts:
-        description: Facts of the news item
+      caption:
+        description: Post text in Telegram HTML
         required: true
 
 concurrency: posts-main
@@ -22,7 +22,7 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_EDITOR_ID: ${{ vars.TELEGRAM_EDITOR_ID }}
-      FACTS: ${{ inputs.facts }}
+      CAPTION: ${{ inputs.caption }}
     steps:
       - name: Install tools
         run: apt-get update -qq && apt-get install -y -qq git poppler-utils python3 curl >/dev/null
@@ -32,7 +32,7 @@ jobs:
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          python3 scripts/draft_post.py "$FACTS"
+          python3 scripts/draft_post.py "$CAPTION"
       - name: Tell the editor it failed
         if: failure()
         env:
