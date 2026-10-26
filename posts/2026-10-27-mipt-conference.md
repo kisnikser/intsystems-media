@@ -1,8 +1,9 @@
 ---
 date: 2026-10-26 19:20
 rubric: news
-status: approved
+status: published
 title: 68-я Всероссийская научная конференция МФТИ
 subtitle: Стартовал прием заявок на конференцию в честь 130-летия со дня рождения Н.\,Н.~Семёнова
+message_id: 4
 ---
 Hello World!
