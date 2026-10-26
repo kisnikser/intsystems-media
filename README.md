@@ -208,7 +208,7 @@ Deploy the Worker with `cd worker && npx wrangler deploy`.
 - **The editor must send `/start` to the bot once.** A bot cannot open a chat; previews fail with `chat not found` until then.
 - **Worker commits carry `[skip ci]`.** Without it every caption edit would trigger a new preview; header edits and "Publish now" dispatch their workflow explicitly.
 - **Post file names are at most 60 bytes.** Telegram callback data is limited to 64 bytes and carries the file name; `render_post.py` refuses longer names.
-- **The Workers AI free plan gives 10,000 neurons a day, hundreds of drafts with `MODEL`.** DeepSeek, Kimi, and GLM on Workers AI answer 403 on the free plan; only smaller open models such as gpt-oss-120b and Qwen are free.
+- **The Workers AI free plan gives 10,000 neurons a day, about 70 drafts with `MODEL` (~130 neurons each).** DeepSeek, Kimi, and GLM on Workers AI answer 403 on the free plan; only smaller open models such as gpt-oss-120b and Qwen are free.
 - **The bot commits to `main`.** Run `git pull --ff-only` before editing posts locally, or the push is rejected.
 - **Only `design-*` and `black-design-*` backgrounds carry the logo that the `event` badge sits next to.** On other backgrounds the badge floats right of an empty spot; keep post backgrounds to these six.
 - **Open Sans is loaded by file name (`OpenSans-Regular.ttf`), not by family name.** Family lookup works on Overleaf but fails on a local TeX Live whose fonts fontconfig cannot see.
