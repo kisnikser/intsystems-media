@@ -1,6 +1,6 @@
 name: Draft post
 
-# Turn the editor's facts (sent to the bot) into a draft with GitHub Models,
+# Turn the editor's facts (sent to the bot) into a draft with Workers AI,
 # commit it, and send its preview with buttons. Dispatched by worker/index.js.
 on:
   workflow_dispatch:
@@ -17,9 +17,9 @@ jobs:
     container: texlive/texlive:latest
     permissions:
       contents: write
-      models: read
     env:
-      GITHUB_TOKEN: ${{ github.token }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_EDITOR_ID: ${{ vars.TELEGRAM_EDITOR_ID }}
       FACTS: ${{ inputs.facts }}

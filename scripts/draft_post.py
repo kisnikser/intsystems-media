@@ -3,7 +3,7 @@
     python3 scripts/draft_post.py "Kiselev and Grabovoy: paper accepted at ICLR 2027, https://arxiv.org/abs/..."
 
 Runs in .github/workflows/draft-post.yml, dispatched by the bot for any message that is not a reply.
-Env: GITHUB_TOKEN with `models: read` and `contents: write`; Telegram variables as in send_post.py.
+Env: CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN (Workers AI); Telegram variables as in send_post.py.
 The model writes only from the facts and the arXiv abstract; links and numbers it adds anyway are flagged on the card.
 """
 
@@ -22,7 +22,8 @@ from urllib.request import Request, urlopen
 from render_post import REPO, RUBRICS, parse_post
 from send_post import MOSCOW, preview
 
-MODEL = "openai/gpt-4.1"
+# Workers AI free plan: 10,000 neurons a day; one draft here is ~600, so ~15 drafts a day.
+MODEL = "@cf/deepseek-ai/deepseek-v4-pro-0813"
 EXAMPLES = 3  # latest published posts shown to the model as the house style
 ATOM = "{http://www.w3.org/2005/Atom}"
 
@@ -91,7 +92,6 @@ def ask_model(facts: str, paper: str) -> dict[str, str]:
     body = {
         "model": MODEL,
         "temperature": 0.4,
-        "response_format": {"type": "json_object"},
         "messages": [
             {
                 "role": "system",
@@ -101,10 +101,10 @@ def ask_model(facts: str, paper: str) -> dict[str, str]:
         ],
     }
     request = Request(
-        "https://models.github.ai/inference/chat/completions",
+        f"https://api.cloudflare.com/client/v4/accounts/{os.environ['CLOUDFLARE_ACCOUNT_ID']}/ai/v1/chat/completions",
         data=json.dumps(body).encode(),
         headers={
-            "Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}",
+            "Authorization": f"Bearer {os.environ['CLOUDFLARE_API_TOKEN']}",
             "Content-Type": "application/json",
         },
     )
@@ -112,8 +112,13 @@ def ask_model(facts: str, paper: str) -> dict[str, str]:
         with urlopen(request, timeout=120) as response:
             answer = json.load(response)
     except HTTPError as error:
-        sys.exit(f"GitHub Models: {error.code} {error.read().decode()}")
-    return json.loads(answer["choices"][0]["message"]["content"])
+        sys.exit(f"Workers AI: {error.code} {error.read().decode()}")
+    content = answer["choices"][0]["message"]["content"]
+    # Not every model honors a JSON mode: take the outermost object from the text.
+    match = re.search(r"\{.*\}", content, re.DOTALL)
+    if not match:
+        sys.exit(f"Workers AI: no JSON in the answer: {content[:500]}")
+    return json.loads(match.group(0))
 
 
 def unsupported(draft: dict[str, str], source: str) -> list[str]:
