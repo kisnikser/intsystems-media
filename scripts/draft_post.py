@@ -114,12 +114,17 @@ def main() -> None:
     args = parser.parse_args()
     path = write(ask_model(args.caption), args.caption)
     relative = path.relative_to(REPO)
-    for cmd in (
-        ["git", "add", str(relative)],
-        ["git", "commit", "-q", "-m", f"feat: draft {relative}"],
-        ["git", "push", "-q"],
-    ):
-        subprocess.run(cmd, cwd=REPO, check=True)
+    subprocess.run(["git", "add", str(relative)], cwd=REPO, check=True)
+    subprocess.run(
+        ["git", "commit", "-q", "-m", f"feat: draft {relative}"], cwd=REPO, check=True
+    )
+    # The bot commits to main at any time; rebase onto it until the push lands.
+    for _ in range(3):
+        subprocess.run(["git", "pull", "-q", "--rebase"], cwd=REPO, check=True)
+        if subprocess.run(["git", "push", "-q"], cwd=REPO, check=False).returncode == 0:
+            break
+    else:
+        sys.exit("git push kept failing")
     preview(path)
 
 
