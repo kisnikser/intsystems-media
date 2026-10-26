@@ -1,7 +1,7 @@
 ---
-date: 2026-10-27 10:00
+date: 2026-10-26 20:12
 rubric: paper
-status: draft
+status: approved
 title: Статья о моделях знаний
 subtitle: Nikita Kiselev, Andrey Grabovoy
 ---
