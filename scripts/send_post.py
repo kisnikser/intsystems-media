@@ -62,7 +62,7 @@ def set_meta(path: Path, key: str, value: str) -> None:
     path.write_text(f"{head}\n---\n{body}", encoding="utf-8")
 
 
-def preview(path: Path) -> None:
+def preview(path: Path, note: str = "") -> None:
     meta, caption, png, _ = build(path)
     editor = os.environ["TELEGRAM_EDITOR_ID"]
     photo = telegram(
@@ -88,7 +88,7 @@ def preview(path: Path) -> None:
         "sendMessage",
         {
             "chat_id": editor,
-            "text": f"Draft posts/{path.name} · {meta['rubric']} · {meta['date']}",
+            "text": f"Draft posts/{path.name} · {meta['rubric']} · {meta['date']}\n{note}".strip(),
             "reply_parameters": {"message_id": photo["message_id"]},
             "reply_markup": {"inline_keyboard": buttons},
         },

@@ -34,10 +34,27 @@ async function handle(update, env) {
   if (!message || String(message.from?.id) !== env.EDITOR_ID) return;
   const prompt = message.reply_to_message?.text ?? "";
   const kind = Object.keys(PROMPTS).find((key) => prompt.startsWith(PROMPTS[key]));
-  if (!kind) return;
+  if (!kind) return onFacts(message, env);
   const path = prompt.match(/posts\/\S+\.md/)[0];
   const photoId = Number(prompt.match(/#(\d+)/)[1]);
   return onReply(kind, path, photoId, message, env);
+}
+
+// Any other message is a set of facts for a new post; /start and /help explain that.
+async function onFacts(message, env) {
+  const facts = message.text ?? message.caption ?? "";
+  if (!facts || facts.startsWith("/")) {
+    return tg(env, "sendMessage", {
+      chat_id: env.EDITOR_ID,
+      text: "Send the facts of a news item: who, what, where, links. A draft with a preview comes back in about 3 min.",
+    });
+  }
+  await dispatch(env, "draft-post.yml", { facts });
+  return tg(env, "sendMessage", {
+    chat_id: env.EDITOR_ID,
+    text: "📝 Drafting, the preview comes in about 3 min.",
+    reply_parameters: { message_id: message.message_id },
+  });
 }
 
 async function onButton(query, env) {

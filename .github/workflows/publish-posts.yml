@@ -8,7 +8,7 @@ on:
     - cron: "*/15 * * * *"
   workflow_dispatch:
 
-concurrency: publish-posts
+concurrency: posts-main
 
 jobs:
   due:
