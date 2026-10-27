@@ -180,6 +180,7 @@ approved, date passed ──► publish-posts.yml (every 15 min, or "Publish now
 A push to `main` that adds or changes a post with `status: draft` sends its preview through [@intsystems_media_bot](https://t.me/intsystems_media_bot); resend one with Actions → Preview posts → Run workflow.
 Buttons: **Publish now** (approve, date now), **At date** (approve for the file's `date`), **Text**, **Header**, **Date** (the bot asks for a reply), **Reject**.
 `worker/index.js` keeps no state: the post path and the preview photo id travel in the button data and in the text of the bot's question.
+`/cover` followed by lines for the title, the subtitle (`-` for none), and optionally a person id and a rubric renders a header only and sends it back as a PNG file: `scripts/cover.py` via `.github/workflows/cover.yml`, nothing committed.
 Any message to the bot that is not a reply is a post the editor wrote: the Worker converts its formatting to Telegram HTML and refuses text over 1024 characters; `scripts/draft_post.py` keeps the text verbatim, asks `MODEL` (gpt-oss-120b on Workers AI) only for rubric, title, subtitle, and person, commits the draft with `date` tomorrow 10:00, and sends the preview.
 `scripts/send_post.py` sends previews and publishes; `scripts/render_post.py` only renders and checks.
 
@@ -227,6 +228,7 @@ scripts/research_stats.py      Alumni and GitHub data for the charts
 scripts/render_post.py         Telegram post header and caption check
 scripts/send_post.py           Telegram previews and publishing
 scripts/draft_post.py          Draft from the editor's text, LLM header
+scripts/cover.py               Header on request (/cover), sent as a file
 .github/workflows/             Post previews and publishing
 worker/                        Cloudflare Worker: bot buttons and replies
 posts/                         One file per Telegram post

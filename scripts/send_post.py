@@ -25,7 +25,12 @@ MOSCOW = timezone(timedelta(hours=3))  # no DST since 2014
 GITHUB_URL = "https://github.com/kisnikser/intsystems-media/blob/main"
 
 
-def telegram(method: str, fields: dict[str, object], photo: Path | None = None) -> dict:
+def telegram(
+    method: str,
+    fields: dict[str, object],
+    photo: Path | None = None,
+    field: str = "photo",
+) -> dict:
     """Call the Bot API with multipart form data; exit with Telegram's error text."""
     boundary = uuid4().hex
     parts = []
@@ -35,7 +40,7 @@ def telegram(method: str, fields: dict[str, object], photo: Path | None = None) 
             f'--{boundary}\r\nContent-Disposition: form-data; name="{key}"\r\n\r\n{text}\r\n'.encode()
         )
     if photo:
-        head = f'--{boundary}\r\nContent-Disposition: form-data; name="photo"; filename="{photo.name}"\r\nContent-Type: image/png\r\n\r\n'
+        head = f'--{boundary}\r\nContent-Disposition: form-data; name="{field}"; filename="{photo.name}"\r\nContent-Type: image/png\r\n\r\n'
         parts.append(head.encode() + photo.read_bytes() + b"\r\n")
     parts.append(f"--{boundary}--\r\n".encode())
     request = Request(

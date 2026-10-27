@@ -48,6 +48,17 @@ TELEGRAM_TAGS = {
 }
 
 
+def people() -> dict[str, str]:
+    """Ids and names of data/people.tex: the people a header can show."""
+    text = (REPO / "data" / "people.tex").read_text(encoding="utf-8")
+    return dict(re.findall(r"\\defineperson\{(\w+)\}\{\s*name\s*=\s*\{([^}]*)\}", text))
+
+
+def tex(line: str) -> str:
+    """Header fields are TeX; escape specials typed as plain text."""
+    return re.sub(r"(?<!\\)([%&#$_])", r"\\\1", line.strip())
+
+
 def parse_post(path: Path) -> tuple[dict[str, str], str]:
     """Flat `key: value` front matter between `---` lines, then the caption."""
     text = path.read_text(encoding="utf-8")

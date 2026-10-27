@@ -1,0 +1,25 @@
+name: Cover
+
+# Render a header on request (/cover in the bot) and send it to the editor as a PNG file.
+# Nothing is committed. Dispatched by worker/index.js.
+on:
+  workflow_dispatch:
+    inputs:
+      text:
+        description: "Lines after /cover: title, subtitle or -, then person id and rubric in any order"
+        required: true
+
+jobs:
+  cover:
+    runs-on: ubuntu-latest
+    container: texlive/texlive:latest
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_EDITOR_ID: ${{ vars.TELEGRAM_EDITOR_ID }}
+      TEXT: ${{ inputs.text }}
+    steps:
+      - name: Install tools
+        run: apt-get update -qq && apt-get install -y -qq poppler-utils python3 >/dev/null
+      - uses: actions/checkout@v4
+      - name: Render and send
+        run: python3 scripts/cover.py "$TEXT"

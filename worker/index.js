@@ -43,13 +43,25 @@ async function handle(update, env) {
 // Any other message is a post the editor wrote: the text is kept, the Action makes the header.
 async function onPost(message, env) {
   const text = message.text ?? message.caption ?? "";
+  const reply = (body) => tg(env, "sendMessage", { chat_id: env.EDITOR_ID, text: body, reply_parameters: { message_id: message.message_id } });
+  if (text.startsWith("/cover")) {
+    await dispatch(env, "cover.yml", { text: text.replace(/^\/cover(@\w+)?/, "").trim() });
+    return reply("🖼 Rendering the header, the file comes in about 2 min.");
+  }
   if (!text || text.startsWith("/")) {
     return tg(env, "sendMessage", {
       chat_id: env.EDITOR_ID,
-      text: "Send a post as it should appear in the channel. The bot makes the header and sends a preview in about 3 min.",
+      text: [
+        "Send a post as it should appear in the channel: the bot makes the header and sends a preview in about 3 min.",
+        "",
+        "Header only, as a PNG file:",
+        "/cover",
+        "Title",
+        "Subtitle or -",
+        "person id and rubric, optional (paper, accepted, award, event, seminar, deadlines, news)",
+      ].join("\n"),
     });
   }
-  const reply = (body) => tg(env, "sendMessage", { chat_id: env.EDITOR_ID, text: body, reply_parameters: { message_id: message.message_id } });
   if (text.length > CAPTION_LIMIT) return reply(`Too long: ${text.length}/${CAPTION_LIMIT}.`);
   await dispatch(env, "draft-post.yml", { caption: toHtml(text, message.entities ?? message.caption_entities) });
   return reply("🖼 Making the header, the preview comes in about 3 min.");

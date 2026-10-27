@@ -18,7 +18,7 @@ from pathlib import Path
 from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
-from render_post import REPO, RUBRICS
+from render_post import REPO, RUBRICS, people, tex
 from send_post import MOSCOW, preview
 
 # Workers AI free plan: 10,000 neurons a day. DeepSeek, Kimi, and GLM need the paid plan.
@@ -34,11 +34,6 @@ The editor wrote the post; read it and answer with one JSON object {{"rubric", "
 
 People (id: name):
 {people}"""
-
-
-def people() -> dict[str, str]:
-    text = (REPO / "data" / "people.tex").read_text(encoding="utf-8")
-    return dict(re.findall(r"\\defineperson\{(\w+)\}\{\s*name\s*=\s*\{([^}]*)\}", text))
 
 
 def ask_model(caption: str) -> dict[str, str]:
@@ -76,11 +71,6 @@ def ask_model(caption: str) -> dict[str, str]:
     if not match:
         sys.exit(f"Workers AI: no JSON in the answer: {content[:500]}")
     return json.loads(match.group(0))
-
-
-def tex(line: str) -> str:
-    """Header fields are TeX; escape what the model writes as plain text."""
-    return re.sub(r"(?<!\\)([%&#$_])", r"\\\1", line.strip())
 
 
 def write(draft: dict[str, str], caption: str) -> Path:
