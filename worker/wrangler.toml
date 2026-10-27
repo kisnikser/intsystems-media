@@ -5,5 +5,6 @@ compatibility_date = "2026-10-01"
 [vars]
 EDITOR_ID = "209404191"
 REPO = "kisnikser/intsystems-media"
+CHANNEL_ID = "-1003824738466"  # keep equal to the Actions variable TELEGRAM_CHANNEL_ID
 
 # Secrets (npx wrangler secret put <NAME>): TELEGRAM_BOT_TOKEN, GITHUB_TOKEN, WEBHOOK_SECRET.

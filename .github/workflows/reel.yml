@@ -1,0 +1,37 @@
+name: Reel
+
+# Render a vertical reel from a scenario (/reel in the bot) and send it to the editor
+# with "post to channel" and "discard" buttons. Nothing is committed. Dispatched by worker/index.js.
+on:
+  workflow_dispatch:
+    inputs:
+      scenario:
+        description: "Scenario in TOML, as in reels/example.toml"
+        required: true
+
+jobs:
+  reel:
+    runs-on: ubuntu-latest
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_EDITOR_ID: ${{ vars.TELEGRAM_EDITOR_ID }}
+      SCENARIO: ${{ inputs.scenario }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      # No GPU on runners: ManimGX draws on the CPU with the Mesa lavapipe its Linux wheel brings.
+      - name: Install ManimGX
+        run: uv tool install --python 3.14 manimgx
+      - name: Render and send
+        run: |
+          mkdir -p build/reels
+          printf '%s' "$SCENARIO" > build/reels/request.toml
+          REEL=build/reels/request.toml manimgx render reels/reel.py -o build/reels/request.mp4
+          python3 scripts/send_reel.py build/reels/request.toml build/reels/request.mp4
+      - name: Tell the editor it failed
+        if: failure()
+        env:
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: >
+          curl -sS "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage"
+          -d chat_id="$TELEGRAM_EDITOR_ID" --data-urlencode text="⚠️ Reel failed: $RUN_URL"

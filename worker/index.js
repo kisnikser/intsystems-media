@@ -14,6 +14,25 @@ const HINTS = {
   d: "Reply with YYYY-MM-DD HH:MM, Moscow time.",
 };
 const CAPTION_LIMIT = 1024;
+const REEL_HELP = [
+  "/reel, then a scenario in TOML (reels/example.toml in the repo):",
+  "",
+  'background = "black-design-2"',
+  'accent = "#1ED760"',
+  'caption = "<b>Post text</b> for the channel, optional"',
+  "",
+  "[[frame]]",
+  'kind = "title"',
+  'badge = "Статья"',
+  'title = "Сколько данных нужно модели?"',
+  "duration = 3.5",
+  "",
+  "[[frame]]",
+  'kind = "outro"',
+  'cta = "Подробнее в Telegram-канале кафедры"',
+  "",
+  "Frame kinds: title, text, formula, image, person, outro.",
+].join("\n");
 
 export default {
   async fetch(request, env, ctx) {
@@ -44,6 +63,12 @@ async function handle(update, env) {
 async function onPost(message, env) {
   const text = message.text ?? message.caption ?? "";
   const reply = (body) => tg(env, "sendMessage", { chat_id: env.EDITOR_ID, text: body, reply_parameters: { message_id: message.message_id } });
+  if (text.startsWith("/reel")) {
+    const scenario = text.replace(/^\/reel(@\w+)?/, "").trim();
+    if (!scenario) return reply(REEL_HELP);
+    await dispatch(env, "reel.yml", { scenario });
+    return reply("🎬 Rendering the reel, the video comes in about 3 min.");
+  }
   if (text.startsWith("/cover")) {
     await dispatch(env, "cover.yml", { text: text.replace(/^\/cover(@\w+)?/, "").trim() });
     return reply("🖼 Rendering the header, the file comes in about 2 min.");
@@ -59,6 +84,8 @@ async function onPost(message, env) {
         "Title",
         "Subtitle or -",
         "person id and rubric, optional (paper, accepted, award, event, seminar, deadlines, news)",
+        "",
+        "Reel: /reel with a scenario; send /reel alone for an example.",
       ].join("\n"),
     });
   }
@@ -76,6 +103,16 @@ async function onButton(query, env) {
   const path = `posts/${stem}.md`;
   const card = query.message;
   const photoId = card.reply_to_message?.message_id;
+
+  // Reel cards: the video is the message the card replies to; copying it posts it with its caption.
+  if (action === "v" || action === "x") {
+    let note = "❌ Discarded";
+    if (action === "v") {
+      const copy = await tg(env, "copyMessage", { chat_id: env.CHANNEL_ID, from_chat_id: card.chat.id, message_id: photoId });
+      note = `📤 Posted to the channel, message ${copy.message_id}`;
+    }
+    return tg(env, "editMessageText", { chat_id: card.chat.id, message_id: card.message_id, text: `${card.text}\n${note}` });
+  }
 
   if (action in PROMPTS) {
     return tg(env, "sendMessage", {

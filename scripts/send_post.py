@@ -10,6 +10,7 @@ Dates in posts are Moscow time. Buttons are handled by worker/index.js.
 
 import argparse
 import json
+import mimetypes
 import os
 import re
 import sys
@@ -40,7 +41,7 @@ def telegram(
             f'--{boundary}\r\nContent-Disposition: form-data; name="{key}"\r\n\r\n{text}\r\n'.encode()
         )
     if photo:
-        head = f'--{boundary}\r\nContent-Disposition: form-data; name="{field}"; filename="{photo.name}"\r\nContent-Type: image/png\r\n\r\n'
+        head = f'--{boundary}\r\nContent-Disposition: form-data; name="{field}"; filename="{photo.name}"\r\nContent-Type: {mimetypes.guess_type(photo.name)[0] or "application/octet-stream"}\r\n\r\n'
         parts.append(head.encode() + photo.read_bytes() + b"\r\n")
     parts.append(f"--{boundary}--\r\n".encode())
     request = Request(

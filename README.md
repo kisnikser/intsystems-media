@@ -209,6 +209,8 @@ REEL=reels/example.toml manimgx render reels/reel.py -o build/reels/example.mp4
 ```
 
 An 18-second reel renders in about 3 s on an M-series Mac.
+In the bot, `/reel` followed by a scenario renders it in `.github/workflows/reel.yml` and sends the video back with **📤 Post to channel** and **❌ Discard**; `scripts/send_reel.py` uses the scenario's optional `caption` (Telegram HTML) as the post text.
+Posting copies that Telegram message to `CHANNEL_ID`, so videos are never stored; screens with `image` can use only files already in the repo.
 Text is Open Sans from `assets/fonts/` (OFL), set by ManimGX's Typst, so no TeX Live is needed.
 
 ## Gotchas
@@ -225,6 +227,7 @@ Text is Open Sans from `assets/fonts/` (OFL), set by ManimGX's Typst, so no TeX 
 - **Post file names are at most 60 bytes.** Telegram callback data is limited to 64 bytes and carries the file name; `render_post.py` refuses longer names.
 - **The Workers AI free plan gives 10,000 neurons a day, several hundred headers with `MODEL`.** DeepSeek, Kimi, and GLM on Workers AI answer 403 on the free plan; only smaller open models such as gpt-oss-120b and Qwen are free.
 - **The bot commits to `main`.** Run `git pull --ff-only` before editing posts locally, or the push is rejected.
+- **The channel id lives in two places: the Actions variable `TELEGRAM_CHANNEL_ID` and `CHANNEL_ID` in `worker/wrangler.toml`.** Change both when switching channels, then redeploy the Worker.
 - **The reel size is set in `reels/reel.py` through `m.config`, not on the command line.** `manimgx inspect` has no `-r`; without the config it would check a 16:9 frame.
 - **`manimgx inspect` always reports the reel background past the frame edges.** It is a 16:9 cover background cropped to the vertical frame on purpose; any other layout problem is real.
 - **Only `design-*` and `black-design-*` backgrounds carry the logo that the `event` badge sits next to.** On other backgrounds the badge floats right of an empty spot; keep post backgrounds to these six.
@@ -246,6 +249,7 @@ scripts/render_post.py         Telegram post header and caption check
 scripts/send_post.py           Telegram previews and publishing
 scripts/draft_post.py          Draft from the editor's text, LLM header
 scripts/cover.py               Header on request (/cover), sent as a file
+scripts/send_reel.py           Rendered reel to the editor, with post buttons
 .github/workflows/             Post previews and publishing
 worker/                        Cloudflare Worker: bot buttons and replies
 reels/                         Vertical reels with ManimGX: scene and scenarios
