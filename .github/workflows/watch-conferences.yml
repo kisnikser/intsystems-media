@@ -1,0 +1,49 @@
+name: Watch conferences
+
+# Daily: remind the editor on decision days from the site's conferences.yml, and report new
+# OpenReview acceptances co-authored by students (scripts/watch_conferences.py).
+on:
+  schedule:
+    - cron: "0 7 * * *" # 10:00 Moscow
+  workflow_dispatch:
+
+concurrency: posts-main
+
+permissions:
+  contents: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    env:
+      OPENREVIEW_USERNAME: ${{ secrets.OPENREVIEW_USERNAME }}
+      OPENREVIEW_PASSWORD: ${{ secrets.OPENREVIEW_PASSWORD }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_EDITOR_ID: ${{ vars.TELEGRAM_EDITOR_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checkout the site (people, students, conferences)
+        uses: actions/checkout@v4
+        with:
+          repository: intsystems/intsystems.github.io
+          path: site
+      - name: Watch
+        run: |
+          pip install --quiet pyyaml
+          python3 scripts/watch_conferences.py --site site
+      - name: Record reported papers
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/openreview/seen.txt
+          git diff --cached --quiet && exit 0
+          git commit -q -m "chore: record reported openreview acceptances"
+          for _ in 1 2 3; do git pull -q --rebase && git push -q && exit 0; done
+          exit 1
+      - name: Tell the editor it failed
+        if: failure()
+        env:
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: >
+          curl -sS "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage"
+          -d chat_id="$TELEGRAM_EDITOR_ID" --data-urlencode text="⚠️ Conference watch failed: $RUN_URL"

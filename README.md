@@ -213,6 +213,19 @@ In the bot, `/reel` followed by a scenario renders it in `.github/workflows/reel
 Posting copies that Telegram message to `CHANNEL_ID`, so videos are never stored; screens with `image` can use only files already in the repo.
 Text is Open Sans from `assets/fonts/` (OFL), set by ManimGX's Typst, so no TeX Live is needed.
 
+## Conference watch
+
+`.github/workflows/watch-conferences.yml` runs `scripts/watch_conferences.py` daily at 10:00 Moscow time against a checkout of the site.
+
+- **Decision-day reminders.** A conference in the site's `_data/conferences.yml` whose `notification` (hand-entered, `YYYY-MM-DD`) is today gets a message to the editor.
+- **OpenReview acceptances.** For every OpenReview id of a student (`openreview:` in `_data/students.yml`, or in `_people/<id>.md` for students with a profile), the script lists their papers. A venue id `<VENUE>.cc/<year>/Conference` (also `thecvf.com/CVPR/...`, `auai.org/UAI/...`) or `TMLR` means accepted; `dblp.org/conf/<VENUE>/<year>` is a paper OpenReview imported from DBLP after publication, which covers venues not on OpenReview (AAAI, KDD, SIGIR). Venues come from `conferences.yml`; `ALIASES` maps DBLP spellings (`NIPS`, `PKDD`).
+- **Each paper is reported once.** `data/openreview/seen.txt` holds the note id and the normalized title of every reported paper; the workflow commits it.
+
+```sh
+OPENREVIEW_USERNAME=... OPENREVIEW_PASSWORD=... uv run --python 3.11 --with pyyaml \
+  scripts/watch_conferences.py --site ../intsystems.github.io --seed   # record current papers, no messages
+```
+
 ## Gotchas
 
 - **Titles grow upward from a fixed line; subtitles and the session line stay put.** Break long titles with a plain `\\`; adding `\vspace` or `session-y` to compensate shifts the layout.
@@ -228,6 +241,9 @@ Text is Open Sans from `assets/fonts/` (OFL), set by ManimGX's Typst, so no TeX 
 - **The Workers AI free plan gives 10,000 neurons a day, several hundred headers with `MODEL`.** DeepSeek, Kimi, and GLM on Workers AI answer 403 on the free plan; only smaller open models such as gpt-oss-120b and Qwen are free.
 - **The bot commits to `main`.** Run `git pull --ff-only` before editing posts locally, or the push is rejected.
 - **The channel id lives in two places: the Actions variable `TELEGRAM_CHANNEL_ID` and `CHANNEL_ID` in `worker/wrangler.toml`.** Change both when switching channels, then redeploy the Worker.
+- **The OpenReview API refuses anonymous requests with `ChallengeRequiredError`.** The scanner logs in with the Actions secrets `OPENREVIEW_USERNAME` and `OPENREVIEW_PASSWORD`; the account has no two-factor authentication, which unattended login would need set up separately.
+- **Only students' papers are reported.** Supervisors' ids are recorded too, but a paper needs a student author; MIRIAI counts as MIPT when matching profiles by affiliation.
+- **A paper comes back as a DBLP import months after its acceptance.** `seen.txt` keeps normalized titles so it is not reported twice; do not reduce it to note ids.
 - **The reel size is set in `reels/reel.py` through `m.config`, not on the command line.** `manimgx inspect` has no `-r`; without the config it would check a 16:9 frame.
 - **`manimgx inspect` always reports the reel background past the frame edges.** It is a 16:9 cover background cropped to the vertical frame on purpose; any other layout problem is real.
 - **Only `design-*` and `black-design-*` backgrounds carry the logo that the `event` badge sits next to.** On other backgrounds the badge floats right of an empty spot; keep post backgrounds to these six.
@@ -250,6 +266,8 @@ scripts/send_post.py           Telegram previews and publishing
 scripts/draft_post.py          Draft from the editor's text, LLM header
 scripts/cover.py               Header on request (/cover), sent as a file
 scripts/send_reel.py           Rendered reel to the editor, with post buttons
+scripts/watch_conferences.py   Decision-day reminders and OpenReview acceptances
+data/openreview/seen.txt       Reported OpenReview papers
 .github/workflows/             Post previews and publishing
 worker/                        Cloudflare Worker: bot buttons and replies
 reels/                         Vertical reels with ManimGX: scene and scenarios
