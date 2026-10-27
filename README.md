@@ -196,6 +196,21 @@ Any message to the bot that is not a reply is a post the editor wrote: the Worke
 
 Deploy the Worker with `cd worker && npx wrangler deploy`.
 
+## Reels
+
+`reels/reel.py` renders a vertical reel (1080×1920, 30 fps) from a scenario: one `[[frame]]` per screen, in order, each with a `kind` and a `duration` in seconds.
+Kinds: `title` (badge, title, subtitle), `text` (heading, lines joined and wrapped), `formula` (TeX math, caption), `image` (repo path, caption), `person` (id from `assets/people/`, name, role), `outro` (logo, title, call to action).
+`background` names a file in `assets/backgrounds/`, `accent` is a HEX color; see `reels/example.toml`.
+
+```sh
+uv tool install --python 3.14 manimgx          # once; ManimGX needs Python 3.13+
+REEL=reels/example.toml manimgx inspect reels/reel.py -o build/reels/example.png   # storyboard and layout checks
+REEL=reels/example.toml manimgx render reels/reel.py -o build/reels/example.mp4
+```
+
+An 18-second reel renders in about 3 s on an M-series Mac.
+Text is Open Sans from `assets/fonts/` (OFL), set by ManimGX's Typst, so no TeX Live is needed.
+
 ## Gotchas
 
 - **Titles grow upward from a fixed line; subtitles and the session line stay put.** Break long titles with a plain `\\`; adding `\vspace` or `session-y` to compensate shifts the layout.
@@ -210,6 +225,8 @@ Deploy the Worker with `cd worker && npx wrangler deploy`.
 - **Post file names are at most 60 bytes.** Telegram callback data is limited to 64 bytes and carries the file name; `render_post.py` refuses longer names.
 - **The Workers AI free plan gives 10,000 neurons a day, several hundred headers with `MODEL`.** DeepSeek, Kimi, and GLM on Workers AI answer 403 on the free plan; only smaller open models such as gpt-oss-120b and Qwen are free.
 - **The bot commits to `main`.** Run `git pull --ff-only` before editing posts locally, or the push is rejected.
+- **The reel size is set in `reels/reel.py` through `m.config`, not on the command line.** `manimgx inspect` has no `-r`; without the config it would check a 16:9 frame.
+- **`manimgx inspect` always reports the reel background past the frame edges.** It is a 16:9 cover background cropped to the vertical frame on purpose; any other layout problem is real.
 - **Only `design-*` and `black-design-*` backgrounds carry the logo that the `event` badge sits next to.** On other backgrounds the badge floats right of an empty spot; keep post backgrounds to these six.
 - **Open Sans is loaded by file name (`OpenSans-Regular.ttf`), not by family name.** Family lookup works on Overleaf but fails on a local TeX Live whose fonts fontconfig cannot see.
 
@@ -231,6 +248,8 @@ scripts/draft_post.py          Draft from the editor's text, LLM header
 scripts/cover.py               Header on request (/cover), sent as a file
 .github/workflows/             Post previews and publishing
 worker/                        Cloudflare Worker: bot buttons and replies
+reels/                         Vertical reels with ManimGX: scene and scenarios
+assets/fonts/                  Open Sans for reels
 posts/                         One file per Telegram post
 data/research/                 Generated research data and OpenAlex cache
 data/supervisors.tex           Supervisors for team slides

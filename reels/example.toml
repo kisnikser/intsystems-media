@@ -1,0 +1,40 @@
+# Example reel about a paper. Each [[frame]] is one screen; `duration` is in seconds.
+background = "black-design-2"
+accent = "#1ED760"
+
+[[frame]]
+kind = "title"
+badge = "Статья"
+title = "Сколько данных нужно модели?"
+subtitle = "Размер выборки через геометрию ландшафта функции потерь"
+duration = 3.5
+
+[[frame]]
+kind = "text"
+heading = "Идея"
+lines = [  # joined and wrapped to the frame; use "\n" to force a break
+  "Добавляем объекты в выборку",
+  "и смотрим, как меняется",
+  "ландшафт функции потерь.",
+  "Когда он перестает меняться,",
+  "данных достаточно.",
+]
+duration = 4.5
+
+[[frame]]
+kind = "formula"
+tex = '\mathcal{L}(\mathbf{w}) \approx \mathcal{L}(\mathbf{w}^*) + \tfrac{1}{2}\,\Delta\mathbf{w}^{\top}\mathbf{H}\,\Delta\mathbf{w}'
+caption = "Кривизну задает гессиан H"
+duration = 4
+
+[[frame]]
+kind = "person"
+person = "kiselev_ns"
+name = "Никита Киселев"
+role = "Аспирант кафедры"
+duration = 3
+
+[[frame]]
+kind = "outro"
+cta = "Подробнее в Telegram-канале кафедры"
+duration = 3
