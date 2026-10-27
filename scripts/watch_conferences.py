@@ -115,6 +115,18 @@ class OpenReview:
                 )
         raise AssertionError
 
+    def aliases(self, profile_id: str) -> list[str]:
+        """All ids of a profile: papers keep whichever one the author used when submitting."""
+        profiles = self._call(f"/profiles?id={urllib.parse.quote(profile_id)}")[
+            "profiles"
+        ]
+        names = profiles[0]["content"].get("names", []) if profiles else []
+        return list(
+            dict.fromkeys(
+                [profile_id] + [n["username"] for n in names if n.get("username")]
+            )
+        )
+
     def notes_by(self, author: str) -> list[dict]:
         notes, offset = [], 0
         while True:
@@ -151,6 +163,9 @@ def scan(site: Path, confs: list[dict], editor: str, seed: bool) -> None:
     seen_ids = {line.split("\t")[0] for line in lines}
     seen_titles = {line.split("\t")[1] for line in lines if "\t" in line}
     client = OpenReview()
+    ours |= {
+        alias: name for i, name in list(ours.items()) for alias in client.aliases(i)
+    }
     found: dict[str, tuple[dict, tuple[str, str, str]]] = {}
     for author in sorted(ours):
         for note in client.notes_by(author):

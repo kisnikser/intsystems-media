@@ -219,6 +219,7 @@ Text is Open Sans from `assets/fonts/` (OFL), set by ManimGX's Typst, so no TeX 
 
 - **Decision-day reminders.** A conference in the site's `_data/conferences.yml` whose `notification` is today gets a message to the editor. The site's weekly refresh fills `notification` from huggingface/ai-deadlines; a hand-entered date stays when that source has none (RecSys is not covered).
 - **OpenReview acceptances.** For every OpenReview id of a student (`openreview:` in `_data/students.yml`, or in `_people/<id>.md` for students with a profile), the script lists their papers. A venue id `<VENUE>.cc/<year>/Conference` (also `thecvf.com/CVPR/...`, `auai.org/UAI/...`) or `TMLR` means accepted; `dblp.org/conf/<VENUE>/<year>` is a paper OpenReview imported from DBLP after publication, which covers venues not on OpenReview (AAAI, KDD, SIGIR). Venues come from `conferences.yml`; `ALIASES` maps DBLP spellings (`NIPS`, `PKDD`).
+- **A profile has several ids.** `OpenReview.aliases` expands each recorded id to all usernames of its profile, since a paper keeps the one its author used at submission.
 - **Each paper is reported once.** `data/openreview/seen.txt` holds the note id and the normalized title of every reported paper; the workflow commits it.
 
 ```sh
