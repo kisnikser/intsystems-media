@@ -3,8 +3,8 @@
     python3 scripts/watch_conferences.py --site ../intsystems.github.io [--seed]
 
 Reminders: a conference in the site's _data/conferences.yml whose `notification` is today (Moscow).
-Acceptances: papers on OpenReview with a student from _data/students.yml among the authors, at a venue
-from conferences.yml or TMLR. A main-track venue id (ICLR.cc/2026/Conference) means accepted; a
+Acceptances: papers on OpenReview with a student from _data/students.yml among the authors, at a conference
+from conferences.yml; journals are left out. A main-track venue id (ICLR.cc/2026/Conference) means accepted; a
 dblp.org/conf/<VENUE>/<year> id is a paper OpenReview imported from DBLP after publication.
 Rejected, withdrawn, and workshop venue ids never match. Reported note ids are kept in
 data/openreview/seen.txt; --seed records the current ones without messages.
@@ -69,12 +69,10 @@ def students(site: Path) -> dict[str, str]:
 def venue_matcher(confs: list[dict]):
     names = {c["name"].upper().replace("-", ""): c["name"] for c in confs}
     names |= {k: v for k, v in ALIASES.items() if v.upper().replace("-", "") in names}
-    ranks = {c["name"]: c.get("rank", "") for c in confs} | {"TMLR": "journal"}
+    ranks = {c["name"]: c.get("rank", "") for c in confs}
 
     def match(venueid: str) -> tuple[str, str, str] | None:
         """(venue, year, rank) of an accepted or published paper, or None."""
-        if venueid == "TMLR":
-            return "TMLR", "", ranks["TMLR"]
         m = re.match(
             r"^(?:[\w.-]+/)?([A-Za-z-]+?)(?:\.cc)?/(\d{4})/Conference$", venueid
         ) or re.match(r"^dblp\.org/conf/([A-Za-z-]+)/(\d{4})$", venueid)
@@ -115,17 +113,23 @@ class OpenReview:
                 )
         raise AssertionError
 
-    def aliases(self, profile_id: str) -> list[str]:
-        """All ids of a profile: papers keep whichever one the author used when submitting."""
-        profiles = self._call(f"/profiles?id={urllib.parse.quote(profile_id)}")[
-            "profiles"
-        ]
-        names = profiles[0]["content"].get("names", []) if profiles else []
-        return list(
-            dict.fromkeys(
-                [profile_id] + [n["username"] for n in names if n.get("username")]
-            )
-        )
+    def aliases(self, profile_ids: list[str]) -> dict[str, list[str]]:
+        """All ids of each profile: papers keep whichever one the author used when submitting.
+
+        One request for all profiles; the API allows 100 requests an hour per account.
+        """
+        query = ",".join(urllib.parse.quote(i) for i in profile_ids)
+        out = {}
+        for profile in self._call(f"/profiles?ids={query}")["profiles"]:
+            names = [
+                n["username"]
+                for n in profile["content"].get("names", [])
+                if n.get("username")
+            ]
+            for i in [profile["id"], *names]:
+                if i in profile_ids:
+                    out[i] = list(dict.fromkeys([i, profile["id"], *names]))
+        return out
 
     def notes_by(self, author: str) -> list[dict]:
         notes, offset = [], 0
@@ -163,11 +167,11 @@ def scan(site: Path, confs: list[dict], editor: str, seed: bool) -> None:
     seen_ids = {line.split("\t")[0] for line in lines}
     seen_titles = {line.split("\t")[1] for line in lines if "\t" in line}
     client = OpenReview()
-    ours |= {
-        alias: name for i, name in list(ours.items()) for alias in client.aliases(i)
-    }
+    recorded = sorted(ours)
+    for i, ids in client.aliases(recorded).items():
+        ours |= dict.fromkeys(ids, ours[i])
     found: dict[str, tuple[dict, tuple[str, str, str]]] = {}
-    for author in sorted(ours):
+    for author in recorded:  # one query per recorded id; the API resolves its aliases
         for note in client.notes_by(author):
             hit = match(note["content"].get("venueid", {}).get("value", ""))
             key = title_key(note)
